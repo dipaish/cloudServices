@@ -27,8 +27,8 @@ extra:
 nav:
   - Home: index.md
   - Lab Tasks:
-      - Cloud Developer 
-        - AWS: Lab Task 1
+      - Cloud Developer:
+          - AWS: part1.md
 
 markdown_extensions:
   - admonition
