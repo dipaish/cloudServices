@@ -168,6 +168,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
     ```
    
     **Expected output:**
+    
     ```
     example-sample-bucket-123456
     ```
@@ -263,7 +264,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 2. Scroll down to **Bucket policy** and choose **Edit**.
 3. In the policy editor, paste the following JSON (replace `<your-bucket-name>` with your actual bucket name):
 
-    ```json
+    ```bash
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -367,7 +368,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 3. Choose the policy name to view its **JSON** permissions.
 4. Observe how it defines specific allowed actions and resources, for example:
 
-```json
+```bash
    {
     "Version": "2012-10-17",
     "Statement": [
