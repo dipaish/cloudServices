@@ -3,10 +3,10 @@ name: Deploy MkDocs (Dracula)
 on:
   push:
     branches:
-      - mkdocsTesting
+      - main
   pull_request:
     branches:
-      - mkdocsTesting
+      - main
   workflow_dispatch:
 
 permissions:
