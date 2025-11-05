@@ -74,23 +74,19 @@ aws s3 ls
 **Once created, run aws s3 ls again to verify it appears in the list:**
 
 ```bash
-    aws s3 ls
-
+aws s3 ls
  ```
-
 ### 2. Create and run a Python script using Boto3
 
 1. In CloudShell, create a file named `list-buckets.py`:
 
 ```bash
 nano list-buckets.py
-
 ```
    
 Add the following code:
    
 ```bash
-
 import boto3
 session = boto3.Session()
 s3_client = session.client('s3')
@@ -133,15 +129,13 @@ upload: ./list-buckets.py to s3://example-sample-bucket-123456/list-buckets.py
 
 ```bash
 aws s3 ls s3://example-sample-bucket-123456
-
 ```
    
 **Expected output:**
     
 ```
 2025-11-03 11:42:10 215 list-buckets.py
-
- ```
+```
 ### 3. Launch VS Code IDE
 
 1. From the **AWS Details** panel where you started the lab, copy:
@@ -157,9 +151,8 @@ aws s3 ls s3://example-sample-bucket-123456
 1. In the terminal:
 
 ```bash
-    aws s3 ls
-    aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
-
+aws s3 ls
+aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
 ```
    
 Confirm that **list-buckets.py** appears in the Explorer.
@@ -167,23 +160,20 @@ Confirm that **list-buckets.py** appears in the Explorer.
 2. Run the file:
 
 ```bash
- python3 list-buckets.py
-
+python3 list-buckets.py
 ```
    
 **Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.):**
    
 ```
 ModuleNotFoundError: No module named 'boto3'
-
 ```
 
 3. Install Boto3:
 
 ```bash
-    sudo pip3 install boto3
-    python3 list-buckets.py
-
+sudo pip3 install boto3
+python3 list-buckets.py
 ```
    
 **Expected output:**
@@ -194,24 +184,22 @@ example-sample-bucket-123456
 
 4. Create a new HTML file:
 
-    ```html
-    <body>Hello World.</body>
-    ```
+```html
+<body>Hello World.</body>
+```
    
 Save it as **index.html**.
 
 5. Upload to S3:
 
 ```bash
-    aws s3 cp index.html s3://example-sample-bucket-123456/index.html
-
+aws s3 cp index.html s3://example-sample-bucket-123456/index.html
 ```
    
 **Expected output:**
 
 ```
 upload: ./index.html to s3://example-sample-bucket-123456/index.html
-
 ```
 
 ---
