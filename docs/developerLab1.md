@@ -1,535 +1,387 @@
-# Part 1: Python Programming Fundamentals
+# Lab 1: AWS Development Environment and S3 Website Hosting
 
-**31 exercises** covering the basics of Python programming: print statements, variables, arithmetic operations, and conditional statements.
+> Note: In the Learner Lab environment, the **LabIDEURL** and **LabIDEPassword** are not available in the Details panel. You will complete this activity using **Lab 2.1: Exploring AWS CloudShell and an IDE**. Start the lab and proceed with the steps below.
+## Purpose
+> In this lab, you will explore AWS CloudShell and Visual Studio Code IDE (code-server), host a static website using Amazon S3 and explore IAM roles and permissions.
 
----
+**ℹ️Important:** After completing the lab, remember to delete all created resources to avoid incurring unnecessary charges.
 
-## 📚 Learning Resources
+## Step-by-step guide for student
 
-- **Official Course Material:** [Part 1 - Introduction to Programming](https://dipaish.github.io/programming-24/part-1)
-  - [Getting Started](https://dipaish.github.io/programming-24/part-1/1-getting-started) - Print statements and basic syntax
-  - [Information from the User](https://dipaish.github.io/programming-24/part-1/2-information-from-the-user) - Input and variables
-  - [More About Variables](https://dipaish.github.io/programming-24/part-1/3-more-about-variables) - String operations
-  - [Arithmetic Operations](https://dipaish.github.io/programming-24/part-1/4-arithmetic-operations) - Math and calculations
-  - [Conditional Statements](https://dipaish.github.io/programming-24/part-1/5-conditional-statements) - if/elif/else logic
-- **Tasks Repository:** [GitHub - part1/part1Exercises/tasks/](https://github.com/dipaish/pythonpro26/tree/main/part1/part1Exercises/tasks/)
+### Step 1: Ensure that you have studied Module 1: Foundations of Cloud Developing (from canvas) properly
 
----
+<details>
+  <summary>👉Click to expand the step by step guide</summary>
 
-## 🎯 Learning Objectives
 
-By completing Part 1, you will learn to:
+To complete this lab, you will need to set up the following AWS services. It is important that you have studied Module 1 and is familiar with these services.
 
-- ✅ Write and execute Python programs
-- ✅ Use `print()` to display output
-- ✅ Get user input with `input()`
-- ✅ Store and manipulate data with variables
-- ✅ Perform arithmetic operations (`+`, `-`, `*`, `/`, `//`, `%`, `**`)
-- ✅ Make decisions using `if`, `elif`, and `else` statements
-- ✅ Compare values with comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`)
-- ✅ Combine conditions with logical operators (`and`, `or`, `not`)
+- AWS CloudShell
+- Visual Studio Code IDE (code-server)
+- Amazon Simple Storage Service (S3)
+- AWS Identity and Access Management (IAM)
+</details>
 
----
+### Step 2: Lab Tasks 
 
-## 📋 Course Structure
+#### Task 1: Exploring AWS CloudShell and VS Code IDE
 
-| Section | Tasks | Topics Covered |
-|---------|-------|----------------|
-| **Getting Started** | 10 | Basic print statements, user input, string operations |
-| **1.1 More About Variables** | 3 | Variable usage, string formatting, fixing errors |
-| **1.2 Arithmetic Operations** | 8 | Math operators, calculations, type conversion, integer division |
-| **1.3 Conditional Statements** | 10 | if/elif/else, comparisons, boolean logic, decision making |
+> You will explore AWS CloudShell and connect to a Visual Studio Code IDE environment. You will run AWS CLI commands, create a Python script using the AWS SDK (Boto3), and transfer files between S3, CloudShell, and the IDE. The guide below uses Amazon Linux; ***if you choose Ubuntu, you need to use the equivalent commands***. 
 
-**Total:** 31 tasks × 1 point each = **31 points**
+<details>
+  <summary>👉Click to expand the Task 1 Guide</summary>
 
----
+### 1: Access AWS CloudShell
 
-## 🚀 Getting Started
-
-### Option 1: GitHub Codespaces (Recommended)
-
-1. Open your forked repository on GitHub
-2. Click **Code** → **Codespaces** → **Create codespace on main**
-3. Wait for the environment to load (30-60 seconds)
-4. Navigate to Part 1 tasks:
+1. In the AWS Management Console, choose the **CloudShell** icon at the top.
+2. Wait for the shell to initialize.
+3. Run the following command to check the AWS CLI version:
    ```bash
-   cd part1/part1Exercises/tasks
+   aws --version
+   ```
+   **Expected output:**
+   ```
+   aws-cli/2.15.x Python/3.11.x Linux/5.10.x botocore/2.15.x
    ```
 
-### Option 2: Local Development
-
-1. Clone the repository:
+4. List all S3 buckets:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/pythonpro26.git
-   cd pythonpro26/part1/part1Exercises/tasks
+   aws s3 ls
+   ```
+   **Expected output:**
+
+   ```
+   2024-05-12 10:15:43 example-sample-bucket-123456
    ```
 
-2. Ensure Python 3.11+ is installed:
+   **Create a bucket using your own name, which will be used for this task.**
+   
+   > Use the command below, replacing ```<your-unique-bucket-name>``` with a bucket name that includes your own name, and update the region as needed.
+
+  ```
+   aws s3api create-bucket --bucket <your-unique-bucket-name> --region us-east-1
+  ```
+**Once created, run aws s3 ls again to verify it appears in the list:**
+
+ ```
+   aws s3 ls
+  ```
+
+### 2. Create and run a Python script using Boto3
+1. In CloudShell, create a file named `list-buckets.py`:
    ```bash
-   python --version
+   nano list-buckets.py
+   ```
+   Add the following code:
+   ```python
+   import boto3
+   session = boto3.Session()
+   s3_client = session.client('s3')
+   b = s3_client.list_buckets()
+   for item in b['Buckets']:
+       print(item['Name'])
+   ```
+2. Run the script:
+   ```bash
+   python3 list-buckets.py
+   ```
+   **Expected output:**
+   ```
+   example-sample-bucket-123456
+   ```
+
+3. Upload the script to your S3 bucket:
+   ```bash
+   aws s3 cp list-buckets.py s3://example-sample-bucket-123456
+   ```
+   **Expected output:**
+   ```
+   upload: ./list-buckets.py to s3://example-sample-bucket-123456/list-buckets.py
+   ```
+4. List the contents of your bucket:
+> The file list-buckets.py was created locally in your CloudShell environment and then uploaded as an object to your S3 bucket. To confirm that the upload succeeded, list the contents of your bucket:
+```bash
+   aws s3 ls s3://example-sample-bucket-123456
+   ```
+   **Expected output:**
+   ```
+ 2025-11-03 11:42:10 215 list-buckets.py
+   ```
+
+### 3. Launch VS Code IDE
+1. From the **AWS Details** panel where you started the lab, copy:
+   - `LabIDEURL`
+   - `LabIDEPassword`
+2. Open the URL in a new tab, enter the password, and sign in.
+3. Observe:
+   - Left: File Explorer  
+   - Bottom: Bash Terminal  
+
+### 4. Copy files from S3 and run code in VS Code IDE
+1. In the terminal:
+   ```bash
+   aws s3 ls
+   aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
+   ```
+   Confirm that `list-buckets.py` appears in the Explorer.
+
+2. Run the file:
+   ```bash
+   python3 list-buckets.py
+   ```
+   **Expected error:Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.** 
+   ```
+   ModuleNotFoundError: No module named 'boto3'
+   ```
+
+3. Install Boto3:
+   ```bash
+   sudo pip3 install boto3
+   python3 list-buckets.py
+   ```
+   **Expected output:**
+   ```
+   example-sample-bucket-123456
+   ```
+
+4. Create a new HTML file:
+   ```html
+   <body>Hello World.</body>
+   ```
+   Save it as `index.html`.
+
+5. Upload to S3:
+   ```bash
+   aws s3 cp index.html s3://example-sample-bucket-123456/index.html
+   ```
+   **Expected output:**
+   ```
+   upload: ./index.html to s3://example-sample-bucket-123456/index.html
    ```
 
 ---
 
-## 📝 How to Complete Tasks
+### Submission: Required Screenshots for Task 1
+* **T1.1:** Bucket list shown from CloudShell
+* **T1.2:** VS Code IDE with terminal and file explorer visible that includes index.html file. ***You can also create error.html if you wish but not mandatory.***
 
-### Step 1: Open a Task File
 
-All tasks are in: `part1/part1Exercises/tasks/`
+</details>
 
-Example: `1_emoticon.py`, `1.2.1_times_five.py`, `1.3.1_orwell.py`
+#### Task 2: Configure public access and test website updates
 
-### Step 2: Read the Instructions
+> You will continue working with the same S3 bucket created in Task 1.In this section, you will enable **static website hosting**, configure **public access** with a **bucket policy**, test the website endpoint from the **AWS Management Console** and make a simple update to the `index.html` file.
 
-Each file contains:
-- Task description
-- Sample input/output
-- Hints (if applicable)
+<details>
+  <summary>👉Click to expand the Task 2 Guide</summary>
 
-### Step 3: Write Your Solution
+### 1. Verify website files exist
 
-Replace the TODO comment with your code:
-
-```python
-"""
-Task: Print a smiley emoticon :-)
-"""
-
-# TODO: Write your solution below this line
-print(":-)")  # Your solution here
-```
-
-### Step 4: Test Your Code
-
-Run the file to see if it works:
+If you already uploaded `index.html` in Task 1, skip this part of the task.
 
 ```bash
-# Windows PowerShell
-python 1_emoticon.py
+# Set your variables
+REGION=us-east-1
+BUCKET=<your-bucket-name>
 
-# macOS/Linux
-python3 1_emoticon.py
+# (Only if needed) Create simple index and error pages
+echo '<!doctype html><html><body><h1>Welcome to the Café</h1></body></html>' > index.html
+echo '<!doctype html><html><body><h1>Oops!</h1><p>Error page.</p></body></html>' > error.html
+
+# Upload (or re-upload) to your bucket
+aws s3 cp index.html s3://$BUCKET/index.html
+aws s3 cp error.html s3://$BUCKET/error.html
 ```
 
-### Step 5: Grade Your Work
+**Expected output**
 
-Run the auto-grader to check all solutions:
+```
+upload: ./index.html to s3://<your-bucket-name>/index.html
+upload: ./error.html to s3://<your-bucket-name>/error.html
+```
+
+---
+
+### 2. Enable static website hosting (Console)
+
+1. Open the AWS Management Console → **S3 → Buckets → <your-bucket-name> → Properties**
+2. Scroll to **Static website hosting** and choose **Edit**
+3. Select **Enable**
+
+   * **Index document:** `index.html`
+   * **Error document:** `error.html`
+4. Choose **Save changes**
+---
+
+### 3. Configure public access
+
+> By default, S3 buckets block all public access. You must disable that restriction at the bucket level.
+
+1. Go to **S3 → Buckets → <your-bucket-name> → Permissions**
+2. Under **Block public access (bucket settings)** choose **Edit**
+3. **Uncheck** “Block all public access” (you can leave ACL blocks on)
+4. Type `confirm` and choose **Save changes**
+
+---
+### 4. Apply a bucket policy for public read
+
+> Apply a public-read bucket policy using the **AWS Management Console**.
+
+1. Go to **S3 → Buckets → <your-bucket-name> → Permissions**.
+2. Scroll down to **Bucket policy** and choose **Edit**.
+3. In the policy editor, paste the following JSON (replace `<your-bucket-name>` with your actual bucket name):
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Sid": "PublicReadForWebsite",
+         "Effect": "Allow",
+         "Principal": "*",
+         "Action": ["s3:GetObject"],
+         "Resource": "arn:aws:s3:::<your-bucket-name>/*"
+       }
+     ]
+   }
+   ```
+4. Choose **Save changes**.
+5. Review the permissions warning and choose **Confirm**.
+
+---
+
+### 5. Test the website endpoint
+
+1. Console → **S3 → Buckets → <your-bucket-name> → Properties**
+2. Scroll to **Static website hosting**
+3. Copy the **Bucket website endpoint**, for example:
+
+   ```
+   http://<your-bucket-name>.s3-website-us-east-1.amazonaws.com
+   ```
+4. Open that URL in a new browser tab, you should see your web page.
+
+If you receive **AccessDenied**, confirm:
+
+* Static website hosting is **enabled**
+* Bucket policy contains the correct bucket name and `/*`
+* “Block all public access” is **unchecked**
+
+### 6. Edit and re-upload `index.html`
+
+Make a small change to your homepage (index.html) and upload the new version to S3.
 
 ```bash
-# From the tasks directory
-python grade_part1.py
+# Edit in the IDE editor, then save the file.
+
+# Upload the modified file to S3
+aws s3 cp index.html s3://$BUCKET/index.html
 ```
 
-The grader will:
-- ✓ Test each task's output
-- ✓ Award 1 point per correct solution
-- ✓ Save progress to `.progress/points.json`
-- ✓ Generate a report in `.progress/marksheet.md`
+**Expected output**
+
+```
+upload: ./index.html to s3://<your-bucket-name>/index.html
+```
+
+Refresh your browser at the **Bucket website endpoint**. Now you should now see the updated page.
+
+> Note: In a real-world setup, you can automate this upload process using tools like `aws s3 sync` or IDE plugins that automatically deploy changes to S3 whenever you save your code. For this lab, we demonstrate it manually, but automation helps you focus on writing and testing your code instead of copying files manually.
 
 ---
 
-## 📖 Section Guides
+### Submission: Required Screenshots for Task 2
 
-### Getting Started (10 tasks)
+* **T2.1:** Bucket Permissions → Bucket policy JSON
+* **T2.2:** Website open in browser (via Bucket website endpoint)
+* **T2.3:** Website showing updated heading after re-upload
+---
 
-Learn the basics of Python output and input.
+</details>
 
-**📖 Read:** [Getting Started - University of Helsinki](https://dipaish.github.io/programming-24/part-1/1-getting-started)
+#### Task 3: Exploring IAM Roles and Policies
 
-#### Key Concepts:
-- `print()` function for output
-- `input()` function for user input
-- String concatenation with `+`
-- Escape sequences (`\n` for newline)
+> In this task, you will explore **AWS Identity and Access Management (IAM)** to understand how permissions and roles relate to the work you did in previous tasks. You will review existing IAM roles, policies, and users in the **lab environment**, observe their trust relationships, and understand how IAM integrates with the S3 website. Some IAM actions might be restricted in this environment therefore you need to focus on observation and understanding rather than creation.
 
-#### Example Tasks:
+<details>
+  <summary>👉Click to expand the Task 3 Guide</summary>
 
-**Task 1: Emoticon**
-```python
-# Print: :-)
-print(":-)")
-```
+### 1. Explore IAM in the Console
 
-**Task 6: Name Twice**
-```python
-# Ask for name and print it twice on one line
-name = input("Please type in your name: ")
-print(name + " " + name)
-```
+1. From the AWS Management Console, search for **IAM** and open the **IAM Dashboard**.
+2. Observe the key sections on the left navigation pane:
 
-**Task 10: Story**
-```python
-# Create a story using multiple inputs
-name = input("Please tell me your name: ")
-year = input("Which year were you born: ")
-print("Hi " + name + "! You were born in " + year + ".")
-```
+   * **Users**: represent individuals or applications with credentials
+   * **Roles**: grant temporary permissions to AWS services (for example, an EC2 instance accessing S3)
+   * **Policies**: define what actions are allowed or denied
 
 ---
 
-### Section 1.1: More About Variables (3 tasks)
+### 2. View existing roles
 
-Master variable usage and output formatting.
+1. In the left menu, choose **Roles**.
+2. Look for existing roles such as `EMR_EC2_DefaultRole` or `EC2RoleForLabInstance` (names may vary).
+3. Click on one of these roles to open its details and review them.
 
-**📖 Read:** [More About Variables - University of Helsinki](https://dipaish.github.io/programming-24/part-1/3-more-about-variables)
-
-#### Key Concepts:
-- Variables store values
-- String formatting techniques
-- Multiple print statements vs. single-line output
-
-#### Example Tasks:
-
-**1.1.1 Extra Space**
-```python
-# Print specific text with proper spacing
-print("Peter Python")
-print("Paula Pythonson")
-print()  # Empty line
-print("Peter and Paula are quite a pair!")
-```
-
-**1.1.2 Arithmetics**
-```python
-# Print an arithmetic expression that equals 9
-print("5 + 8 - 4 = 9")
-```
-
-**1.1.3 Fix the Code - Print Single Line**
-```python
-# Fix the code to print on one line
-print("Hi ", end="")
-print("there!")
-# Output: Hi there!
-```
+> In your earlier tasks, the S3 operations you performed in CloudShell and the IDE worked because your lab session already has an IAM role with sufficient permissions.
 
 ---
 
-### Section 1.2: Arithmetic Operations (8 tasks)
+### 3. Review a managed policy
 
-Learn to perform calculations and work with numbers.
+1. In the IAM console, choose **Policies** from the left menu.
+2. Search for the policy **AmazonS3ReadOnlyAccess**.
+3. Choose the policy name to view its **JSON** permissions.
+4. Observe how it defines specific allowed actions and resources, for example:
 
-**📖 Read:** [Arithmetic Operations - University of Helsinki](https://dipaish.github.io/programming-24/part-1/4-arithmetic-operations)
+```json
+   {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "s3:Describe*",
+                "s3-object-lambda:Get*",
+                "s3-object-lambda:List*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 
-#### Key Concepts:
-- Basic operators: `+`, `-`, `*`, `/`
-- Integer division: `//`
-- Modulo (remainder): `%`
-- Exponentiation: `**`
-- Type conversion: `int()`, `float()`, `str()`
-
-#### Example Tasks:
-
-**1.2.1 Times Five**
-```python
-# Multiply user input by 5
-number = int(input("Please type in a number: "))
-print(f"{number} times 5 is {number * 5}")
 ```
 
-**1.2.3 Seconds in a Day**
-```python
-# Calculate seconds in given days
-days = int(input("How many days? "))
-seconds = days * 24 * 60 * 60
-print(f"Seconds in {days} days: {seconds}")
-```
+>  Policies like these control which S3 actions are possible. If your IAM role didn’t include a policy that allows `s3:PutObject`, your uploads in Task 1 and Task 2 would have failed.
 
-**1.2.8 Students in Groups**
-```python
-# Divide students into groups using integer division
-students = int(input("How many students on the course? "))
-group_size = int(input("Desired group size? "))
-groups = students // group_size
-print(f"Number of groups formed: {groups}")
-```
+### 5. How IAM connects with Tasks 1 and 2 that you did above?
 
----
+* The **role you used in CloudShell/IDE** determined your ability to list, create, and modify S3 buckets.
+* If your IAM permissions were limited (for example, read-only access), `aws s3 cp` or `aws s3 mb` commands would have failed.
+* In real deployments, developers assign **EC2 IAM roles** so that applications running on EC2 can interact securely with S3 instead of embedding credentials in the code.
 
-### Section 1.3: Conditional Statements (10 tasks)
+### Submission: Required Screenshots for Task 3
 
-Make your programs intelligent with decision-making logic.
+* **T3.1:** IAM console showing Roles list
+* **T3.2:** Role details page with attached policies
+* **T3.3:** Managed policy JSON (e.g., AmazonS3ReadOnlyAccess)
 
-**📖 Read:** [Conditional Statements - University of Helsinki](https://dipaish.github.io/programming-24/part-1/5-conditional-statements)
+</details>
 
-#### Key Concepts:
-- `if` statement for single condition
-- `elif` for multiple alternative conditions
-- `else` for default case
-- Comparison operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- Logical operators: `and`, `or`, `not`
+### Guidance and feedback
+Guidance is available during the online consultation session or via Teams call.
 
-#### Example Tasks:
+### Evaluation
+The evaluation is done based on the number of successfully completed tasks. Check the rubric.  
 
-**1.3.1 Orwell**
-```python
-# Check if year is 1984
-year = int(input("Please type in a number: "))
-if year == 1984:
-    print("Orwell")
-```
+### Schedule and timing
+Check the deadline in Canvas
 
-**1.3.2 Absolute Value**
-```python
-# Calculate absolute value without using abs()
-number = int(input("Please type in a number: "))
-if number < 0:
-    print(f"The absolute value is {-number}")
-else:
-    print(f"The absolute value is {number}")
-```
+### Submission
+- **Document Submission:** Compile the required screenshots (as outlined at the end of each task) into a single Word document. Ensure each screenshot is clearly labeled to indicate which task it represents. ***Upload the word document to canvas.***
+- **Self assessment:** In the submission comment box, provide a self-assessment based on the rubric guide. Clearly state how many points you believe you have earned for this task.  
 
-**1.3.5 Calculator**
-```python
-# Simple calculator with operation choice
-num1 = int(input("Number 1: "))
-num2 = int(input("Number 2: "))
-operation = input("Operation: ")
-
-if operation == "add":
-    print(f"{num1} + {num2} = {num1 + num2}")
-elif operation == "multiply":
-    print(f"{num1} * {num2} = {num1 * num2}")
-elif operation == "subtract":
-    print(f"{num1} - {num2} = {num1 - num2}")
-```
-
-**1.3.7 Daily Wages**
-```python
-# Calculate wages with double pay on Sunday
-hours = int(input("Hours: "))
-day = input("Day of the week: ")
-hourly_wage = 15
-
-if day == "Sunday":
-    wage = hours * hourly_wage * 2
-else:
-    wage = hours * hourly_wage
-
-print(f"Daily wages: {wage} euros")
-```
-
-**1.3.10 Solving a Quadratic Equation**
-```python
-# Solve ax² + bx + c = 0 using quadratic formula
-from math import sqrt
-
-a = float(input("Value of a: "))
-b = float(input("Value of b: "))
-c = float(input("Value of c: "))
-
-root1 = (-b + sqrt(b**2 - 4*a*c)) / (2*a)
-root2 = (-b - sqrt(b**2 - 4*a*c)) / (2*a)
-
-print(f"The roots are {root1} and {root2}")
-```
-
----
-
-## 🎓 Grading & Progress Tracking
-
-### Running the Grader
-
-From the tasks directory:
-
-```bash
-cd part1/part1Exercises/tasks
-python grade_part1.py
-```
-
-### Grading Criteria
-
-Each task is evaluated based on:
-- ✓ Correct output format
-- ✓ Handling of user input (for interactive tasks)
-- ✓ Implementation presence (no empty TODO stubs)
-
-**Scoring:**
-- ✅ **Pass (1 point):** Output matches expected result
-- ❌ **Fail (0 points):** Incorrect output or no implementation
-
-### Progress Files
-
-- **Points:** `.progress/points.json` (raw scores)
-- **Report:** `.progress/marksheet.md` (formatted progress)
-
-Example marksheet output:
-```
-Part 1: 31/31 ████████████████████ 100%
-```
-
----
-
-## 💡 Tips for Success
-
-### Debugging Tips
-
-1. **Test incrementally:** Run your code after each change
-2. **Check output format:** Match sample output exactly (spaces, punctuation, newlines)
-3. **Read error messages:** Python tells you what went wrong and where
-4. **Use print() for debugging:** Print variable values to see what's happening
-
-### Common Mistakes to Avoid
-
-❌ **Forgetting to convert input:**
-```python
-age = input("Age: ")  # This is a string!
-print(age + 1)  # Error: can't add string and int
-```
-
-✅ **Correct approach:**
-```python
-age = int(input("Age: "))  # Convert to integer
-print(age + 1)  # Works!
-```
-
-❌ **Using `=` instead of `==` in conditions:**
-```python
-if year = 1984:  # Error: assignment, not comparison
-```
-
-✅ **Correct approach:**
-```python
-if year == 1984:  # Comparison operator
-```
-
-❌ **Incorrect indentation:**
-```python
-if age >= 18:
-print("Adult")  # Error: not indented
-```
-
-✅ **Correct approach:**
-```python
-if age >= 18:
-    print("Adult")  # Indented with 4 spaces
-```
-
-### Best Practices
-
-- ✅ Use descriptive variable names (`age` instead of `a`)
-- ✅ Add spaces around operators for readability (`x + y` not `x+y`)
-- ✅ Test with different inputs to ensure your code works generally
-- ✅ Commit your work regularly with git
-
----
-
-## 💾 Saving Your Work
-
-### Git Workflow
-
-After completing tasks:
-
-```bash
-# Check what changed
-git status
-
-# Add completed tasks
-git add part1/part1Exercises/tasks/1_emoticon.py
-git add part1/part1Exercises/tasks/1.2.1_times_five.py
-
-# Or add all at once
-git add .
-
-# Commit with descriptive message
-git commit -m "Complete Part 1 Getting Started tasks (1-10)"
-
-# Push to GitHub
-git push
-```
-
-### Commit Message Examples
-
-- ✅ `"Complete Part 1 Getting Started (tasks 1-10)"`
-- ✅ `"Add Part 1.2 arithmetic operations solutions"`
-- ✅ `"Fix Part 1.3.5 calculator logic"`
-
----
-
-## 📊 Task Checklist
-
-### Getting Started (10/10)
-
-- [ ] 1_emoticon.py - Print a smiley face
-- [ ] 2_seven_brothers.py - Print Seven Brothers names
-- [ ] 3_row_your_boat.py - Print song lyrics
-- [ ] 4_minutes_in_year.py - Calculate minutes in a year
-- [ ] 5_print_some_code.py - Print code as text
-- [ ] 6_name_twice.py - Input name, print twice
-- [ ] 7_name_excalaimation_mark.py - Name with exclamations
-- [ ] 8_name_Address.py - Input and display name/address
-- [ ] 9_fix_the_code.py - Fix syntax error
-- [ ] 10_story.py - Create story with multiple inputs
-
-### Section 1.1: More About Variables (3/3)
-
-- [ ] 1.1.1_extra_space.py - Print with proper spacing
-- [ ] 1.1.2_arithmetics.py - Print arithmetic expression
-- [ ] 1.1.3_fix_the_code_print_single_line.py - Fix print to single line
-
-### Section 1.2: Arithmetic Operations (8/8)
-
-- [ ] 1.2.1_times_five.py - Multiply by 5
-- [ ] 1.2.2_name_and_age.py - Calculate age in 2021
-- [ ] 1.2.3_seconds_in_a_day.py - Calculate seconds
-- [ ] 1.2.4_fix_the_code_product.py - Fix multiplication bug
-- [ ] 1.2.5_sum_and_product.py - Calculate sum and product
-- [ ] 1.2.6_sum_and_mean.py - Calculate average
-- [ ] 1.2.7_food_expenditure.py - Calculate daily/weekly costs
-- [ ] 1.2.8_students_in_groups.py - Integer division practice
-
-### Section 1.3: Conditional Statements (10/10)
-
-- [ ] 1.3.1_orwell.py - Check if year is 1984
-- [ ] 1.3.2_absolute_value.py - Calculate absolute value
-- [ ] 1.3.3_soup_or_no_soup.py - Seinfeld reference check
-- [ ] 1.3.4_order_of_magnitude.py - Compare to 1000/100/10
-- [ ] 1.3.5_calculator.py - Simple calculator
-- [ ] 1.3.6_temperatures.py - Fahrenheit to Celsius
-- [ ] 1.3.7_daily_wages.py - Calculate wages (double on Sunday)
-- [ ] 1.3.8_loyalty_bonus.py - Fix bonus calculation
-- [ ] 1.3.9_what_to_wear_tomorrow.py - Weather-based advice
-- [ ] 1.3.10_solving_a_quadratic_equation.py - Quadratic formula
-
----
-
-## 🔗 Quick Links
-
-- **Next:** [Part 2 - Conditionals & Loops](part2.md)
-- **Main README:** [Course Overview](index.md)
-- **Setup Guide:** [Local Development Setup](setup.md)
-- **Progress:** Check `.progress/marksheet.md` in your workspace
-
----
-
-## 🆘 Getting Help
-
-### Resources
-
-- **Course Material:** [programming-24.mooc.fi/part-1](https://dipaish.github.io/programming-24/part-1)
-  - [Getting Started](https://dipaish.github.io/programming-24/part-1/1-getting-started)
-  - [Information from the User](https://dipaish.github.io/programming-24/part-1/2-information-from-the-user)
-  - [More About Variables](https://dipaish.github.io/programming-24/part-1/3-more-about-variables)
-  - [Arithmetic Operations](https://dipaish.github.io/programming-24/part-1/4-arithmetic-operations)
-  - [Conditional Statements](https://dipaish.github.io/programming-24/part-1/5-conditional-statements)
-- **Python Documentation:** [docs.python.org](https://docs.python.org/3/)
-- **GitHub Issues:** Report problems or ask questions
-
-### Troubleshooting
-
-**Grader not working?**
-- Make sure you're in the correct directory: `part1/part1Exercises/tasks/`
-- Check Python version: `python --version` (need 3.11+)
-
-**Task failing but looks correct?**
-- Compare your output character-by-character with sample output
-- Check for extra spaces, missing newlines, or wrong punctuation
-- Ensure variable names match (case-sensitive)
-
-**Import errors?**
-- For `from math import sqrt`, make sure it's at the top of the file
-- Don't modify the import statements
-
----
-
-**Good luck! Start with task 1_emoticon.py and work your way through. 🐍✨**
+### Clean Up 
+- ℹ️ **Delete All Resources:** After completing the lab, be sure to delete all resources from the lab environment to avoid incurring unnecessary charges. Remember that you’ll need these credits for other lab tasks, so use them wisely. 
