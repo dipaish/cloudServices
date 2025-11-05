@@ -1,7 +1,7 @@
-site_name: PythonPro26
-site_description: 168 auto-graded Python exercises with instant feedback
-site_url: https://dipaish.github.io/pythonpro26/
-repo_url: https://github.com/dipaish/pythonpro26
+site_name: Cloud Services - Lab Tasks
+site_description: Academic lab tasks and exercises for cloud services from AWS, Azure, and other cloud vendors
+site_url: https://dipaish.github.io/cloudServices/
+repo_url: https://github.com/dipaish/cloudServices
 theme:
   name: dracula
   logo: ddd.png
@@ -26,15 +26,9 @@ extra:
 
 nav:
   - Home: index.md
-  - Setup Guide: LOCAL_SETUP_GUIDE.md
-  - Parts:
-      - Part 1 (Fundamentals): part1.md
-      - Part 2 (Conditionals & Loops): part2.md
-      - Part 3 (Loops & Functions): part3.md
-      - Part 4 (Functions & Lists): part4.md
-      - Part 5 (Advanced / optional): part5.md
-      - Part 6 (Files & Errors): part6.md
-  - For Teachers: TEACHER_GUIDE.md
+  - Lab Tasks:
+      - Cloud Developer 
+        - AWS: Lab Task 1
 
 markdown_extensions:
   - admonition
