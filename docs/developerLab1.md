@@ -85,7 +85,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
    
     Add the following code:
    
-    ```python
+    ```
     import boto3
     session = boto3.Session()
     s3_client = session.client('s3')
