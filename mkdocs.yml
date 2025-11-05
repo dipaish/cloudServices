@@ -1,0 +1,44 @@
+site_name: PythonPro26
+site_description: 168 auto-graded Python exercises with instant feedback
+site_url: https://dipaish.github.io/pythonpro26/
+repo_url: https://github.com/dipaish/pythonpro26
+theme:
+  name: dracula
+  logo: ddd.png
+  favicon: ddd.png
+
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/copy-code.js
+  - javascripts/footer.js
+  - javascripts/nav-style.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dipaish
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/kcdeepak112/
+      name: LinkedIn
+
+nav:
+  - Home: index.md
+  - Setup Guide: LOCAL_SETUP_GUIDE.md
+  - Parts:
+      - Part 1 (Fundamentals): part1.md
+      - Part 2 (Conditionals & Loops): part2.md
+      - Part 3 (Loops & Functions): part3.md
+      - Part 4 (Functions & Lists): part4.md
+      - Part 5 (Advanced / optional): part5.md
+      - Part 6 (Files & Errors): part6.md
+  - For Teachers: TEACHER_GUIDE.md
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables

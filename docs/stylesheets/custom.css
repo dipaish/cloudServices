@@ -1,0 +1,671 @@
+/* Professional black/white theme with high readability */
+/* Black sidebar and top bar, white content area */
+
+/* ===== SIDEBAR - Black background ===== */
+#sidebar,
+nav#sidebar,
+.sidebar,
+.drac-bg-black {
+    background-color: #1a1a1a !important;
+}
+
+/* Sidebar text and links - white/light gray */
+#sidebar a,
+#sidebar .drac-text,
+#sidebar .drac-anchor,
+.sidebar a {
+    color: #e0e0e0 !important;
+    text-decoration: none;
+}
+
+#sidebar a:hover,
+.sidebar a:hover {
+    color: #ffffff !important;
+    background-color: #2a2a2a !important;
+}
+
+/* Active sidebar link */
+#sidebar a.active,
+.sidebar a.active {
+    color: #ffffff !important;
+    background-color: #333333 !important;
+    font-weight: 600;
+}
+
+/* Sidebar title/logo */
+#sidebar .drac-text-white,
+.sidebar .drac-text-white {
+    color: #ffffff !important;
+}
+
+/* ===== TOP NAVIGATION BAR - Black background ===== */
+header,
+.navbar,
+nav.navbar,
+.drac-bg-purple {
+    background-color: #1a1a1a !important;
+}
+
+header a,
+.navbar a {
+    color: #e0e0e0 !important;
+}
+
+header a:hover,
+.navbar a:hover {
+    color: #ffffff !important;
+}
+
+/* ===== MAIN CONTENT AREA - White background ===== */
+.content,
+.section-content,
+main .content,
+article {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+/* Body base - ensure white content background */
+body {
+    background-color: #f5f5f5 !important;
+}
+
+/* ===== PREVENT SIDEBAR COLLAPSE ===== */
+/* Disable sidebar hiding/collapsing functionality */
+#sidebar,
+nav#sidebar,
+.sidebar,
+.md-sidebar,
+[data-md-component="sidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Prevent drawer/hamburger menu from hiding sidebar on desktop */
+@media (min-width: 992px) {
+    #__drawer,
+    input[id="__drawer"] {
+        display: none !important;
+    }
+    
+    label[for="__drawer"] {
+        display: none !important;
+    }
+}
+
+/* ===== PREV/NEXT NAV BUTTONS - universal targeting ===== */
+/* Style navigation links that use rel attribute, regardless of theme markup */
+a[rel="prev"],
+a[rel="next"] {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important; /* White text for better accessibility */
+  border: 2px solid #00ff00 !important;
+  padding: 10px 16px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-decoration: none !important; /* remove underline to look like a button */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8) !important;
+  text-shadow: none !important; /* Remove glow for readability */
+}
+
+a[rel="prev"]:hover,
+a[rel="next"]:hover {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 1) !important;
+}
+
+/* If icons exist inside the links, make them white too */
+a[rel="prev"] svg path,
+a[rel="next"] svg path {
+  fill: #ffffff !important;
+}/* Content text - dark for readability on white */
+.content,
+.content p,
+.content li,
+.content td,
+.section-content {
+    color: #1a1a1a !important;
+}
+
+/* ===== HEADINGS - Dark on white ===== */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+/* ===== LINKS - Blue for readability ===== */
+.content a,
+article a {
+    color: #0066cc !important;
+    text-decoration: underline;
+}
+
+.content a:hover,
+article a:hover {
+    color: #0052a3 !important;
+}
+
+.content a:visited,
+article a:visited {
+    color: #551a8b !important;
+}
+
+/* ===== CODE BLOCKS - Linux Terminal Style ===== */
+/* Inline code */
+.content code {
+    background-color: #0c0c0c !important;
+    color: #00ff00 !important;
+    border: 1px solid #00ff00;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 15px !important;
+}
+
+/* Code blocks - Linux terminal appearance */
+.content pre {
+    background-color: #0c0c0c !important;
+    border: 2px solid #00ff00 !important;
+    padding: 20px;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.2);
+}
+
+/* Add terminal prompt before code blocks */
+.content pre::before {
+    content: "user@pythonpro26:~$ ";
+    display: block;
+    color: #00ff00 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 15px !important;
+}
+
+.content pre code {
+    background-color: transparent !important;
+    color: #00ff00 !important;
+    border: none;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Syntax highlighting colors for terminal theme */
+.content pre code .hljs-keyword,
+.content pre code .hljs-built_in {
+    color: #00ffff !important; /* Cyan for keywords */
+}
+
+.content pre code .hljs-string {
+    color: #ffff00 !important; /* Yellow for strings */
+}
+
+.content pre code .hljs-number {
+    color: #ff79c6 !important; /* Pink for numbers */
+}
+
+.content pre code .hljs-comment {
+    color: #6272a4 !important; /* Gray for comments */
+}
+
+.content pre code .hljs-function,
+.content pre code .hljs-title {
+    color: #50fa7b !important; /* Bright green for functions */
+}
+
+/* ===== COPY CODE BUTTON ===== */
+.copy-code-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 6px 12px;
+    background-color: #0c0c0c;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.copy-code-button:hover {
+    background-color: #00ff00;
+    color: #0c0c0c;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+.copy-code-button:active {
+    transform: scale(0.95);
+}
+
+/* ===== TABLES ===== */
+.content table {
+    border-collapse: collapse;
+    border: 1px solid #d0d0d0;
+    background-color: #ffffff !important;
+}
+
+.content th {
+    background-color: #f0f0f0 !important;
+    color: #1a1a1a !important;
+    font-weight: 600;
+    border: 1px solid #d0d0d0;
+    padding: 8px 12px;
+}
+
+.content td {
+    border: 1px solid #d0d0d0;
+    color: #1a1a1a !important;
+    padding: 8px 12px;
+}
+
+.content tr:nth-child(even) {
+    background-color: #f9f9f9 !important;
+}
+
+/* ===== BLOCKQUOTES ===== */
+.content blockquote {
+    border-left: 4px solid #0066cc !important;
+    background-color: #f0f7ff !important;
+    color: #1a1a1a !important;
+    padding: 12px 16px;
+    margin-left: 0;
+}
+
+/* ===== BUTTONS ===== */
+/* Remove button customizations - let Dracula theme handle buttons */
+
+/* ===== PREVIOUS/NEXT NAVIGATION BUTTONS ===== */
+/* Terminal-style footer navigation buttons - always bright with hover effect */
+.md-footer__inner,
+.md-footer-nav {
+    background-color: #0c0c0c !important;
+}
+
+.md-footer-nav__link {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important; /* White text for better visibility */
+    border: 2px solid #00ff00 !important;
+    padding: 12px 20px !important;
+    font-weight: 600 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8) !important;
+    text-shadow: none !important; /* Remove glow for readability */
+}
+
+.md-footer-nav__link:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border-color: #00ff00 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1) !important;
+}
+
+.md-footer-nav__link:visited {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #00ff00 !important;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8) !important;
+}
+
+.md-footer-nav__link:visited:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1) !important;
+}
+
+.md-footer-nav__link:focus {
+    outline: 3px solid #00ff00 !important;
+    outline-offset: 2px !important;
+}
+
+/* Ensure title text in navigation buttons is white for accessibility */
+.md-footer-nav__title,
+.md-footer-nav__direction {
+    color: #ffffff !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    text-shadow: none !important;
+}
+
+.md-footer-nav__link:hover .md-footer-nav__title,
+.md-footer-nav__link:hover .md-footer-nav__direction {
+    color: #ffffff !important;
+}
+
+.md-footer-nav__link:visited .md-footer-nav__title,
+.md-footer-nav__link:visited .md-footer-nav__direction {
+    color: #ffffff !important;
+}
+
+.md-footer-nav__link:visited:hover .md-footer-nav__title,
+.md-footer-nav__link:visited:hover .md-footer-nav__direction {
+    color: #ffffff !important;
+}
+
+/* Make SVG icons in footer navigation white */
+.md-footer-nav__link svg,
+.md-footer-nav__button svg,
+.md-footer__inner svg {
+    fill: #ffffff !important;
+}
+
+.md-footer-nav__link svg path,
+.md-footer-nav__button svg path,
+.md-footer__inner svg path {
+    fill: #ffffff !important;
+}
+
+/* Footer copyright section - terminal black background */
+.md-footer {
+    background-color: #0c0c0c !important;
+    border-top: 2px solid #00ff00 !important;
+    /* Ensure footer is not sticky/fixed */
+    position: static !important;
+}
+
+.md-footer-meta {
+    background-color: #0c0c0c !important;
+}
+
+.md-footer-meta__inner {
+    background-color: #0c0c0c !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* Hard override: footer should participate in normal flow (not sticky) */
+footer {
+    position: static !important;
+}
+
+.md-footer-copyright {
+    background-color: #0c0c0c !important;
+    text-align: center !important;
+    width: 100% !important;
+    color: #00ff00 !important;
+}
+
+
+/* ===== BADGES/TAGS ===== */
+.content .badge {
+    background-color: #e0e0e0 !important;
+    color: #1a1a1a !important;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+/* ===== SEARCH BOX - In black header ===== */
+header input[type="text"],
+.navbar input[type="text"],
+.drac-input-search {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444444 !important;
+}
+
+header input[type="text"]:focus,
+.navbar input[type="text"]:focus {
+    border-color: #0066cc !important;
+    outline: none;
+}
+
+/* ===== FOOTER - Linux terminal style ===== */
+/* Force black terminal background on all footer elements */
+footer,
+.md-footer,
+.drac-footer,
+footer .container,
+footer .row,
+footer .col {
+    background-color: #0c0c0c !important;
+    color: #00ff00 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border-top: 2px solid #00ff00 !important;
+}
+
+/* Make all footer text green */
+footer *,
+.md-footer *,
+.drac-footer * {
+    color: #00ff00 !important;
+}
+
+footer a,
+.md-footer a,
+.drac-footer a {
+    color: #00ff00 !important;
+    text-decoration: underline !important;
+}
+
+footer a:hover,
+.md-footer a:hover,
+.drac-footer a:hover {
+    color: #00cc00 !important;
+    background-color: #1a1a1a !important;
+}
+
+footer a:visited,
+.md-footer a:visited,
+.drac-footer a:visited {
+    color: #00ff00 !important;
+}
+
+/* Remove Dracula footer background classes */
+.drac-bg-cyan-green,
+.drac-bg-purple-transparent,
+footer .drac-bg-black,
+footer .drac-bg-black-secondary {
+    background-color: #0c0c0c !important;
+}
+
+/* Show and style footer content from mkdocs.yml copyright */
+footer,
+footer *,
+.md-footer,
+.md-footer * {
+    visibility: visible !important;
+}
+
+/* Style the copyright section from mkdocs.yml */
+footer .md-footer-copyright,
+footer .md-footer-copyright__highlight {
+    display: block !important;
+    text-align: center !important;
+    visibility: visible !important;
+}
+
+/* Ensure all content in copyright is visible */
+footer .md-footer-copyright *,
+footer .md-footer-copyright > * {
+    visibility: visible !important;
+    display: revert !important;
+}
+
+/* Style paragraphs and links from mkdocs.yml copyright */
+footer .md-footer-copyright p,
+footer p,
+footer p * {
+    visibility: visible !important;
+    font-size: 14px !important;
+    color: #00ff00 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    line-height: 1.6 !important;
+}
+
+footer .md-footer-copyright a,
+footer a {
+    color: #00ff00 !important;
+    text-decoration: underline !important;
+    display: inline !important;
+    font-size: 14px !important;
+}
+
+footer a:hover {
+    color: #00cc00 !important;
+    background-color: #1a1a1a !important;
+}
+
+/* Remove the CSS pseudo-element content injection since we're using mkdocs.yml copyright */
+footer .md-footer-meta::before,
+footer .container::before,
+.drac-footer::before,
+footer .md-footer-meta::after,
+footer .container::after,
+.drac-footer::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Remove footer::before and footer::after as well */
+footer::before,
+footer::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* ===== DIVIDERS ===== */
+.content hr {
+    border: 0;
+    border-top: 1px solid #d0d0d0;
+}
+
+/* ===== HIDE PERMALINK PILCROW BUT MAKE ENTIRE HEADING CLICKABLE ===== */
+/* Wrap the entire heading content in the headerlink */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    cursor: pointer !important;
+    position: relative !important;
+}
+
+/* Hide the pilcrow symbol */
+.headerlink {
+    text-decoration: none !important;
+}
+
+/* Hide only the pilcrow text content */
+.headerlink::before {
+    content: none !important;
+}
+
+/* Make the headerlink cover the entire heading */
+.content h1 .headerlink,
+.content h2 .headerlink,
+.content h3 .headerlink,
+.content h4 .headerlink,
+.content h5 .headerlink,
+.content h6 .headerlink {
+    color: transparent !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+}
+
+/* When hovering over heading, change color */
+.content h1:hover,
+.content h2:hover,
+.content h3:hover,
+.content h4:hover,
+.content h5:hover,
+.content h6:hover {
+    color: #0066cc !important;
+}
+
+/* Show a link icon on hover */
+.content h1:hover::after,
+.content h2:hover::after,
+.content h3:hover::after,
+.content h4:hover::after,
+.content h5:hover::after,
+.content h6:hover::after {
+    content: " 🔗" !important;
+    font-size: 0.7em !important;
+    opacity: 0.6 !important;
+    margin-left: 8px !important;
+}
+
+/* ===== FOCUS INDICATORS ===== */
+.content a:focus,
+.content button:focus,
+.content input:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* ===== LIST STYLING ===== */
+.content ul,
+.content ol {
+    color: #1a1a1a !important;
+}
+
+.content li {
+    color: #1a1a1a !important;
+}
+
+/* Ensure ordered lists display properly inside details/collapsible sections */
+details ol,
+details ul {
+    list-style-position: outside !important;
+    margin-left: 20px !important;
+    padding-left: 20px !important;
+}
+
+details ol {
+    list-style-type: decimal !important;
+}
+
+details ol li {
+    display: list-item !important;
+    margin-bottom: 10px !important;
+}
+
+details ul {
+    list-style-type: disc !important;
+}
+
+details ul li {
+    display: list-item !important;
+}
+
+/* Nested lists inside details */
+details ol ol {
+    list-style-type: lower-alpha !important;
+    margin-top: 10px !important;
+}
+
+details ul ul {
+    list-style-type: circle !important;
+    margin-top: 5px !important;
+}
+
+/* ===== ENSURE PROPER CONTRAST ===== */
+.drac-bg-black-secondary {
+    background-color: #1a1a1a !important;
+}
+
+.drac-text-grey-ternary {
+    color: #e0e0e0 !important;
+}
