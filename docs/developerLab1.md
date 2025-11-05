@@ -38,104 +38,100 @@ To complete this lab, you will need to set up the following AWS services. It is 
 1. In the AWS Management Console, choose the **CloudShell** icon at the top.
 2. Wait for the shell to initialize.
 3. Run the following command to check the AWS CLI version:
-```bash
-aws --version
-```
-**Expected output:**
 
-```
-aws-cli/2.15.x Python/3.11.x Linux/5.10.x botocore/2.15.x
+    ```bash
+    aws --version
+    ```
 
-```
+    **Expected output:**
+
+    ```
+    aws-cli/2.15.x Python/3.11.x Linux/5.10.x botocore/2.15.x
+    ```
 
 4. List all S3 buckets:
 
-```bash
-aws s3 ls
-
-```
+    ```bash
+    aws s3 ls
+    ```
    
-**Expected output:**
+    **Expected output:**
 
-```
-2024-05-12 10:15:43 example-sample-bucket-123456
+    ```
+    2024-05-12 10:15:43 example-sample-bucket-123456
+    ```
 
-```
-
-**Create a bucket using your own name, which will be used for this task.**
+    **Create a bucket using your own name, which will be used for this task.**
    
-> Use the command below, replacing `<your-unique-bucket-name>` with a bucket name that includes your own name, and update the region as needed.
+    > Use the command below, replacing `<your-unique-bucket-name>` with a bucket name that includes your own name, and update the region as needed.
 
-```bash
+    ```bash
     aws s3api create-bucket --bucket <your-unique-bucket-name> --region us-east-1
+    ```
 
-```
+    **Once created, run aws s3 ls again to verify it appears in the list:**
 
-**Once created, run aws s3 ls again to verify it appears in the list:**
+    ```bash
+    aws s3 ls
+    ```
 
-```bash
-aws s3 ls
-```
 ### 2. Create and run a Python script using Boto3
 
 1. In CloudShell, create a file named `list-buckets.py`:
 
-```bash
-nano list-buckets.py
-```
+    ```bash
+    nano list-buckets.py
+    ```
    
-Add the following code:
+    Add the following code:
    
-```bash
-import boto3
-session = boto3.Session()
-s3_client = session.client('s3')
-b = s3_client.list_buckets()
-for item in b['Buckets']:
-    print(item['Name'])
-```
+    ```python
+    import boto3
+    session = boto3.Session()
+    s3_client = session.client('s3')
+    b = s3_client.list_buckets()
+    for item in b['Buckets']:
+        print(item['Name'])
+    ```
 
 2. Run the script:
 
-```bash
-python3 list-buckets.py
-
-```
+    ```bash
+    python3 list-buckets.py
+    ```
    
-**Expected output:**
+    **Expected output:**
 
-```
-example-sample-bucket-123456
-
-```
+    ```
+    example-sample-bucket-123456
+    ```
 
 3. Upload the script to your S3 bucket:
 
-```bash
-aws s3 cp list-buckets.py s3://example-sample-bucket-123456
-
-```
+    ```bash
+    aws s3 cp list-buckets.py s3://example-sample-bucket-123456
+    ```
    
-**Expected output:**
+    **Expected output:**
 
-```
-upload: ./list-buckets.py to s3://example-sample-bucket-123456/list-buckets.py
-
- ```
+    ```
+    upload: ./list-buckets.py to s3://example-sample-bucket-123456/list-buckets.py
+    ```
 
 4. List the contents of your bucket:
 
-> The file list-buckets.py was created locally in your CloudShell environment and then uploaded as an object to your S3 bucket. To confirm that the upload succeeded, list the contents of your bucket:
+    > The file list-buckets.py was created locally in your CloudShell environment and then uploaded as an object to your S3 bucket. To confirm that the upload succeeded, list the contents of your bucket:
 
-```bash
-aws s3 ls s3://example-sample-bucket-123456
-```
+    ```bash
+    aws s3 ls s3://example-sample-bucket-123456
+    ```
    
-**Expected output:**
+    **Expected output:**
     
-```
-2025-11-03 11:42:10 215 list-buckets.py
-```
+    ```
+    2025-11-03 11:42:10 215 list-buckets.py
+    ```
+
 ### 3. Launch VS Code IDE
 
 1. From the **AWS Details** panel where you started the lab, copy:
@@ -150,57 +146,57 @@ aws s3 ls s3://example-sample-bucket-123456
 
 1. In the terminal:
 
-```bash
-aws s3 ls
-aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
-```
+    ```bash
+    aws s3 ls
+    aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
+    ```
    
-Confirm that **list-buckets.py** appears in the Explorer.
+    Confirm that **list-buckets.py** appears in the Explorer.
 
 2. Run the file:
 
-```bash
-python3 list-buckets.py
-```
+    ```bash
+    python3 list-buckets.py
+    ```
    
-**Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.):**
+    **Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.):**
    
-```
-ModuleNotFoundError: No module named 'boto3'
-```
+    ```
+    ModuleNotFoundError: No module named 'boto3'
+    ```
 
 3. Install Boto3:
 
-```bash
-sudo pip3 install boto3
-python3 list-buckets.py
-```
+    ```bash
+    sudo pip3 install boto3
+    python3 list-buckets.py
+    ```
    
-**Expected output:**
+    **Expected output:**
     
-```
-example-sample-bucket-123456
-```
+    ```
+    example-sample-bucket-123456
+    ```
 
 4. Create a new HTML file:
 
-```html
-<body>Hello World.</body>
-```
+    ```html
+    <body>Hello World.</body>
+    ```
    
-Save it as **index.html**.
+    Save it as **index.html**.
 
 5. Upload to S3:
 
-```bash
-aws s3 cp index.html s3://example-sample-bucket-123456/index.html
-```
+    ```bash
+    aws s3 cp index.html s3://example-sample-bucket-123456/index.html
+    ```
    
-**Expected output:**
+    **Expected output:**
 
-```
-upload: ./index.html to s3://example-sample-bucket-123456/index.html
-```
+    ```
+    upload: ./index.html to s3://example-sample-bucket-123456/index.html
+    ```
 
 ---
 
