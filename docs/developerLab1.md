@@ -41,23 +41,31 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
     ```bash
     aws --version
+
+
     ```
 
     **Expected output:**
+
     ```
     aws-cli/2.15.x Python/3.11.x Linux/5.10.x botocore/2.15.x
+
+
     ```
 
 4. List all S3 buckets:
 
     ```bash
     aws s3 ls
+
     ```
    
     **Expected output:**
 
     ```
     2024-05-12 10:15:43 example-sample-bucket-123456
+
+
     ```
 
     **Create a bucket using your own name, which will be used for this task.**
@@ -66,12 +74,16 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
     ```bash
     aws s3api create-bucket --bucket <your-unique-bucket-name> --region us-east-1
+
+
     ```
 
     **Once created, run aws s3 ls again to verify it appears in the list:**
 
     ```bash
     aws s3 ls
+
+
     ```
 
 ### 2. Create and run a Python script using Boto3
@@ -80,11 +92,12 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
     ```bash
     nano list-buckets.py
+
     ```
    
     Add the following code:
    
-    ```python
+    ```bash
 
     import boto3
     session = boto3.Session()
@@ -98,22 +111,28 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
     ```bash
     python3 list-buckets.py
+
     ```
    
     **Expected output:**
+
     ```
     example-sample-bucket-123456
+
     ```
 
 3. Upload the script to your S3 bucket:
 
     ```bash
     aws s3 cp list-buckets.py s3://example-sample-bucket-123456
+
     ```
    
     **Expected output:**
+
     ```
     upload: ./list-buckets.py to s3://example-sample-bucket-123456/list-buckets.py
+
     ```
 
 4. List the contents of your bucket:
@@ -122,16 +141,19 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
     ```bash
     aws s3 ls s3://example-sample-bucket-123456
+
     ```
    
     **Expected output:**
     ```
     2025-11-03 11:42:10 215 list-buckets.py
-    ```### 3. Launch VS Code IDE
+
+    ```
+### 3. Launch VS Code IDE
 
 1. From the **AWS Details** panel where you started the lab, copy:
-    - `LabIDEURL`
-    - `LabIDEPassword`
+    - **LabIDEURL**
+    - **LabIDEPassword**
 2. Open the URL in a new tab, enter the password, and sign in.
 3. Observe:
     - Left: File Explorer  
@@ -144,20 +166,23 @@ To complete this lab, you will need to set up the following AWS services. It is 
     ```bash
     aws s3 ls
     aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
+
     ```
    
-    Confirm that `list-buckets.py` appears in the Explorer.
+    Confirm that **list-buckets.py** appears in the Explorer.
 
 2. Run the file:
 
     ```bash
     python3 list-buckets.py
+
     ```
    
     **Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.):**
    
     ```
     ModuleNotFoundError: No module named 'boto3'
+
     ```
 
 3. Install Boto3:
@@ -165,6 +190,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
     ```bash
     sudo pip3 install boto3
     python3 list-buckets.py
+
     ```
    
     **Expected output:**
@@ -179,17 +205,20 @@ To complete this lab, you will need to set up the following AWS services. It is 
     <body>Hello World.</body>
     ```
    
-    Save it as `index.html`.
+    Save it as **index.html**.
 
 5. Upload to S3:
 
     ```bash
     aws s3 cp index.html s3://example-sample-bucket-123456/index.html
+
     ```
    
     **Expected output:**
+
     ```
     upload: ./index.html to s3://example-sample-bucket-123456/index.html
+
     ```
 
 ---
