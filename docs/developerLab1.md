@@ -85,6 +85,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
     Add the following code:
    
     ```python
+
     import boto3
     session = boto3.Session()
     s3_client = session.client('s3')
@@ -202,10 +203,10 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
 #### Task 2: Configure public access and test website updates
 
-> You will continue working with the same S3 bucket created in Task 1.In this section, you will enable **static website hosting**, configure **public access** with a **bucket policy**, test the website endpoint from the **AWS Management Console** and make a simple update to the `index.html` file.
+> You will continue working with the same S3 bucket created in Task 1. In this section, you will enable **static website hosting**, configure **public access** with a **bucket policy**, test the website endpoint from the **AWS Management Console** and make a simple update to the `index.html` file.
 
 <details markdown="1">
-  <summary>👉Click to expand the Task 2 Guide</summary>
+<summary>👉Click to expand the Task 2 Guide</summary>
 
 ### 1. Verify website files exist
 
@@ -225,7 +226,7 @@ aws s3 cp index.html s3://$BUCKET/index.html
 aws s3 cp error.html s3://$BUCKET/error.html
 ```
 
-**Expected output**
+**Expected output:**
 
 ```
 upload: ./index.html to s3://<your-bucket-name>/index.html
@@ -239,9 +240,8 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 1. Open the AWS Management Console → **S3 → Buckets → <your-bucket-name> → Properties**
 2. Scroll to **Static website hosting** and choose **Edit**
 3. Select **Enable**
-
-   * **Index document:** `index.html`
-   * **Error document:** `error.html`
+    * **Index document:** `index.html`
+    * **Error document:** `error.html`
 4. Choose **Save changes**
 ---
 
@@ -263,20 +263,21 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 2. Scroll down to **Bucket policy** and choose **Edit**.
 3. In the policy editor, paste the following JSON (replace `<your-bucket-name>` with your actual bucket name):
 
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Sid": "PublicReadForWebsite",
-         "Effect": "Allow",
-         "Principal": "*",
-         "Action": ["s3:GetObject"],
-         "Resource": "arn:aws:s3:::<your-bucket-name>/*"
-       }
-     ]
-   }
-   ```
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "PublicReadForWebsite",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": ["s3:GetObject"],
+          "Resource": "arn:aws:s3:::<your-bucket-name>/*"
+        }
+      ]
+    }
+    ```
+
 4. Choose **Save changes**.
 5. Review the permissions warning and choose **Confirm**.
 
@@ -288,9 +289,10 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 2. Scroll to **Static website hosting**
 3. Copy the **Bucket website endpoint**, for example:
 
-   ```
-   http://<your-bucket-name>.s3-website-us-east-1.amazonaws.com
-   ```
+    ```
+    http://<your-bucket-name>.s3-website-us-east-1.amazonaws.com
+    ```
+
 4. Open that URL in a new browser tab, you should see your web page.
 
 If you receive **AccessDenied**, confirm:
@@ -310,13 +312,13 @@ Make a small change to your homepage (index.html) and upload the new version to 
 aws s3 cp index.html s3://$BUCKET/index.html
 ```
 
-**Expected output**
+**Expected output:**
 
 ```
 upload: ./index.html to s3://<your-bucket-name>/index.html
 ```
 
-Refresh your browser at the **Bucket website endpoint**. Now you should now see the updated page.
+Refresh your browser at the **Bucket website endpoint**. You should now see the updated page.
 
 > Note: In a real-world setup, you can automate this upload process using tools like `aws s3 sync` or IDE plugins that automatically deploy changes to S3 whenever you save your code. For this lab, we demonstrate it manually, but automation helps you focus on writing and testing your code instead of copying files manually.
 
@@ -336,16 +338,15 @@ Refresh your browser at the **Bucket website endpoint**. Now you should now see 
 > In this task, you will explore **AWS Identity and Access Management (IAM)** to understand how permissions and roles relate to the work you did in previous tasks. You will review existing IAM roles, policies, and users in the **lab environment**, observe their trust relationships, and understand how IAM integrates with the S3 website. Some IAM actions might be restricted in this environment therefore you need to focus on observation and understanding rather than creation.
 
 <details markdown="1">
-  <summary>👉Click to expand the Task 3 Guide</summary>
+<summary>👉Click to expand the Task 3 Guide</summary>
 
 ### 1. Explore IAM in the Console
 
 1. From the AWS Management Console, search for **IAM** and open the **IAM Dashboard**.
 2. Observe the key sections on the left navigation pane:
-
-   * **Users**: represent individuals or applications with credentials
-   * **Roles**: grant temporary permissions to AWS services (for example, an EC2 instance accessing S3)
-   * **Policies**: define what actions are allowed or denied
+    * **Users**: represent individuals or applications with credentials
+    * **Roles**: grant temporary permissions to AWS services (for example, an EC2 instance accessing S3)
+    * **Policies**: define what actions are allowed or denied
 
 ---
 
