@@ -26,9 +26,10 @@ extra:
 
 nav:
   - Home: index.md
-  - Lab Tasks:
-      - Cloud Developer:
-          - AWS: part1.md
+  - AWS Developer Labs:
+      - Developer Lab 1: developerLab1.md
+      - Developer Lab 2: developerLab2.md
+      - Developer Lab 3: developerLab3.md
 
 markdown_extensions:
   - admonition

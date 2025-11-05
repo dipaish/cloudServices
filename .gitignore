@@ -1,15 +1,52 @@
 # MkDocs build output (published by GitHub Pages Actions)
 site/
 
+# Cloud Credentials & Secrets (CRITICAL - NEVER COMMIT THESE!)
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+credentials.json
+credentials.yaml
+credentials.yml
+*-credentials.*
+service-account*.json
+.aws/
+.azure/
+.gcloud/
+.kube/config
+kubeconfig
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.d/
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CloudFormation
+cfn-templates/outputs/
+*.template
+
 # Python virtual environments
 .venv/
+venv/
+env/
+ENV/
 
 # Python cache
 __pycache__/
-*.pyc# Python
-__pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 *.so
 .Python
 build/
@@ -29,11 +66,45 @@ wheels/
 *.egg
 MANIFEST
 
-# Virtual Environment
-venv/
-env/
-ENV/
-.venv/
+# Environment variables & configuration files
+.env
+.env.local
+.env.*.local
+config.json
+config.yaml
+config.yml
+secrets.json
+secrets.yaml
+secrets.yml
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Node.js (if using CDK or similar tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Temporary files & logs
+*.log
+*.tmp
+temp/
+tmp/
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+coverage/
+
+# Jupyter Notebook
+.ipynb_checkpoints
 
 # IDE
 .vscode/
@@ -41,25 +112,6 @@ ENV/
 *.swp
 *.swo
 *~
-.DS_Store
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
-.env
-.env.local
-
-# Temporary files
-*.log
-*.tmp
-temp/
-tmp/
 
 # Windows
 Thumbs.db
@@ -71,5 +123,23 @@ Desktop.ini
 .AppleDouble
 .LSOverride
 
-# User data (optional - uncomment if you want to exclude student progress)
-# .progress/
+# Linux
+*~
+
+# Cloud Provider Specific
+# AWS SAM
+.aws-sam/
+samconfig.toml
+
+# Azure Functions
+local.settings.json
+__blobstorage__/
+__queuestorage__/
+__azurite_db*__.json
+
+# GCP
+.gcp/
+
+# Lab-specific data (uncomment if you want to exclude lab outputs)
+# lab-outputs/
+# student-work/
