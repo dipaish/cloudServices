@@ -75,7 +75,7 @@ aws s3 ls
 
 ```bash
 aws s3 ls
- ```
+```
 ### 2. Create and run a Python script using Boto3
 
 1. In CloudShell, create a file named `list-buckets.py`:
@@ -274,7 +274,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 2. Scroll down to **Bucket policy** and choose **Edit**.
 3. In the policy editor, paste the following JSON (replace `<your-bucket-name>` with your actual bucket name):
 
-    ```bash
+```bash
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -287,7 +287,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
         }
       ]
     }
-    ```
+```
 
 4. Choose **Save changes**.
 5. Review the permissions warning and choose **Confirm**.
@@ -300,9 +300,9 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 2. Scroll to **Static website hosting**
 3. Copy the **Bucket website endpoint**, for example:
 
-    ```
-    http://<your-bucket-name>.s3-website-us-east-1.amazonaws.com
-    ```
+```
+http://<your-bucket-name>.s3-website-us-east-1 amazonaws.com
+```
 
 4. Open that URL in a new browser tab, you should see your web page.
 
@@ -400,7 +400,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 >  Policies like these control which S3 actions are possible. If your IAM role didn’t include a policy that allows `s3:PutObject`, your uploads in Task 1 and Task 2 would have failed.
 
-### 5. How IAM connects with Tasks 1 and 2 that you did above?
+### 4. How IAM connects with Tasks 1 and 2 that you did above?
 
 * The **role you used in CloudShell/IDE** determined your ability to list, create, and modify S3 buckets.
 * If your IAM permissions were limited (for example, read-only access), `aws s3 cp` or `aws s3 mb` commands would have failed.
