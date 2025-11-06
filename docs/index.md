@@ -2,24 +2,18 @@
 
 ***Academic lab tasks and exercises for cloud services from AWS, Azure, and other cloud vendors.***
 
-This repository contains hands-on lab tasks designed for academic purposes, covering various cloud service providers and technologies. Students will gain practical experience with cloud computing concepts, services, and best practices.
+This repository contains hands-on lab tasks designed for academic purposes, covering various cloud service providers and technologies. Students will gain practical experience with cloud computing concepts, services and best practices.
 
-> 🚀 **Documentation available!** Visit our [GitHub repository](https://github.com/dipaish/cloudServices) for setup instructions.
+> 🚀 **Documentation available!** Visit [GitHub Pages site](https://dipaish.github.io/cloudServices/) for detailed lab instructions.
 
 ## 📊 Lab Tasks Overview
 
 | Vendor | Track | Labs | Status |
 |--------|-------|------|--------|
-| AWS | Developer Labs | 3 | ✅ Active |
-| Azure | Coming Soon | - | 🔄 In Development |
-| GCP | Coming Soon | - | 🔄 Planned |
+| AWS | Fundamentals | 6 | ✅ Active |
+| AWS | Cloud Developer | 3 | ✅ Active |
+| AWS | Cloud Architect | 3 | ✅ Active |
 
-## 📚 Available Labs
-
-### AWS Developer Labs
-- [Developer Lab 1](developerLab1.md) - Getting Started with AWS
-- [Developer Lab 2](developerLab2.md) - AWS Services Deep Dive
-- [Developer Lab 3](developerLab3.md) - Advanced AWS Development
 
 ## 📚 For Students
 
@@ -32,10 +26,51 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 
 ### ⚠️ Important Cloud Safety Tips:
 - 🔒 **Never commit credentials or API keys to Git**
-- � **Monitor your cloud usage and costs**
+- 💰 **Monitor your cloud usage and costs**
 - 🧹 **Always clean up resources after completing labs**
 - 🛡️ **Use least-privilege access principles**
 - 📧 **Set up billing alerts** for your cloud accounts
+
+---
+
+## 📘 Documentation Site (GitHub Pages)
+
+This project's documentation is built with MkDocs (Dracula theme) and deployed via GitHub Actions.
+
+**Visit:** [https://dipaish.github.io/cloudServices/](https://dipaish.github.io/cloudServices/)
+
+### How it works:
+
+1. Documentation source files are in the `docs/` folder
+2. Configuration is managed in `mkdocs.yml`
+3. GitHub Actions automatically builds and deploys on push to `main` branch
+4. GitHub Pages serves the built site
+
+### How to update documentation:
+
+1. Edit files in the `docs/` folder or update `mkdocs.yml`
+2. Commit and push changes to the `main` branch
+3. GitHub Actions will automatically build and deploy
+4. Visit the site (may need Ctrl+F5 to refresh cache)
+
+---
+
+
+## 🤝 Contributing
+
+This is an academic repository. If you're an instructor and would like to contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Add your lab tasks with clear documentation
+4. Submit a pull request
+
+---
+
+## 💬 Support
+
+For questions or issues:
+- 📧 Open an issue in this repository
 
 ---
 
@@ -55,7 +90,5 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 - [GCP Free Tier](https://cloud.google.com/free)
 - [GCP Documentation](https://cloud.google.com/docs)
 - [Google Cloud Skills Boost](https://www.cloudskillsboost.google/)
-
----
 
 **Happy Cloud Learning! ☁️**
