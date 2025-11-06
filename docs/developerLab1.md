@@ -412,13 +412,12 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 #### Task 4: Self Reflection
 
-> In this task, you will reflect on your learning experience throughout **Developer Lab 1**. Summarize what you learned about AWS services such as **CloudShell**, **VS Code IDE**, **S3**, and **IAM**, and how they work together in a cloud environment. Focus on what you found most valuable, any challenges you faced, and how you solved them. This task does **not** require screenshots — only a short written reflection.
+> In this task, you will reflect on your learning experience throughout **Developer Lab 1**. Summarize what you learned about AWS services such as **CloudShell**, **VS Code IDE**, **S3**, and **IAM**, and how they work together in a cloud environment. Focus on what you found most valuable, any challenges you faced, and how you solved them. 
 
 <details markdown="1">
 <summary>👉 Click to expand the Task 4 Guide</summary>
 
 >  **Note:** You are **not allowed to use any AI tools** (such as ChatGPT, Copilot, Gemini or others) to write your reflection. It must be in your own words.
-
 
 **Guiding Questions**
 1. What AWS tools and services did you use, and what did you learn about them?  
