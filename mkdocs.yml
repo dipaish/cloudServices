@@ -30,6 +30,9 @@ nav:
       - Developer Lab 1: developerLab1.md
       - Developer Lab 2: developerLab2.md
       - Developer Lab 3: developerLab3.md
+  - AWS Architect Labs:
+      - Architect Lab 1: architect/architectLab1.md
+      - Architect Lab 2: architect/architectLab2.md
 
 markdown_extensions:
   - admonition
