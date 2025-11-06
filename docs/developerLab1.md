@@ -420,6 +420,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 >  **Note:** You are **not allowed to use any AI tools** (such as ChatGPT, Copilot, Gemini or others) to write your reflection. It must be in your own words.
 
 **Guiding Questions**
+
 1. What AWS tools and services did you use, and what did you learn about them?  
 2. What challenges did you face, and how did you overcome them?  
 3. How can you apply what you learned to real-world cloud development scenarios?  
