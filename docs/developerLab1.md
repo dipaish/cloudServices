@@ -410,7 +410,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 </details>
 
-#### Task 4: Verification and Reflection
+#### Task 4: Self Reflection
 
 > In this task, you will reflect on your learning experience throughout **Developer Lab 1**. Summarize what you learned about AWS services such as **CloudShell**, **VS Code IDE**, **S3**, and **IAM**, and how they work together in a cloud environment. Focus on what you found most valuable, any challenges you faced, and how you solved them. This task does **not** require screenshots — only a short written reflection.
 
