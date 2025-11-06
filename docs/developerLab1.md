@@ -410,6 +410,27 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 </details>
 
+#### Task 4: Verification and Reflection
+
+> In this task, you will reflect on your learning experience throughout **Developer Lab 1**. Summarize what you learned about AWS services such as **CloudShell**, **VS Code IDE**, **S3**, and **IAM**, and how they work together in a cloud environment. Focus on what you found most valuable, any challenges you faced, and how you solved them. This task does **not** require screenshots — only a short written reflection.
+
+<details markdown="1">
+<summary>👉 Click to expand the Task 4 Guide</summary>
+
+>  **Note:** You are **not allowed to use any AI tools** (such as ChatGPT, Copilot, Gemini or others) to write your reflection. It must be in your own words.
+
+
+**Guiding Questions**
+1. What AWS tools and services did you use, and what did you learn about them?  
+2. What challenges did you face, and how did you overcome them?  
+3. How can you apply what you learned to real-world cloud development scenarios?  
+4. What are your key takeaways from this lab?
+
+**Submission:**  
+A short reflection paragraph (about 100–150 words) summarizing your learning outcomes.
+
+</details>
+
 ### Guidance and feedback
 Guidance is available during the online consultation session or via Teams call.
 
