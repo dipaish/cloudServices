@@ -26,6 +26,13 @@ extra:
 
 nav:
   - Home: index.md
+  - AWS Fundamentals:
+    - WordPress Guide: awsfundamentals/wpGuide.md
+    - EC2 Instance Session 1: awsfundamentals/ec2Instance_session1.md
+    - Database Server: awsfundamentals/databaseServer.md
+    - AWS Lambda: awsfundamentals/aws_lambda.md
+    - Elastic Beanstalk: awsfundamentals/beanstalk.md
+    - Project Work: awsfundamentals/projectWork_pilviPalvelut.md
   - AWS Developer Labs:
       - Developer Lab 1: developerLab1.md
       - Developer Lab 2: developerLab2.md
