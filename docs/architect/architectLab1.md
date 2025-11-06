@@ -22,7 +22,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
 > You will create an Amazon EC2 instance to host a dynamic web application. The guide below includes instructions for Amazon Linux, if you decide to use Ubuntu, you will need to use the equivalent commands for Ubuntu. 
 
-<details>
+<details markdown="1" >
   <summary>👉Click to expand the step by step guide</summary>
 
 ##### **Step 1: Navigate to EC2 Console**
@@ -117,7 +117,7 @@ mysql -u root -p
 #### Task 2: Configure Amazon EFS for Scalable Storage
 > Amazon EFS enables shared, scalable storage for multiple EC2 instances. 
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ##### Step 1:Navigate to Console Home
@@ -237,7 +237,7 @@ In the previous task, you have created an EC2 instace. Start that instance and C
 
 #### Task 3: Migrate the Database to Amazon RDS
 > To ensure data durability, high availability and automatic backups, you will migrate the database from EC2 to Amazon RDS.
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ##### Step 1: Create a random database in your EC2 instance
@@ -364,7 +364,7 @@ If you got the output as below, you have successfully done the migration.
 
 > Amazon S3 will be used to host a static website with public access.
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ##### Step 1: Create an S3 Bucket
