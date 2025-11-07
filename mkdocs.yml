@@ -28,7 +28,7 @@ nav:
   - Home: index.md
   - AWS Fundamentals:
     - WordPress Guide: awsfundamentals/wpGuide.md
-    - EC2 Instance Session 1: awsfundamentals/ec2Instance_session1.md
+    - EC2 Instance: awsfundamentals/ec2Instance_session1.md
     - Database Server: awsfundamentals/databaseServer.md
     - AWS Lambda: awsfundamentals/aws_lambda.md
     - Elastic Beanstalk: awsfundamentals/beanstalk.md
