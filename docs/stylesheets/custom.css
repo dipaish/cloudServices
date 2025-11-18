@@ -99,31 +99,40 @@ nav#sidebar,
 a[rel="prev"],
 a[rel="next"] {
   background-color: #2a2a2a !important;
-  color: #ffffff !important; /* White text for better accessibility */
+  color: #ffffff !important;
   border: 2px solid #00ff00 !important;
-  padding: 10px 16px !important;
+  padding: 12px 18px !important;
   border-radius: 6px !important;
   font-weight: 600 !important;
+  font-size: 1rem !important;
   font-family: 'Courier New', Courier, monospace !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  text-decoration: none !important; /* remove underline to look like a button */
+  text-decoration: none !important;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.8) !important;
-  text-shadow: none !important; /* Remove glow for readability */
+  text-shadow: none !important;
+  transition: all 0.3s ease !important;
 }
 
 a[rel="prev"]:hover,
 a[rel="next"]:hover {
-  background-color: #333333 !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 1) !important;
+  background-color: #00ff00 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 1) !important;
+  font-weight: 700 !important;
 }
 
-/* If icons exist inside the links, make them white too */
+/* If icons exist inside the links, make them white/black too */
 a[rel="prev"] svg path,
 a[rel="next"] svg path {
   fill: #ffffff !important;
+  transition: fill 0.3s ease !important;
+}
+
+a[rel="prev"]:hover svg path,
+a[rel="next"]:hover svg path {
+  fill: #000000 !important;
 }/* Content text - dark for readability on white */
 .content,
 .content p,
@@ -804,6 +813,7 @@ details summary:hover {
     white-space: nowrap;
     transition: color 0.3s ease;
     margin: 0 !important;
+    text-decoration: none !important;
 }
 
 .custom-navbar .nav-link:hover {
@@ -814,39 +824,71 @@ details summary:hover {
     color: #8be9fd !important;
 }
 
-.custom-navbar .dropdown-toggle::after {
+/* Custom Dropdown Toggle */
+.custom-navbar .dropdown-toggle-custom {
+    color: #e0e0e0 !important;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    margin: 0 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.custom-navbar .dropdown-toggle-custom::after {
+    content: ' ▼';
+    font-size: 0.7rem;
     margin-left: 0.3rem;
 }
 
-/* Dropdown menu styling */
-.custom-navbar .dropdown-menu {
+.custom-navbar .dropdown-toggle-custom:hover {
+    color: #8be9fd !important;
+}
+
+/* Custom Dropdown Menu */
+.custom-navbar .dropdown-custom-menu {
     background-color: #2a2a2a !important;
     border: 1px solid #404040 !important;
     border-radius: 0.4rem;
     min-width: 150px !important;
     padding: 0.5rem 0 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
     z-index: 2000 !important;
+    list-style: none !important;
+    margin: 0.5rem 0 0 0 !important;
 }
 
-.custom-navbar .dropdown-menu.show {
-    display: block !important;
+.custom-navbar .dropdown-custom-menu li {
+    list-style: none !important;
 }
 
-.custom-navbar .dropdown-item {
+/* Custom Dropdown Items */
+.custom-navbar .dropdown-custom-item {
     color: #e0e0e0 !important;
     transition: all 0.2s ease;
     padding: 0.5rem 1rem !important;
     font-size: 0.9rem;
-    background: transparent;
-    border: 0;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    background: transparent !important;
+    border: 0 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
 }
 
-.custom-navbar .dropdown-item:hover {
+.custom-navbar .dropdown-custom-item:hover {
     background-color: #404040 !important;
     color: #8be9fd !important;
 }
 
-.custom-navbar .dropdown-item.active {
+.custom-navbar .dropdown-custom-item:active {
     background-color: #50fa7b !important;
     color: #000000 !important;
 }
@@ -866,11 +908,6 @@ details summary:hover {
     border-color: #8be9fd !important;
 }
 
-/* Dropdown show state */
-.custom-navbar .show > .dropdown-toggle {
-    color: #8be9fd !important;
-}
-
 /* Mobile navbar adjustments */
 @media (max-width: 991px) {
     .custom-navbar .navbar-brand span {
@@ -882,7 +919,7 @@ details summary:hover {
         font-size: 0.9rem;
     }
 
-    .custom-navbar .dropdown-menu {
+    .custom-navbar .dropdown-custom-menu {
         background-color: #1a1a1a !important;
         border: none !important;
         border-left: 3px solid #8be9fd !important;

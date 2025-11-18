@@ -33,59 +33,59 @@
               </li>
 
               <!-- AWS Fundamentals Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="fundamentalsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li class="nav-item dropdown-custom">
+                <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
                   AWS Fund.
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="fundamentalsDropdown">
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/wpGuide/">WordPress</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/ec2Instance_session1/">EC2</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/databaseServer/">Database</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/aws_lambda/">Lambda</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/beanstalk/">Beanstalk</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/awsfundamentals/projectWork_pilviPalvelut/">Project</a></li>
+                <ul class="dropdown-custom-menu" style="display: none;">
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/wpGuide/">WordPress</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/ec2Instance_session1/">EC2</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/databaseServer/">Database</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/aws_lambda/">Lambda</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/beanstalk/">Beanstalk</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/awsfundamentals/projectWork_pilviPalvelut/">Project</a></li>
                 </ul>
               </li>
 
               <!-- AWS Developer Labs Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="developerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li class="nav-item dropdown-custom">
+                <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
                   AWS Dev.
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="developerDropdown">
-                  <li><a class="dropdown-item" href="${baseUrl}/developerLab1/">Dev Lab 1</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/developerLab2/">Dev Lab 2</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/developerLab3/">Dev Lab 3</a></li>
+                <ul class="dropdown-custom-menu" style="display: none;">
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/developerLab1/">Dev Lab 1</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/developerLab2/">Dev Lab 2</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/developerLab3/">Dev Lab 3</a></li>
                 </ul>
               </li>
 
               <!-- AWS Architect Labs Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="architectDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li class="nav-item dropdown-custom">
+                <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
                   AWS Arch.
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="architectDropdown">
-                  <li><a class="dropdown-item" href="${baseUrl}/architect/architectLab1/">Lab 1</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/architect/architectLab2/">Lab 2</a></li>
+                <ul class="dropdown-custom-menu" style="display: none;">
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/architect/architectLab1/">Lab 1</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/architect/architectLab2/">Lab 2</a></li>
                 </ul>
               </li>
 
               <!-- Linux Command Guide Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="linuxDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li class="nav-item dropdown-custom">
+                <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
                   Linux
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="linuxDropdown">
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/linuxbasics1/">Basics</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/linuxfileSystem2/">File System</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/help-documentation/">Help</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/viewing-reading-files/">Viewing</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/searching-files-text/">Search</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/file-permissions-ownership/">Permissions</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/system-info-disk-usage/">System Info</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/process-management/">Processes</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/networking-commands/">Network</a></li>
-                  <li><a class="dropdown-item" href="${baseUrl}/linux/user-management/">Users</a></li>
+                <ul class="dropdown-custom-menu" style="display: none;">
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/linuxbasics1/">Basics</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/linuxfileSystem2/">File System</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/help-documentation/">Help</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/viewing-reading-files/">Viewing</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/searching-files-text/">Search</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/file-permissions-ownership/">Permissions</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/system-info-disk-usage/">System Info</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/process-management/">Processes</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/networking-commands/">Network</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/linux/user-management/">Users</a></li>
                 </ul>
               </li>
 
@@ -120,6 +120,50 @@
     const navbarDiv = document.createElement('div');
     navbarDiv.innerHTML = navbarHTML;
     body.insertBefore(navbarDiv.firstElementChild, body.firstChild);
+
+    // Add custom dropdown handlers
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle-custom');
+    const dropdownMenus = document.querySelectorAll('.dropdown-custom-menu');
+
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const menu = this.parentElement.querySelector('.dropdown-custom-menu');
+        
+        // Close all other menus
+        dropdownMenus.forEach(m => {
+          if (m !== menu) {
+            m.style.display = 'none';
+          }
+        });
+        
+        // Toggle current menu
+        if (menu.style.display === 'none') {
+          menu.style.display = 'block';
+        } else {
+          menu.style.display = 'none';
+        }
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown-custom')) {
+        dropdownMenus.forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+
+    // Allow clicking on menu items
+    const dropdownItems = document.querySelectorAll('.dropdown-custom-item');
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Allow the link to navigate
+      });
+    });
   }
 
   // Initialize navbar when DOM is ready
