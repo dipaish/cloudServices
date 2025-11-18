@@ -778,7 +778,6 @@ details summary:hover {
     font-size: 1.1rem;
     margin-right: 1rem;
     white-space: nowrap;
-    z-index: 1040;
 }
 
 .custom-navbar .navbar-brand:hover {
@@ -793,21 +792,18 @@ details summary:hover {
 /* Navbar nav and items */
 .custom-navbar .navbar-nav {
     gap: 0.1rem;
-    flex-wrap: nowrap;
     align-items: center;
-    z-index: 1035;
 }
 
 /* Navbar links */
 .custom-navbar .nav-link {
     color: #e0e0e0 !important;
     font-weight: 500;
-    padding: 0.4rem 0.6rem !important;
+    padding: 0.4rem 0.8rem !important;
     font-size: 0.95rem;
     white-space: nowrap;
     transition: color 0.3s ease;
     margin: 0 !important;
-    z-index: 1035;
 }
 
 .custom-navbar .nav-link:hover {
@@ -819,59 +815,38 @@ details summary:hover {
 }
 
 .custom-navbar .dropdown-toggle::after {
-    margin-left: 0.2rem;
+    margin-left: 0.3rem;
 }
 
-.custom-navbar .nav-item.dropdown {
-    position: relative;
-    z-index: 1035;
-}
-
-/* Dropdown menu styling - CRITICAL FOR VISIBILITY */
+/* Dropdown menu styling */
 .custom-navbar .dropdown-menu {
     background-color: #2a2a2a !important;
     border: 1px solid #404040 !important;
     border-radius: 0.4rem;
-    min-width: auto !important;
-    padding: 0.3rem 0 !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
+    min-width: 150px !important;
+    padding: 0.5rem 0 !important;
     z-index: 2000 !important;
-    display: none;
-    visibility: visible !important;
 }
 
 .custom-navbar .dropdown-menu.show {
     display: block !important;
-    visibility: visible !important;
-}
-
-.custom-navbar .dropdown-menu[data-bs-popper] {
-    position: static !important;
 }
 
 .custom-navbar .dropdown-item {
     color: #e0e0e0 !important;
     transition: all 0.2s ease;
-    padding: 0.4rem 1rem !important;
+    padding: 0.5rem 1rem !important;
     font-size: 0.9rem;
-    white-space: nowrap;
-    display: block !important;
-    width: 100% !important;
-    text-align: left !important;
-    background-color: transparent;
+    background: transparent;
     border: 0;
 }
 
 .custom-navbar .dropdown-item:hover {
     background-color: #404040 !important;
     color: #8be9fd !important;
-    cursor: pointer;
 }
 
-.custom-navbar .dropdown-item.active,
-.custom-navbar .dropdown-item:active {
+.custom-navbar .dropdown-item.active {
     background-color: #50fa7b !important;
     color: #000000 !important;
 }
@@ -888,24 +863,23 @@ details summary:hover {
 
 .custom-navbar .navbar-toggler:focus {
     box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25) !important;
+    border-color: #8be9fd !important;
+}
+
+/* Dropdown show state */
+.custom-navbar .show > .dropdown-toggle {
+    color: #8be9fd !important;
 }
 
 /* Mobile navbar adjustments */
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
     .custom-navbar .navbar-brand span {
         display: none !important;
     }
     
     .custom-navbar .nav-link {
-        padding: 0.5rem 0.4rem !important;
+        padding: 0.5rem 0.5rem !important;
         font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 991px) {
-    .custom-navbar .nav-link {
-        margin: 0.25rem 0 !important;
-        padding: 0.5rem 1rem !important;
     }
 
     .custom-navbar .dropdown-menu {
@@ -921,10 +895,6 @@ body {
     padding-top: 0 !important;
 }
 
-.custom-navbar + * {
-    margin-top: 0;
-}
-
 /* Font awesome icons in navbar */
 .custom-navbar .nav-link i {
     margin-right: 0.2rem;
@@ -934,11 +904,4 @@ body {
 /* Prevent navbar from wrapping */
 .custom-navbar .container-fluid {
     flex-wrap: nowrap !important;
-}
-
-/* Bootstrap dropdown show class override */
-.custom-navbar .show > .dropdown-menu {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
 }
