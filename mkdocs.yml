@@ -40,6 +40,8 @@ nav:
   - AWS Architect Labs:
       - Architect Lab 1: architect/architectLab1.md
       - Architect Lab 2: architect/architectLab2.md
+      - Architect Lab 3: architect/architectLab3.md
+  - Linux Command Guide: linux/linux1.md
 
 markdown_extensions:
   - admonition
