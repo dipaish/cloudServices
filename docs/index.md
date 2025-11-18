@@ -1,4 +1,4 @@
-# Lab Tasks - Cloud Services, AI & Cybersecurity
+# Lab Tasks: Cloud Services, AI & Cybersecurity
 
 ***Academic lab tasks and exercises covering cloud services, AI, cybersecurity and emerging technologies from AWS, Azure, and other platforms.***
 

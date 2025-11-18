@@ -1,5 +1,5 @@
-site_name: Cloud Services - Lab Tasks
-site_description: Academic lab tasks and exercises for cloud services from AWS, Azure, and other cloud vendors
+site_name: Lab Tasks - Cloud Services, AI & Cybersecurity
+site_description: Academic lab tasks and exercises covering cloud services, AI, cybersecurity, and emerging technologies from AWS, Azure, and other platforms
 site_url: https://dipaish.github.io/cloudServices/
 repo_url: https://github.com/dipaish/cloudServices
 theme:
@@ -8,9 +8,13 @@ theme:
   favicon: ddd.png
 
 extra_css:
+  - https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   - stylesheets/custom.css
 
 extra_javascript:
+  - https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
+  - javascripts/navbar.js
   - javascripts/copy-code.js
   - javascripts/footer.js
   - javascripts/nav-style.js
