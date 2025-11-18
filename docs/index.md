@@ -1,10 +1,8 @@
-# Cloud Services - Lab Tasks
+# Lab Tasks - Cloud Services, AI & Cybersecurity
 
-***Academic lab tasks and exercises for cloud services from AWS, Azure, and other cloud vendors.***
+***Academic lab tasks and exercises covering cloud services, AI, cybersecurity and emerging technologies from AWS, Azure, and other platforms.***
 
-This repository contains hands-on lab tasks designed for academic purposes, covering various cloud service providers and technologies. Students will gain practical experience with cloud computing concepts, services and best practices.
-
-> 🚀 **Documentation available!** Visit [GitHub Pages site](https://dipaish.github.io/cloudServices/) for detailed lab instructions.
+This repository contains hands-on lab tasks designed for academic purposes, covering cloud computing, artificial intelligence, cybersecurity and other cutting-edge technologies. Students will gain practical experience with modern tech concepts, services, and best practices across multiple domains.
 
 ## 📊 Lab Tasks Overview
 
@@ -13,9 +11,10 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 | AWS | Fundamentals | 6 | ✅ Active |
 | AWS | Cloud Developer | 3 | ✅ Active |
 | AWS | Cloud Architect | 3 | ✅ Active |
+| Linux | Command Guide | 10 | ✅ Active |
 
 
-## 📚 For Students
+## 📚 For Students especially when doing Cloud Tasks
 
 ### ✅ What You Should Do:
 - **Follow lab instructions carefully**
@@ -33,31 +32,6 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 
 ---
 
-## 📘 Documentation Site (GitHub Pages)
-
-This project's documentation is built with MkDocs (Dracula theme) and deployed via GitHub Actions.
-
-**Visit:** [https://dipaish.github.io/cloudServices/](https://dipaish.github.io/cloudServices/)
-
-### How it works:
-
-1. Documentation source files are in the `docs/` folder
-2. Configuration is managed in `mkdocs.yml`
-3. GitHub Actions automatically builds and deploys on push to `main` branch
-4. GitHub Pages serves the built site
-
-### How to update documentation:
-
-1. Edit files in the `docs/` folder or update `mkdocs.yml`
-2. Commit and push changes to the `main` branch
-3. GitHub Actions will automatically build and deploy
-4. Visit the site (may need Ctrl+F5 to refresh cache)
-
----
-
-
-## 🤝 Contributing
-
 This is an academic repository. If you're an instructor and would like to contribute:
 
 1. Fork the repository
@@ -71,6 +45,7 @@ This is an academic repository. If you're an instructor and would like to contri
 
 For questions or issues:
 - 📧 Open an issue in this repository
+- 🔗 [Repository Link](https://github.com/dipaish/cloudServices)
 
 ---
 
@@ -91,4 +66,4 @@ For questions or issues:
 - [GCP Documentation](https://cloud.google.com/docs)
 - [Google Cloud Skills Boost](https://www.cloudskillsboost.google/)
 
-**Happy Cloud Learning! ☁️**
+**Happy Learning! ☁️**
