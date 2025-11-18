@@ -1,11 +1,5 @@
 // Custom Bootstrap Navbar for MkDocs
 document.addEventListener('DOMContentLoaded', function() {
-  // Wait for Bootstrap to be loaded
-  if (typeof bootstrap === 'undefined') {
-    setTimeout(arguments.callee, 100);
-    return;
-  }
-
   // Check if navbar already exists
   if (document.querySelector('.custom-navbar')) {
     return;
@@ -36,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- AWS Fundamentals Dropdown -->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="fundamentalsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="fundamentalsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                 AWS Fund.
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="fundamentalsDropdown">
@@ -51,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- AWS Developer Labs Dropdown -->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="developerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="developerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                 AWS Dev.
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="developerDropdown">
@@ -63,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- AWS Architect Labs Dropdown -->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="architectDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="architectDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                 AWS Arch.
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="architectDropdown">
@@ -74,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- Linux Command Guide Dropdown -->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="linuxDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="linuxDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                 Linux
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="linuxDropdown">
@@ -122,15 +116,4 @@ document.addEventListener('DOMContentLoaded', function() {
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
   body.insertBefore(navbarDiv.firstElementChild, body.firstChild);
-  
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-      const toggle = menu.previousElementSibling;
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        const bsDropdown = bootstrap.Dropdown.getInstance(toggle);
-        if (bsDropdown) bsDropdown.hide();
-      }
-    });
-  });
 });
