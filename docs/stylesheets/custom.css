@@ -187,6 +187,12 @@ article a:visited {
     color: #551a8b !important;
 }
 
+/* Exclude prev/next buttons from visited link styling */
+a[rel="prev"]:visited,
+a[rel="next"]:visited {
+    color: #ffffff !important;
+}
+
 /* ===== CODE BLOCKS - Linux Terminal Style ===== */
 /* Inline code */
 .content code {
