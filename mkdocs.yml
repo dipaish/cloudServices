@@ -40,7 +40,17 @@ nav:
   - AWS Architect Labs:
       - Architect Lab 1: architect/architectLab1.md
       - Architect Lab 2: architect/architectLab2.md
-  - Linux Command Guide: linux/linux1.md
+  - Linux Command Guide:
+      - Linux Basics: linux/linuxbasics1.md
+      - Linux File System: linux/linuxfileSystem2.md
+      - Help & Documentation: linux/help-documentation.md
+      - Viewing & Reading Files: linux/viewing-reading-files.md
+      - Searching Files & Text: linux/searching-files-text.md
+      - File Permissions & Ownership: linux/file-permissions-ownership.md
+      - System Info & Disk Usage: linux/system-info-disk-usage.md
+      - Process Management: linux/process-management.md
+      - Networking Commands: linux/networking-commands.md
+      - User Management: linux/user-management.md
 
 markdown_extensions:
   - admonition
