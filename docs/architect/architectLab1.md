@@ -41,7 +41,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
 > Note: It takes a while for your instance to be ready, once ready you can continue to the next step. 
 
-![image when the instance is ready](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/architect1.png)
+![Screenshot showing EC2 instance status as running and ready for use](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/architect1.png)
 ##### Step 3: Connect to the EC2 Instance
 1. Open **AWS EC2 Console** → Select the instance → **EC2 Instance Connect**.
 2. Click Connect 
@@ -77,7 +77,7 @@ To check if your **Apache web server** is running, find your **EC2 public IP add
 
 📌 **Expected Output:**  
 
-![web server ](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/page.png)
+![Screenshot of Apache web server default page displaying successfully in browser at EC2 public IP](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/page.png)
 
 ## **Check MariaDB Status**  
 To confirm that **MariaDB is running**, use the following command:  
@@ -102,7 +102,7 @@ mysql -u root -p
 > When prompted, enter the root password you set above.
 
 📌 Expected Output: You should see the MariaDB command prompt (MariaDB [(none)]>), confirming a successful connection.
-![mariadb check ](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/mariadb.png)
+![Screenshot showing MariaDB database server status as active and running](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/mariadb.png)
 
 ##### Submission: Required Screenshots for Task 1
 1. **Running Instance**  
@@ -351,7 +351,7 @@ From your EC2 instance, connect to the rds database service. You can find the en
        ```
 If you got the output as below, you have successfully done the migration. 
 
-![data migration check ](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/db.png)
+![Screenshot showing database employees table with records successfully displayed, confirming data migration to RDS](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/db.png)
 
 ##### Submission: Required Screenshots for Task 3
 1. **Verify that the database has been imported to RDS**  
@@ -450,7 +450,7 @@ If you wish, you can use your own html code if not save the following code as **
    }
 5. Now, using the URL, visit the website, you should see your web page as below: 
 
-![static website ](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/webpage.png)
+![Screenshot showing static website successfully hosted and displayed in browser from S3 endpoint](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/webpage.png)
 
 
 ##### Submission: Required Screenshots for Task 4

@@ -94,7 +94,7 @@ To ensure `Private-Subnet-A` routes traffic through the NAT Gateway (not the Int
 1. **Screenshot:** Click on the vpc you created and take the screenshot of the entire window. 
 
 ***Example Screenshot***
-![vpc](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/vpcScreenshotExample.png)
+![Screenshot showing VPC dashboard with created VPC configuration including subnets, internet gateway, and route tables](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/vpcScreenshotExample.png)
 
 </details>
 
@@ -124,7 +124,7 @@ To ensure `Private-Subnet-A` routes traffic through the NAT Gateway (not the Int
 1. Screenshot: Click on the EC2 instance you created and take the screenshot of the entire window. 
 
 ***Example Screenshot***
-![EC2 instance](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/ec2PrivateSubnet.png)
+![Screenshot showing EC2 dashboard with private EC2 instance launched in Private-Subnet-A with network configuration details](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/ec2PrivateSubnet.png)
 </details>
 
 #### Task 3: Create a **CloudFormation template**
@@ -178,8 +178,8 @@ Now, we’ll **extend this architecture** by adding an **S3 bucket**.  We’ll c
 2. **Screenshot 2 - S3 Console Screenshot (Verifying the Created Bucket):** Ensure that the screenshot shows the S3 bucket created by your stack (either with the auto-generated name or the one you specified).
 
 ***Example Screenshots***
-![CloudFormation Template Screenshot](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/screenshot1_composer.png)
-![ S3 Console Screenshot](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/cloudFormation2.png)
+![Screenshot showing CloudFormation Infrastructure Composer YAML template code view with S3 bucket configuration](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/screenshot1_composer.png)
+![Screenshot showing S3 Console with the created bucket from CloudFormation stack, displaying bucket properties and contents](https://raw.githubusercontent.com/dipaish/dipaish/refs/heads/main/images/courseRelatedImages/laurea/cloudFormation2.png)
 
 </details>
 

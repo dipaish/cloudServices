@@ -669,3 +669,95 @@ details ul ul {
 .drac-text-grey-ternary {
     color: #e0e0e0 !important;
 }
+
+/* Ensure all Dracula text meets WCAG AA contrast standards */
+.drac-text,
+.drac-text-primary,
+.drac-text-secondary,
+.drac-text-tertiary {
+    color: #e0e0e0 !important;
+}
+
+/* Ensure gray text on dark backgrounds has sufficient contrast */
+.drac-text-grey,
+.drac-text-grey-secondary,
+.drac-text-grey-ternary,
+.text-muted,
+.muted {
+    color: #d0d0d0 !important;
+    font-weight: 500 !important;
+}
+
+/* Sidebar and nav text contrast fixes */
+nav .drac-text,
+nav a,
+aside a,
+aside .drac-text {
+    color: #e0e0e0 !important;
+    font-weight: 500 !important;
+}
+
+/* Details/summary elements contrast */
+details summary {
+    color: #1a1a1a !important;
+    background-color: #f0f0f0 !important;
+    font-weight: 600 !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+}
+
+details summary:hover {
+    background-color: #e0e0e0 !important;
+    cursor: pointer !important;
+}
+
+/* Ensure emphasized text (strong, em, b) has proper contrast */
+.content strong,
+.content b,
+.content em,
+.content i {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Admonition boxes - ensure proper contrast */
+.admonition {
+    border-left: 4px solid #0066cc !important;
+    background-color: #f0f7ff !important;
+    color: #1a1a1a !important;
+    padding: 12px 16px !important;
+}
+
+.admonition title {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Info, warning, danger admonitions */
+.admonition.info {
+    background-color: #e3f2fd !important;
+    border-left-color: #1976d2 !important;
+}
+
+.admonition.warning {
+    background-color: #fff3e0 !important;
+    border-left-color: #f57c00 !important;
+}
+
+.admonition.danger {
+    background-color: #ffebee !important;
+    border-left-color: #c62828 !important;
+}
+
+/* Ensure proper text visibility in admonitions */
+.admonition p,
+.admonition ul,
+.admonition ol,
+.admonition code {
+    color: #1a1a1a !important;
+}
+
+.admonition code {
+    background-color: #f5f5f5 !important;
+    color: #c41c3b !important;
+}
