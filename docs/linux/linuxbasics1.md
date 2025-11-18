@@ -322,27 +322,6 @@ find . -type d -name "backup"
 find . -name "*.tmp" -delete
 ```
 
-
-
-## Help & Documentation
-
-## Viewing & Reading Files
-
-## Searching Files & Text
-
-## File Permissions and Ownership
-
-## System Information & Disk Usage
-
-## Process Management 
-
-
-## Networking Commands
-
-## User Management 
-
-
-
 ## 📖 Official Documentation and Guides
 - [Ubuntu Linux Documentation](https://help.ubuntu.com/)  
   *Official manuals and tutorials from Ubuntu.*
