@@ -99,7 +99,7 @@ nav#sidebar,
 a[rel="prev"],
 a[rel="next"] {
   background-color: #1a1a1a !important;
-  color: #00ff00 !important;
+  color: #ffffff !important;
   border: 3px solid #00ff00 !important;
   padding: 14px 22px !important;
   border-radius: 8px !important;
@@ -113,6 +113,16 @@ a[rel="next"] {
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.7) !important;
   text-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
   transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+a[rel="prev"],
+a[rel="next"],
+a[rel="prev"]:link,
+a[rel="next"]:link,
+a[rel="prev"]:visited,
+a[rel="next"]:visited {
+  color: #ffffff !important;
 }
 
 a[rel="prev"]:hover,
@@ -124,10 +134,16 @@ a[rel="next"]:hover {
   transform: scale(1.08);
 }
 
-/* If icons exist inside the links, make them green/black too */
+a[rel="prev"]:focus,
+a[rel="next"]:focus {
+  outline: 2px solid #8be9fd !important;
+  outline-offset: 2px !important;
+}
+
+/* If icons exist inside the links, make them white/black too */
 a[rel="prev"] svg path,
 a[rel="next"] svg path {
-  fill: #00ff00 !important;
+  fill: #ffffff !important;
   transition: fill 0.3s ease !important;
 }
 
