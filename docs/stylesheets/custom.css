@@ -1,6 +1,55 @@
 /* Professional black/white theme with high readability */
 /* Black sidebar and top bar, white content area */
 
+/* ===== CRITICAL: PREV/NEXT BUTTONS - HIGHEST PRIORITY ===== */
+/* This must be at the top to override all other rules */
+a[rel="prev"],
+a[rel="next"],
+a[rel="prev"]:link,
+a[rel="next"]:link,
+a[rel="prev"]:visited,
+a[rel="next"]:visited,
+a[rel="prev"]:hover,
+a[rel="next"]:hover,
+a[rel="prev"]:active,
+a[rel="next"]:active,
+a[rel="prev"]:focus,
+a[rel="next"]:focus {
+  color: #ffffff !important;
+  background-color: #1a1a1a !important;
+  border: 3px solid #00ff00 !important;
+  padding: 14px 22px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.7) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+a[rel="prev"]:hover,
+a[rel="next"]:hover {
+  background-color: #00ff00 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.8) !important;
+}
+
+a[rel="prev"] svg path,
+a[rel="next"] svg path {
+  fill: #ffffff !important;
+}
+
+a[rel="prev"]:hover svg path,
+a[rel="next"]:hover svg path {
+  fill: #000000 !important;
+}
+
 /* ===== SIDEBAR - Black background ===== */
 #sidebar,
 nav#sidebar,
@@ -95,62 +144,9 @@ nav#sidebar,
 }
 
 /* ===== PREV/NEXT NAV BUTTONS - universal targeting ===== */
-/* Style navigation links that use rel attribute, regardless of theme markup */
-a[rel="prev"],
-a[rel="next"] {
-  background-color: #1a1a1a !important;
-  color: #ffffff !important;
-  border: 3px solid #00ff00 !important;
-  padding: 14px 22px !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  font-size: 1.1rem !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  text-decoration: none !important;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.7) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer !important;
-}
+/* Duplicate rules removed - see top of file for button styling */
 
-a[rel="prev"],
-a[rel="next"],
-a[rel="prev"]:link,
-a[rel="next"]:link,
-a[rel="prev"]:visited,
-a[rel="next"]:visited {
-  color: #ffffff !important;
-}
-
-a[rel="prev"]:hover,
-a[rel="next"]:hover {
-  background-color: #00ff00 !important;
-  color: #000000 !important;
-  box-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.8) !important;
-  font-weight: 700 !important;
-  transform: scale(1.08);
-}
-
-a[rel="prev"]:focus,
-a[rel="next"]:focus {
-  outline: 2px solid #8be9fd !important;
-  outline-offset: 2px !important;
-}
-
-/* If icons exist inside the links, make them white/black too */
-a[rel="prev"] svg path,
-a[rel="next"] svg path {
-  fill: #ffffff !important;
-  transition: fill 0.3s ease !important;
-}
-
-a[rel="prev"]:hover svg path,
-a[rel="next"]:hover svg path {
-  fill: #000000 !important;
-}/* Content text - dark for readability on white */
+/* Content text - dark for readability on white */
 .content,
 .content p,
 .content li,
