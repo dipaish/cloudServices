@@ -94,27 +94,29 @@ nav#sidebar,
     }
 }
 
-/* ===== PREV/NEXT NAV BUTTONS - Bootstrap Clean Style ===== */
+/* ===== PREV/NEXT NAV BUTTONS - Modern White Style ===== */
 /* Style navigation links that use rel attribute, regardless of theme markup */
 a[rel="prev"],
 a[rel="next"] {
-  background-color: #0d6efd !important;
-  color: #ffffff !important;
-  border: 2px solid #0d6efd !important;
-  padding: 10px 20px !important;
-  border-radius: 6px !important;
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
   font-weight: 600 !important;
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 10px !important;
   text-decoration: none !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
   cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  letter-spacing: 0.5px !important;
 }
 
-/* Force all link states to have white text */
+/* Force all link states to have dark text */
 a[rel="prev"],
 a[rel="next"],
 a[rel="prev"]:link,
@@ -127,47 +129,46 @@ a[rel="prev"]:active,
 a[rel="next"]:active,
 a[rel="prev"]:focus,
 a[rel="next"]:focus {
-  color: #ffffff !important;
+  color: #1a1a1a !important;
 }
 
 a[rel="prev"]:hover,
 a[rel="next"]:hover {
-  background-color: #0b5ed7 !important;
-  border-color: #0b5ed7 !important;
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4) !important;
-  transform: translateY(-2px);
+  background-color: #f5f5f5 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-3px);
 }
 
 a[rel="prev"]:active,
 a[rel="next"]:active {
-  background-color: #0a58ca !important;
-  border-color: #0a58ca !important;
-  transform: translateY(0);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 a[rel="prev"]:focus,
 a[rel="next"]:focus {
   outline: 2px solid #0d6efd !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.25) !important;
+  outline-offset: 3px !important;
 }
 
-/* If icons exist inside the links, make them white too */
+/* If icons exist inside the links, make them dark too */
 a[rel="prev"] svg path,
 a[rel="next"] svg path {
-  fill: #ffffff !important;
-  transition: fill 0.2s ease !important;
+  fill: #1a1a1a !important;
+  transition: fill 0.25s ease !important;
 }
 
 /* Arrow styling for prev/next text */
 a[rel="prev"]::before {
-  content: '← ' !important;
-  color: #ffffff !important;
+  content: '←' !important;
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
 }
 
 a[rel="next"]::after {
-  content: ' →' !important;
-  color: #ffffff !important;
+  content: '→' !important;
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
 }/* Content text - dark for readability on white */
 .content,
 .content p,
@@ -217,10 +218,11 @@ a[rel="next"]:visited {
     background-color: #0c0c0c !important;
     color: #00ff00 !important;
     border: 1px solid #00ff00;
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 3px;
     font-family: 'Courier New', Courier, monospace !important;
-    font-size: 15px !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
 }
 
 /* Code blocks - Linux terminal appearance */
@@ -231,6 +233,7 @@ a[rel="next"]:visited {
     border-radius: 6px;
     position: relative;
     box-shadow: 0 2px 8px rgba(0, 255, 0, 0.2);
+    overflow-x: auto;
 }
 
 /* Add terminal prompt before code blocks */
@@ -241,7 +244,7 @@ a[rel="next"]:visited {
     font-family: 'Courier New', Courier, monospace !important;
     margin-bottom: 12px;
     font-weight: bold;
-    font-size: 15px !important;
+    font-size: 1rem !important;
 }
 
 .content pre code {
@@ -249,9 +252,11 @@ a[rel="next"]:visited {
     color: #00ff00 !important;
     border: none;
     font-family: 'Courier New', Courier, monospace !important;
-    font-size: 15px !important;
-    line-height: 1.6 !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
     text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    display: block;
+    overflow-x: auto;
 }
 
 /* Syntax highlighting colors for terminal theme */
