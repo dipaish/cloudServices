@@ -120,7 +120,13 @@ a[rel="next"],
 a[rel="prev"]:link,
 a[rel="next"]:link,
 a[rel="prev"]:visited,
-a[rel="next"]:visited {
+a[rel="next"]:visited,
+a[rel="prev"]:hover,
+a[rel="next"]:hover,
+a[rel="prev"]:active,
+a[rel="next"]:active,
+a[rel="prev"]:focus,
+a[rel="next"]:focus {
   color: #ffffff !important;
 }
 
@@ -128,7 +134,6 @@ a[rel="prev"]:hover,
 a[rel="next"]:hover {
   background-color: #0b5ed7 !important;
   border-color: #0b5ed7 !important;
-  color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4) !important;
   transform: translateY(-2px);
 }
@@ -157,10 +162,12 @@ a[rel="next"] svg path {
 /* Arrow styling for prev/next text */
 a[rel="prev"]::before {
   content: '← ' !important;
+  color: #ffffff !important;
 }
 
 a[rel="next"]::after {
   content: ' →' !important;
+  color: #ffffff !important;
 }/* Content text - dark for readability on white */
 .content,
 .content p,
