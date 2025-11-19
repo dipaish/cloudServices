@@ -129,7 +129,7 @@ a[rel="prev"]:active,
 a[rel="next"]:active,
 a[rel="prev"]:focus,
 a[rel="next"]:focus {
-  color: #1a1a1a !important;
+  color: #1a1a1a00 !important;
 }
 
 a[rel="prev"]:hover,
