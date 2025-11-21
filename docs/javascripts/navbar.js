@@ -32,6 +32,19 @@
                 <a class="nav-link" href="${baseUrl}/">Home</a>
               </li>
 
+              <!-- BYOD Dropdown -->
+              <li class="nav-item dropdown-custom">
+                <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
+                  BYOD
+                </a>
+                <ul class="dropdown-custom-menu" style="display: none;">
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/byod/windowsLicense/">Win License</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/byod/byod/">Win Setup</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/byod/mac/">macOS</a></li>
+                  <li><a class="dropdown-custom-item" href="${baseUrl}/byod/wsl/">WSL2</a></li>
+                </ul>
+              </li>
+
               <!-- AWS Fundamentals Dropdown -->
               <li class="nav-item dropdown-custom">
                 <a class="nav-link dropdown-toggle-custom" href="#" data-toggle="dropdown">
