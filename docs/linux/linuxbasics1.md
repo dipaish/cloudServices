@@ -4,41 +4,10 @@
 
 This guide provides a comprehensive list of commands used across cybersecurity, system administration, cloud services and ethical hacking.It is written in an easy to understand format. It offers you the opportunity to practice these commands in a safe environment and test your skills. You will learn the basics of Linux Command Line Interface (CLI) in Ubuntu directly from your **GitHub Codespaces terminal** or a local **Ubuntu machine**.
 
-![Linux Guide](images/linux.jpg)
-
 ## File & Directory Management Essentials
 
 File and directory management is one of the most fundamental skills in Linux. These commands help you navigate the filesystem, organize files, create and remove directories, inspect content, adjust permissions, and manage disk usage efficiently. Mastering these basics ensures you can interact with the system confidently and perform everyday tasks smoothly.
 
-### Basic Commands
-
-| Command | Purpose |
-|--------|---------|
-| `pwd`  | Print current working directory (full path). |
-| `ls`   | List files and directories. |
-| `cd`   | Change directories. |
-| `cp`   | Copy files and folders. |
-| `mv`   | Move or rename files and folders. |
-| `rm`   | Remove files or directories. |
-| `mkdir`| Create a new directory. |
-| `rmdir`| Remove an empty directory. |
-| `touch`| Create an empty file or update its timestamp. |
-| `tree` | Display directory structure in tree format. |
-| `man`  | View manual/help for commands. |
-| `echo` | Output text or variables. |
-| `cat`  | Display file content. |
-| `nano` | Terminal-based text editor. |
-| `wc`   | Count words, lines, characters. |
-| `head` | Show first lines of a file. |
-| `tail` | Show last lines of a file. |
-| `less` | Scrollable file viewer. |
-| `chmod`| Change file permissions. |
-| `chown`| Change file owner. |
-| `du`   | Show disk usage. |
-| `df`   | Show free/used disk space. |
-| `find` | Search for files/directories. |
-
----
 
 ### 1. 📂 Navigating Directories
 
@@ -321,6 +290,36 @@ find . -type d -name "backup"
 # Find files matching a pattern and delete them immediately
 find . -name "*.tmp" -delete
 ```
+
+### Basic Commands
+
+| Command | Purpose |
+|--------|---------|
+| `pwd`  | Print current working directory (full path). |
+| `ls`   | List files and directories. |
+| `cd`   | Change directories. |
+| `cp`   | Copy files and folders. |
+| `mv`   | Move or rename files and folders. |
+| `rm`   | Remove files or directories. |
+| `mkdir`| Create a new directory. |
+| `rmdir`| Remove an empty directory. |
+| `touch`| Create an empty file or update its timestamp. |
+| `tree` | Display directory structure in tree format. |
+| `man`  | View manual/help for commands. |
+| `echo` | Output text or variables. |
+| `cat`  | Display file content. |
+| `nano` | Terminal-based text editor. |
+| `wc`   | Count words, lines, characters. |
+| `head` | Show first lines of a file. |
+| `tail` | Show last lines of a file. |
+| `less` | Scrollable file viewer. |
+| `chmod`| Change file permissions. |
+| `chown`| Change file owner. |
+| `du`   | Show disk usage. |
+| `df`   | Show free/used disk space. |
+| `find` | Search for files/directories. |
+
+---
 
 ## 📖 Official Documentation and Guides
 - [Ubuntu Linux Documentation](https://help.ubuntu.com/)  
