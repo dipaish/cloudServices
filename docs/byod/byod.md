@@ -33,6 +33,13 @@ Chocolatey is a popular package manager for Windows that simplifies the process 
 
 ### Installation Process
 
+
+**Run the following command in PowerShell to install CHOCOLATEY:**
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex
+```
+
 **Start PowerShell with Administrator rights** (Run as Administrator)
 
 !!! warning "For re-installing only!"
@@ -49,14 +56,6 @@ Chocolatey is a popular package manager for Windows that simplifies the process 
     - `-Path`: Specifies the path to delete
     - `-Recurse`: Deletes all files and subdirectories
     - `-Force`: Forces deletion without prompting for confirmation
-
-Run the following command in PowerShell to install CHOCOLATEY:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex
-```
-
-## Step 2: Essential Programs Installation
 
 ## Step 2: Essential Programs Installation
 
@@ -91,9 +90,24 @@ To install the essential programs, run the following command:
     Review the list of programs and remove any that you don't want to install before running the command.
 
 ```powershell
-choco install powershell-core git vscode putty notepadplusplus `
-  winscp 7zip windirstat zoom docker-desktop googlechrome `
-  firefox curl powertoys greenshot obs-studio -y
+choco install `
+  powershell-core `
+  git `
+  vscode `
+  putty `
+  notepadplusplus `
+  winscp `
+  7zip `
+  windirstat `
+  zoom `
+  docker-desktop `
+  googlechrome `
+  firefox `
+  curl `
+  powertoys `
+  greenshot `
+  obs-studio `
+  -y
 ```
 
 ## Step 3: Create GitHub Account

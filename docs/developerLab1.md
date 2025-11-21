@@ -26,14 +26,14 @@ To complete this lab, you will need to set up the following AWS services. It is 
 
 ### Step 2: Lab Tasks 
 
-#### Task 1: Exploring AWS CloudShell and VS Code IDE
+### Task 1: Exploring AWS CloudShell and VS Code IDE
 
 > You will explore AWS CloudShell and connect to a Visual Studio Code IDE environment. You will run AWS CLI commands, create a Python script using the AWS SDK (Boto3), and transfer files between S3, CloudShell, and the IDE. The guide below uses Amazon Linux; ***if you choose Ubuntu, you need to use the equivalent commands***. 
 
 <details markdown="1">
 <summary>👉Click to expand the Task 1 Guide</summary>
 
-### 1: Access AWS CloudShell
+#### 1: Access AWS CloudShell
 
 1. In the AWS Management Console, choose the **CloudShell** icon at the top.
 2. Wait for the shell to initialize.
@@ -75,7 +75,7 @@ To complete this lab, you will need to set up the following AWS services. It is 
     aws s3 ls
     ```
 
-### 2. Create and run a Python script using Boto3
+#### 2. Create and run a Python script using Boto3
 
 1. In CloudShell, create a file named `list-buckets.py`:
 
@@ -132,7 +132,7 @@ Add the following code:
     2025-11-03 11:42:10 215 list-buckets.py
     ```
 
-### 3. Launch VS Code IDE
+#### 3. Launch VS Code IDE
 
 1. From the **AWS Details** panel where you started the lab, copy:
     - **LabIDEURL**
@@ -142,7 +142,7 @@ Add the following code:
     - Left: File Explorer  
     - Bottom: Bash Terminal  
 
-### 4. Copy files from S3 and run code in VS Code IDE
+#### 4. Copy files from S3 and run code in VS Code IDE
 
 1. In the terminal:
 
@@ -208,14 +208,14 @@ Add the following code:
 
 </details>
 
-#### Task 2: Configure public access and test website updates
+### Task 2: Configure public access and test website updates
 
 > You will continue working with the same S3 bucket created in Task 1. In this section, you will enable **static website hosting**, configure **public access** with a **bucket policy**, test the website endpoint from the **AWS Management Console** and make a simple update to the `index.html` file.
 
 <details markdown="1">
 <summary>👉Click to expand the Task 2 Guide</summary>
 
-### 1. Verify website files exist
+#### 1. Verify website files exist
 
 If you already uploaded `index.html` in Task 1, skip this part of the task.
 
@@ -242,7 +242,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 ---
 
-### 2. Enable static website hosting (Console)
+#### 2. Enable static website hosting (Console)
 
 1. Open the AWS Management Console → **S3 → Buckets → <your-bucket-name> → Properties**
 2. Scroll to **Static website hosting** and choose **Edit**
@@ -252,7 +252,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 4. Choose **Save changes**
 ---
 
-### 3. Configure public access
+#### 3. Configure public access
 
 > By default, S3 buckets block all public access. You must disable that restriction at the bucket level.
 
@@ -262,7 +262,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 4. Type `confirm` and choose **Save changes**
 
 ---
-### 4. Apply a bucket policy for public read
+#### 4. Apply a bucket policy for public read
 
 > Apply a public-read bucket policy using the **AWS Management Console**.
 
@@ -290,7 +290,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 ---
 
-### 5. Test the website endpoint
+#### 5. Test the website endpoint
 
 1. Console → **S3 → Buckets → <your-bucket-name> → Properties**
 2. Scroll to **Static website hosting**
@@ -308,7 +308,7 @@ If you receive **AccessDenied**, confirm:
 * Bucket policy contains the correct bucket name and `/*`
 * “Block all public access” is **unchecked**
 
-### 6. Edit and re-upload `index.html`
+#### 6. Edit and re-upload `index.html`
 
 Make a small change to your homepage (index.html) and upload the new version to S3.
 
@@ -340,14 +340,14 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 </details>
 
-#### Task 3: Exploring IAM Roles and Policies
+### Task 3: Exploring IAM Roles and Policies
 
 > In this task, you will explore **AWS Identity and Access Management (IAM)** to understand how permissions and roles relate to the work you did in previous tasks. You will review existing IAM roles, policies, and users in the **lab environment**, observe their trust relationships, and understand how IAM integrates with the S3 website. Some IAM actions might be restricted in this environment therefore you need to focus on observation and understanding rather than creation.
 
 <details markdown="1">
 <summary>👉Click to expand the Task 3 Guide</summary>
 
-### 1. Explore IAM in the Console
+#### 1. Explore IAM in the Console
 
 1. From the AWS Management Console, search for **IAM** and open the **IAM Dashboard**.
 2. Observe the key sections on the left navigation pane:
@@ -357,7 +357,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 ---
 
-### 2. View existing roles
+#### 2. View existing roles
 
 1. In the left menu, choose **Roles**.
 2. Look for existing roles such as `EMR_EC2_DefaultRole` or `EC2RoleForLabInstance` (names may vary).
@@ -367,7 +367,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 ---
 
-### 3. Review a managed policy
+#### 3. Review a managed policy
 
 1. In the IAM console, choose **Policies** from the left menu.
 2. Search for the policy **AmazonS3ReadOnlyAccess**.
@@ -396,7 +396,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 >  Policies like these control which S3 actions are possible. If your IAM role didn’t include a policy that allows `s3:PutObject`, your uploads in Task 1 and Task 2 would have failed.
 
-### 4. How IAM connects with Tasks 1 and 2 that you did above?
+#### 4. How IAM connects with Tasks 1 and 2 that you did above?
 
 * The **role you used in CloudShell/IDE** determined your ability to list, create, and modify S3 buckets.
 * If your IAM permissions were limited (for example, read-only access), `aws s3 cp` or `aws s3 mb` commands would have failed.
@@ -410,7 +410,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 
 </details>
 
-#### Task 4: Self Reflection
+### Task 4: Self Reflection
 
 > In this task, you will reflect on your learning experience throughout **Developer Lab 1**. Summarize what you learned about AWS services such as **CloudShell**, **VS Code IDE**, **S3**, and **IAM**, and how they work together in a cloud environment. Focus on what you found most valuable, any challenges you faced, and how you solved them. 
 
@@ -426,7 +426,7 @@ Refresh your browser at the **Bucket website endpoint**. You should now see the 
 3. How can you apply what you learned to real-world cloud development scenarios?  
 4. What are your key takeaways from this lab?
 
-**Submission:**  
+### Submission for Task 4
 A short reflection paragraph (about 100–150 words) summarizing your learning outcomes.
 
 </details>

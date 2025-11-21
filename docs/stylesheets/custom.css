@@ -65,6 +65,17 @@ article {
     color: #1a1a1a !important;
 }
 
+/* Ensure content doesn't get hidden by TOC */
+.md-main__inner {
+    margin-right: 0 !important;
+}
+
+@media (min-width: 1200px) {
+    .md-main__inner {
+        margin-right: 320px !important;
+    }
+}
+
 /* Body base - ensure white content background */
 body {
     background-color: #f5f5f5 !important;
@@ -1130,5 +1141,211 @@ body {
 @media (max-width: 768px) {
     .content div[style*="display: grid"] {
         grid-template-columns: 1fr !important;
+    }
+}
+
+/* ===== TABLE OF CONTENTS (TOC) - RIGHT SIDE WITH TOGGLE ===== */
+/* TOC Container - Fixed on right side */
+.toc-container {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 280px;
+    height: calc(100vh - 90px);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-left: 3px solid #0066cc;
+    overflow-y: auto;
+    z-index: 900;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem 1rem;
+    box-shadow: -4px 0 16px rgba(0, 102, 204, 0.15);
+}
+
+/* TOC always visible - remove hidden state */
+.toc-container.hidden {
+    transform: translateX(0);
+}
+
+/* TOC Toggle Button - styled but hidden since always visible */
+.toc-toggle {
+    display: none;
+}
+
+/* TOC Heading */
+.toc-container h3 {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin: 0 0 1.2rem 0;
+    font-weight: 700;
+    border-bottom: 3px solid #0066cc;
+    padding-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toc-container h3:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* TOC List Styling */
+.toc-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-container li {
+    margin-bottom: 0.3rem;
+}
+
+/* Level 1 headings (H2) */
+.toc-container > ul > li > a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.toc-container > ul > li > a::before {
+    content: '▸';
+    position: absolute;
+    left: 0.3rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #0066cc;
+    font-weight: 700;
+}
+
+.toc-container > ul > li > a:hover {
+    background: linear-gradient(90deg, #e3f2fd 0%, #f0f7ff 100%);
+    color: #0066cc;
+    padding-left: 1.2rem;
+    border-left-color: #0066cc;
+    transform: translateX(-4px);
+}
+
+.toc-container > ul > li > a:hover::before {
+    opacity: 1;
+}
+
+/* Level 2 headings (H3) - nested under H2 */
+.toc-container > ul > li > ul {
+    padding-left: 1.2rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.toc-container > ul > li > ul > li > a {
+    color: #555555;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.85rem;
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 2px solid transparent;
+    position: relative;
+}
+
+.toc-container > ul > li > ul > li > a::before {
+    content: '›';
+    position: absolute;
+    left: 0.2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #0066cc;
+}
+
+.toc-container > ul > li > ul > li > a:hover {
+    background: linear-gradient(90deg, #f0f7ff 0%, #e3f2fd 100%);
+    color: #0066cc;
+    padding-left: 1rem;
+    border-left-color: #0066cc;
+    transform: translateX(-2px);
+}
+
+.toc-container > ul > li > ul > li > a:hover::before {
+    opacity: 1;
+}
+
+/* Active TOC link */
+.toc-container a.active {
+    background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
+    color: #ffffff !important;
+    font-weight: 600;
+    border-left: 4px solid #003d7a;
+    padding-left: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+    transform: scale(1.02);
+}
+
+.toc-container a.active::before {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* Scrollbar styling for TOC */
+.toc-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.toc-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.toc-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0066cc 0%, #0052a3 100%);
+    border-radius: 4px;
+}
+
+.toc-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0052a3 0%, #003d7a 100%);
+}
+
+/* Adjust main content when TOC is visible */
+.md-content__inner,
+.md-content,
+article,
+main {
+    margin-right: 0 !important;
+}
+
+@media (min-width: 1200px) {
+    .md-content__inner,
+    article {
+        margin-right: 320px !important;
+        padding-right: 20px !important;
+    }
+}
+
+/* Hide TOC on smaller screens */
+@media (max-width: 1200px) {
+    .toc-container {
+        display: none;
+    }
+    
+    .toc-toggle {
+        display: none;
+    }
+    
+    .md-content__inner,
+    article {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
     }
 }
