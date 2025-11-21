@@ -8,8 +8,11 @@
 ### Materials
 ***Step-by-step guide for student***
 You will need to set up the following software stack for hosting a WordPress website. 
+
  - **Web Server (Apache)**: A web server is essential for serving the WordPress files and handling incoming HTTP requests from users' browsers. You are required to install Apache Web Server. 
+
  - **Database Server (MySQL or MariaDB)**: WordPress requires a database to store content, settings, user data, and more. MySQL or MariaDB is commonly used as the database server to manage this data.
+ 
 - **PHP**: PHP is a scripting language used by WordPress to generate dynamic content and interact with the database. It's essential for running the WordPress application.
 
 ***These components together form the LAMP (Linux, Apache, MySQL, PHP) which provides the foundation for hosting WordPress.***
