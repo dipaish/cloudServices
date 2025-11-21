@@ -130,7 +130,6 @@ After running these commands:
 
 ### Activation Error: "This key didn't work"
 
-**Solutions:**
 1. Verify you copied the entire product key correctly (no extra spaces)
 2. Ensure your computer is connected to the internet
 3. Wait a few minutes and try again (activation servers may be busy)
@@ -139,7 +138,6 @@ After running these commands:
 
 ### License Shows as "Not Activated"
 
-**Solutions:**
 1. Open Settings → System → Activation
 2. Click "Troubleshoot" to run the Windows activation troubleshooter
 3. If using a digital license, ensure you're signed in with the correct Microsoft account
