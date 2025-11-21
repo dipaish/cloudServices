@@ -1,12 +1,9 @@
 ## Linux File Systems
 
-### Linux File System Hierarchy (FHS)
-
 Linux uses a tree-like file system structure starting from the root directory `/`. Understanding the filesystem hierarchy is essential for navigating, managing files, and system administration.
 
 **Windows vs 🐧 Linux Filesystem Comparison**
 
-If you’re coming from Windows, Linux’s filesystem can feel unfamiliar at first.  
 - Windows uses **drive letters** like `C:\` or `D:\`.  
 - Linux uses **one unified tree**, starting at `/`.
 
@@ -469,26 +466,6 @@ find / -name "filename.txt"
 tree /home
 tree -L 2 /usr
 ```
-
----
-
-## 💡 Tips for Windows Users Transitioning to Linux
-
-Quick comparison to help you understand Linux if you're coming from Windows:
-
-| Windows Concept | Linux Equivalent | Key Difference | Example |
-|-----------------|-----------------|----------------|---------|
-| **Drive letters** (`C:\`, `D:\`) | Single root `/` | Everything is one tree | `cd /home/alice` (no drive letter) |
-| **My Documents** (`C:\Users\Alice\`) | Home directory `~` | Use `~` as shortcut | `cd ~` or `cd /home/alice` |
-| **Program Files** (`C:\Program Files\`) | `/usr/bin/`, `/opt/` | Programs scattered across system | `which python3` to find programs |
-| **Registry** (settings) | `/etc/` (text files) | Settings are simple text files | `cat /etc/hostname` |
-| **Event Viewer** (logs) | `/var/log/` (text files) | Logs are plain text | `tail /var/log/syslog` |
-| **Complex permissions** (NTFS) | Owner/Group/Others | Simpler permission model | `chmod 755 file.txt` |
-| **Recycle Bin** (recovery) | No recovery! | Deleted files are gone forever | Use `rm -i` for confirmation |
-| **Backslash** `\` paths | **Forward slash** `/` paths | Different path separator | `/home/alice/Documents/file.txt` |
-| **Device Manager** | `/dev/` (device files) | Devices are files too | `ls /dev/sda` |
-
----
 
 ### Quick Tips
 
