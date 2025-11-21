@@ -16,6 +16,10 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 
 ## 📚 For Students especially when doing Cloud Tasks
 
+<div class="student-grid-container" markdown="1">
+
+<div class="grid-item" markdown="1">
+
 ### ✅ What You Should Do:
 - **Follow lab instructions carefully**
 - **Complete hands-on exercises**
@@ -23,12 +27,20 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 - **Practice cloud security best practices**
 - **Clean up resources after each lab** (to avoid charges)
 
+</div>
+
+<div class="grid-item" markdown="1">
+
 ### ⚠️ Important Cloud Safety Tips:
 - 🔒 **Never commit credentials or API keys to Git**
 - 💰 **Monitor your cloud usage and costs**
 - 🧹 **Always clean up resources after completing labs**
 - 🛡️ **Use least-privilege access principles**
 - 📧 **Set up billing alerts** for your cloud accounts
+
+</div>
+
+</div>
 
 ---
 
