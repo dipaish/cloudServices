@@ -30,7 +30,11 @@ extra:
 
 nav:
   - Home: index.md
-  - Essential Tools Setup: byod/byod.md
+  - BYOD:
+    - Windows License Upgrade: byod/windowsLicense.md
+    - Windows Setup: byod/byod.md
+    - macOS Setup: byod/mac.md
+    - WSL2 Setup: byod/wsl.md
   - AWS Fundamentals:
     - WordPress Guide: awsfundamentals/wpGuide.md
     - EC2 Instance: awsfundamentals/ec2Instance_session1.md

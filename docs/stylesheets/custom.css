@@ -355,12 +355,15 @@ a.btn-preview * {
     -webkit-text-fill-color: #000000 !important;
     -moz-text-fill-color: #000000 !important;
     border: 2px solid #000000 !important;
-    padding: 12px 24px !important;
+    padding: 8px 16px !important;
     border-radius: 6px !important;
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
+    font-size: 0.9rem !important;
     text-decoration: none !important;
     text-shadow: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 .btn-preview:hover,
@@ -723,30 +726,28 @@ footer::after {
     position: relative !important;
 }
 
-/* Hide the pilcrow symbol */
+/* Hide the pilcrow symbol completely */
 .headerlink {
     text-decoration: none !important;
+    display: none !important;
 }
 
-/* Hide only the pilcrow text content */
+/* Hide pilcrow symbol globally */
+a.headerlink::before,
 .headerlink::before {
     content: none !important;
+    display: none !important;
 }
 
-/* Make the headerlink cover the entire heading */
-.content h1 .headerlink,
-.content h2 .headerlink,
-.content h3 .headerlink,
-.content h4 .headerlink,
-.content h5 .headerlink,
-.content h6 .headerlink {
-    color: transparent !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    z-index: 1 !important;
+/* Hide any pilcrow or paragraph symbols */
+h1 .headerlink,
+h2 .headerlink,
+h3 .headerlink,
+h4 .headerlink,
+h5 .headerlink,
+h6 .headerlink {
+    display: none !important;
+    visibility: hidden !important;
 }
 
 /* When hovering over heading, change color */
@@ -759,18 +760,7 @@ footer::after {
     color: #0066cc !important;
 }
 
-/* Show a link icon on hover */
-.content h1:hover::after,
-.content h2:hover::after,
-.content h3:hover::after,
-.content h4:hover::after,
-.content h5:hover::after,
-.content h6:hover::after {
-    content: " 🔗" !important;
-    font-size: 0.7em !important;
-    opacity: 0.6 !important;
-    margin-left: 8px !important;
-}
+/* Removed hover link icon */
 
 /* ===== FOCUS INDICATORS ===== */
 .content a:focus,

@@ -44,12 +44,34 @@ This repository contains hands-on lab tasks designed for academic purposes, cove
 
 ---
 
-This is an academic repository. If you're an instructor and would like to contribute:
+## 👨‍🏫 Are You an Instructor?
 
-1. Fork the repository
-2. Create a feature branch
-3. Add your lab tasks with clear documentation
-4. Submit a pull request
+Want to collaborate and contribute to this academic repository? We welcome educators who'd like to share their expertise!
+
+<div class="student-grid-container" markdown="1">
+
+<div class="grid-item" markdown="1">
+
+### 🤝 How to Contribute
+1. **Fork** the repository
+2. **Create** a feature branch for your content
+3. **Add** your lab tasks with clear, detailed documentation
+4. **Submit** a pull request for review
+
+</div>
+
+<div class="grid-item" markdown="1">
+
+### 📋 What We're Looking For
+- **Well-structured lab exercises**
+- **Clear learning objectives**
+- **Step-by-step instructions**
+- **Real-world practical scenarios**
+- **Security best practices**
+
+</div>
+
+</div>
 
 ---
 
@@ -63,19 +85,50 @@ For questions or issues:
 
 ## 🔗 Useful Resources
 
-### AWS
+<div class="student-grid-container" markdown="1">
+
+<div class="grid-item" markdown="1">
+
+### ☁️ AWS
 - [AWS Free Tier](https://aws.amazon.com/free/)
 - [AWS Documentation](https://docs.aws.amazon.com/)
 - [AWS Training](https://aws.amazon.com/training/)
 
-### Azure
+</div>
+
+<div class="grid-item" markdown="1">
+
+### 🔷 Azure
 - [Azure Free Account](https://azure.microsoft.com/en-us/free/)
 - [Azure Documentation](https://docs.microsoft.com/en-us/azure/)
 - [Microsoft Learn](https://docs.microsoft.com/en-us/learn/)
 
-### Google Cloud
+</div>
+
+</div>
+
+<div class="student-grid-container" markdown="1">
+
+<div class="grid-item" markdown="1">
+
+### 🌐 Google Cloud
 - [GCP Free Tier](https://cloud.google.com/free)
 - [GCP Documentation](https://cloud.google.com/docs)
 - [Google Cloud Skills Boost](https://www.cloudskillsboost.google/)
+
+</div>
+
+<div class="grid-item" markdown="1">
+
+### 🐧 Linux & Open Source
+- [Linux Foundation Training](https://training.linuxfoundation.org/)
+- [Ubuntu Documentation](https://ubuntu.com/tutorials)
+- [Arch Wiki](https://wiki.archlinux.org/)
+
+</div>
+
+</div>
+
+---
 
 **Happy Learning! ☁️**

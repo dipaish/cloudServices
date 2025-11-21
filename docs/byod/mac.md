@@ -1,6 +1,6 @@
-# Essential Tools Setup for IT Students (Windows)
+# Essential Tools Setup for IT Students (macOS)
 
-The steps below use the Chocolatey package manager for Windows to install important tools you’ll use throughout your studies whether you’re learning software development, cloud computing, DevOps, or system administration. Make sure to install these tools on the computer you’ll be using for your studies, since you’ll need them for assignments, projects, and hands-on practice.
+The guidelines below use the Homebrew package manager for macOS to install essential tools commonly used in IT programs, including software development, cloud computing, DevOps, and systems administration. Make sure to install these tools on the Mac you’ll be using for your studies, as they’ll be important for your coursework, projects, and hands-on assignments.
 
 !!! note
     Remember, if you switch to a new device, just follow these instructions to ensure you have the necessary tools.
@@ -11,92 +11,117 @@ Make sure that your computer meets the minimum requirements for IT program cours
 
 **Recommended Specifications:**
 
-- **Operating System:** Windows 11 (version 23H2 or newer recommended)
-- **RAM:** 16 GB minimum (32 GB recommended for running multiple VMs and containers)
+- **Operating System:** macOS Sonoma (14.0) or newer (macOS Sequoia 15.0+ recommended)
+- **Processor:** Apple Silicon (M1/M2/M3 or newer) or Intel Core i5 (8th gen or newer)
+- **RAM:** 16 GB minimum (32 GB recommended for running VMs and containers)
 - **Storage:** 512 GB SSD minimum (1 TB recommended for development tools, VMs, and projects)
-- **Processor:** Intel Core i5 (11th gen or newer) or AMD Ryzen 5 (5000 series or newer)
-- **Display:** 1920x1080 resolution or higher
+- **Display:** Retina display or 1920x1080 resolution minimum
 - **Internet:** Stable broadband connection for cloud services and downloads
 
-These specifications will ensure smooth operation of development environments, virtualization software, Docker containers, and other essential tools.
+These specifications will ensure smooth operation of development environments, virtualization software, Docker containers, and cloud tools.
 
-## Step 1: Install CHOCOLATEY
-
-Chocolatey is a popular package manager for Windows that simplifies the process of installing, updating, and managing software applications. It allows users to automate the installation of a wide range of software with a single command, making it efficient and convenient. Chocolatey provides access to a vast repository of pre-packaged software packages, which can be easily installed, updated, or removed using command-line instructions. This tool streamlines software management on Windows systems, enhancing productivity and reducing the manual effort required for software maintenance.
-
+## Step 1: Install Apple Development Environment and Homebrew
 ### Requirements
 
-- **Operating System:** Windows 11 (version 22H2 or newer) or Windows 10 (version 21H2 or newer)
-- **PowerShell:** Version 5.1 or higher (pre-installed with Windows 11)
-- **.NET Framework:** Version 4.8 or higher (pre-installed with Windows 11)
-- **Administrator Access:** Required for installation
+- **Processor:** Apple Silicon (M1 or newer) or Intel CPU (64-bit)
+- **Operating System:** macOS Monterey (12.0) or newer
+- **Command Line Tools:** Xcode Command Line Tools (required)
+- **Terminal Access:** Built-in Terminal or iTerm2
 
-### Installation Process
+### Open Terminal
 
-**Start PowerShell with Administrator rights** (Run as Administrator)
+Open Terminal by clicking the Spotlight (magnifying glass) icon in the menu bar or press **Command + Space** and type: "Terminal"
 
-!!! warning "For re-installing only!"
-    If you already have choco installed on your device and want to reinstall it, run the following commands in PowerShell to remove the existing installation:
+### Install Xcode Command Line Tools
 
-    ```powershell
-    rm -Path "C:\ProgramData\chocolatey" -Recurse -Force
-    rm -Path "C:\ProgramData\ChocolateyHttpCache" -Recurse -Force
-    ```
+Run the following command in Terminal:
 
-    **What these commands do:**
-    
-    - `rm`: Deletes files or directories (in this case, the chocolatey directory)
-    - `-Path`: Specifies the path to delete
-    - `-Recurse`: Deletes all files and subdirectories
-    - `-Force`: Forces deletion without prompting for confirmation
-
-Run the following command in PowerShell to install CHOCOLATEY:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex
+```bash
+xcode-select --install
 ```
 
+A popup window will appear. Click **Install** and follow the prompts.
+
+### Install Homebrew Package Manager
+
+Run the following command to install Homebrew:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+!!! important "Configure Homebrew Path"
+    After installation, under "==> Next steps:", copy and execute the commands shown. For Apple Silicon Macs, it will look like:
+
+    ```bash
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/$USER/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$USER/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    ```
 ## Step 2: Essential Programs Installation
 
-## Step 2: Essential Programs Installation
-
-After successfully installing the Chocolatey package manager, you can use it to install multiple apps simultaneously. This saves you significant time compared to installing each app individually.
+After successfully installing Homebrew, you can install multiple apps simultaneously.
 
 ### Tools Overview
 
 | Category | Tool | Description |
 |----------|------|-------------|
-| **Development** | powershell-core | Modern command-line shell and scripting language |
+| **Development** | visual-studio-code | Popular code editor with extensive extension support |
 | | git | Version control system for tracking code changes |
-| | vscode | Popular code editor with extensive extension support |
-| | docker-desktop | Container platform for application development |
-| **Networking** | putty | SSH/Telnet client for remote server access |
-| | winscp | SFTP/SCP file transfer client |
-| | curl | Command-line tool for API testing |
-| **Productivity** | notepadplusplus | Advanced text editor |
-| | 7zip | File compression and archiving tool |
-| | windirstat | Disk space visualization |
-| | greenshot | Screenshot tool for documentation |
-| | powertoys | Windows system utilities |
-| **Browsers** | googlechrome | Modern web browser with developer tools |
+| | github | GitHub Desktop for GUI-based Git operations |
+| | docker | Container platform for application development |
+| **Networking** | cyberduck | SFTP/FTP client for file transfers |
+| **Productivity** | rectangle | Window management tool (highly recommended) |
+| | disk-inventory-x | Disk space visualization |
+| | obs | Screen recording and streaming software |
+| **Browsers** | google-chrome | Modern web browser with developer tools |
 | | firefox | Alternative browser for cross-browser testing |
 | **Communication** | zoom | Video conferencing for remote learning |
-| | obs-studio | Screen recording and streaming software |
+| **Optional** | utm | Virtual machine software (free, Apple Silicon native) |
+| | warp | Modern terminal with AI features |
 
-### Installation Command
+### Installation Commands
 
 To install the essential programs, run the following command:
 
 !!! tip
-    Review the list of programs and remove any that you don't want to install before running the command.
+    Review the list and remove any applications you don't need before running. You can remove items by deleting the corresponding line.
 
-```powershell
-choco install powershell-core git vscode putty notepadplusplus `
-  winscp 7zip windirstat zoom docker-desktop googlechrome `
-  firefox curl powertoys greenshot obs-studio -y
+
+```bash
+brew install --cask visual-studio-code docker github rectangle obs \
+  disk-inventory-x google-chrome firefox zoom cyberduck utm && \
+  brew install git
 ```
 
-## Step 3: Create GitHub Account
+**What this command does:**
+- Installs all GUI applications using `brew install --cask`
+- Installs Git command-line tool using `brew install`
+- Uses `&&` to ensure Git installs after the cask applications
+- Line continuation (`\`) allows the command to span multiple lines for readability
+
+## Step 3: Recommended macOS Configuration
+
+A few system changes will help you with file management and programming.
+
+### Enable Desktop Items and File Extensions
+
+1. Open **Finder**
+2. Go to **Finder → Settings** (or press **Command + ,**)
+3. Click the **Advanced** tab
+4. Check **Show all filename extensions**
+5. In the **View** menu, select **Show Path Bar**
+
+### Show Hidden Files and Folders
+
+To toggle visibility of hidden files (like `.ssh`, `.git` folders):
+
+- Press **Command + Shift + .** (period) in Finder
+- Press again to hide them
+
+This is essential for accessing configuration files and Git repositories.
+
+## Step 4: Create GitHub Account
 
 As you progress through your IT coursework and projects, you'll be using version control extensively. GitHub is the industry-standard platform for version control and collaborative software development. You'll start by setting up your own GitHub account. If you already have one, you don't need to make a new account. While you'll dive deeper into version control concepts in your courses, your initial step involves creating an account and getting Git up and running on your personal device.
 
@@ -132,7 +157,7 @@ Linking your school/university email to your GitHub account offers several impor
 
 You'll now have both emails linked to your account. Choose which one to use for commits.
 
-## Step 4: Activate GitHub Student Developer Pack
+## Step 5: Activate GitHub Student Developer Pack
 
 The **GitHub Student Developer Pack** is an invaluable resource for IT students, providing free access to premium developer tools, services, and learning resources that would typically cost hundreds of dollars. 
 
@@ -162,7 +187,7 @@ The verification process can be a bit frustrating, as it doesn’t always work s
 !!! success
     Once approved, you'll have access to the Student Developer Pack for the duration of your studies!
 
-## Step 5: Configure Git
+## Step 6: Configure Git
 
 You have installed Git in Step 2. Now you need to configure Git by providing your full name and email address. This information will be associated with all your code commits, making it important for collaboration and version control.
 
@@ -189,17 +214,16 @@ You should see output showing your configured name and email.
 
 ## Congratulations!
 
-You have successfully installed and configured the essential tools. As you progress through your studies, you may need to install additional specialized applications for specific courses (databases, IDEs, cloud tools, etc.). Always check course requirements and follow your instructors' guidance for any additional software installations.
+You have successfully installed and configured the essential tools for your IT program. As you progress, you may need additional specialized applications for specific courses.
 
 ### Quick Reference - Installed Tools
 
-✅ Chocolatey package manager  
-✅ PowerShell Core  
+✅ Homebrew package manager  
+✅ Xcode Command Line Tools  
 ✅ Git version control  
 ✅ Visual Studio Code with extensions  
 ✅ Docker Desktop  
-✅ Networking tools (PuTTY, WinSCP)  
-✅ Productivity utilities  
+✅ Rectangle window manager  
 ✅ GitHub account with Student Developer Pack  
 
 !!! success
