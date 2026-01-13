@@ -61,6 +61,8 @@ nav:
       - Process Management: linux/process-management.md
       - Networking Commands: linux/networking-commands.md
       - User Management: linux/user-management.md
+  - AI & Cybersecurity:
+      - AI, Governance & Cybersecurity Lab: cybersec/ai-governance-cybersecurity-lab.md
 
 markdown_extensions:
   - admonition
