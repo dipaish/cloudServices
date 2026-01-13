@@ -378,7 +378,12 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 5. **Human-in-the-Loop:** When should humans override AI? (use examples from your tasks)
 6. **SecurityX Assessment:** Professional recommendations for responsible AI governance
 
-## ✅ Quality Checklist: SecurityX-Level Analysis
+</details>
+
+---
+
+<details markdown="1">
+<summary><h2 style="display: inline;">✅ Quality Checklist: SecurityX-Level Analysis</h2></summary>
 
 **Use this checklist before submitting each task:**
 
