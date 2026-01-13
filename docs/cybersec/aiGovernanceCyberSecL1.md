@@ -48,38 +48,16 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ---
 
-## 🎥 Video Guide
+## 🔐 Lab Setup & Access
 
-**A short instructional video covers:**
+### Video Guide
 
-✅ How to access the AI Space  
-✅ How to summarise logs correctly  
-✅ How to avoid governance violations  
-✅ How to answer at SecurityX level  
+A short instructional video (link in Canvas) covers: AI Space access, log summarization, governance requirements, and SecurityX-level responses.
 
-📍 **Access:** Video link available in Canvas
+### Required Accounts
 
----
-
-## 🔐 Getting Started: Lab Access Requirements
-
-### Step 1: Create Hugging Face Account
-
-| Requirement | Details |
-|-------------|----------|
-| **Platform** | Hugging Face (free account) |
-| **Email** | Use your **Laurea email ID** (recommended) |
-| **Cost** | Free - no payment or credit card required |
-| **Sign Up** | https://huggingface.co/join |
-
-### Step 2: Access AI Tool (MANDATORY)
-
-**🤖 APPROVED AI TOOL ONLY**
-
-> Use ONLY the course-provided AI Space  
-> 📍 Link provided in Canvas
-
-**⚠️ Using unauthorized tools = automatic disqualification**
+1. **Hugging Face Account** (free): Sign up at https://huggingface.co/join using your Laurea email
+2. **AI Tool Access**: Use ONLY the course-provided AI Space (link in Canvas). Using unauthorized tools = automatic disqualification.
 
 ---
 
@@ -99,12 +77,8 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ## ⚠️ CRITICAL GOVERNANCE RULE
 
-```
-╔═══════════════════════════════════════════════════════════════╗
-║                    ⛔ AUTOMATIC FAILURE                       ║
-║  Do NOT paste raw log files directly into the AI tool        ║
-╚═══════════════════════════════════════════════════════════════╝
-```
+> **⛔ AUTOMATIC FAILURE**  
+> **Do NOT paste raw log files directly into the AI tool**
 
 ### Required Process (Human-in-the-Loop)
 
@@ -166,28 +140,14 @@ Write a concise summary of what you observed (5-10 bullet points):
 
 **Part B: Document YOUR Analysis (CRITICAL - Do This Before AI)**
 
-Before using AI, write your own professional analysis:
+Before using AI, write your own professional analysis using this template:
 
-```
-📝 Template for Your Analysis:
+**📝 Your Analysis Template:**
 
-Security Assessment: [HIGH/MEDIUM/LOW RISK] - [Your conclusion]
-
-Evidence:
-• [What patterns indicate this?]
-• [What specific details support your conclusion?]
-• [What makes this suspicious?]
-
-Concerns/Gaps:
-• [What information is missing?]
-• [What assumptions are you making?]
-• [What needs further investigation?]
-
-Recommendations:
-1. [Immediate action needed?]
-2. [Follow-up investigation steps?]
-3. [Prevention measures?]
-```
+- **Security Assessment:** [HIGH/MEDIUM/LOW RISK] - [Your conclusion]
+- **Evidence:** What patterns indicate this? What specific details support your conclusion? What makes this suspicious?
+- **Concerns/Gaps:** What information is missing? What assumptions are you making? What needs further investigation?
+- **Recommendations:** 1) Immediate action needed? 2) Follow-up investigation steps? 3) Prevention measures?
 
 **Why This Matters:** You need your own documented analysis BEFORE using AI so you can compare and critically evaluate AI's conclusions. This demonstrates human-in-the-loop governance.
 
@@ -264,10 +224,6 @@ Using **network or authentication logs**, analyse a potential security incident 
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final professional judgment using required terminology
 
----
-
----
-
 ## 🔹 Task 2: Email & Phishing Analysis
 
 **📊 Points:** 4 | **🎯 Domain:** Social Engineering & Threat Analysis
@@ -310,10 +266,6 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final recommendations using required terminology
 
----
-
----
-
 ## 🔹 Task 3: Identity & Access Log Analysis
 
 **📊 Points:** 3 | **🎯 Domain:** Identity, Access & Privilege Management
@@ -355,10 +307,6 @@ Analyse Identity and Access Management (IAM) logs to identify potential account 
 4. **AI Output:** What AI concluded about the suspicious activity
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final judgment on risk and human approval needs
-
----
-
----
 
 ## 🔹 Task 4: AI Governance & Risk Evaluation
 
@@ -405,141 +353,57 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 5. **Human-in-the-Loop:** When should humans override AI? (use examples from your tasks)
 6. **SecurityX Assessment:** Professional recommendations for responsible AI governance
 
----
-
 ## ✅ Quality Checklist: SecurityX-Level Analysis
 
 **Use this checklist before submitting each task:**
 
-### 🔍 Log Understanding
-
-| Question | Your Answer |
-|----------|-------------|
-| ☐ What is normal behavior in this dataset? | |
-| ☐ What patterns are abnormal or suspicious? | |
-| ☐ What is the baseline for comparison? | |
-
-### 📊 Evidence Quality
-
-| Question | Your Answer |
-|----------|-------------|
-| ☐ What evidence supports my conclusions? | |
-| ☐ What information is missing from logs? | |
-| ☐ What assumptions am I making? | |
-| ☐ What is my confidence level? (High/Medium/Low) | |
-
-### 🤖 AI Evaluation
-
-| Question | Your Answer |
-|----------|-------------|
-| ☐ Did AI overgenerate or hallucinate details? | |
-| ☐ Did AI miss important patterns I identified? | |
-| ☐ Would a human SOC analyst agree with AI output? | |
-| ☐ Did AI make unsupported assumptions? | |
-
-### ⚖️ Governance & Professional Judgment
-
-| Question | Your Answer |
-|----------|-------------|
-| ☐ Is human approval required for this decision? | |
-| ☐ Is AI appropriate for this type of decision? | |
-| ☐ Can this decision be audited and explained? | |
-| ☐ Have I maintained human accountability? | |
-
----
+| Category | Key Questions |
+|----------|---------------|
+| **🔍 Log Understanding** | What is normal behavior? What patterns are abnormal? What is the baseline? |
+| **📊 Evidence Quality** | What evidence supports my conclusions? What information is missing? What assumptions am I making? What is my confidence level? |
+| **🤖 AI Evaluation** | Did AI overgenerate or hallucinate? Did AI miss patterns I identified? Would a human SOC analyst agree? Did AI make unsupported assumptions? |
+| **⚖️ Governance** | Is human approval required? Is AI appropriate for this decision? Can this be audited? Have I maintained human accountability? |
 
 ---
 
 ## 📤 Submission Requirements
 
-### Format
-
 **Submit ONE document via Canvas:**
-- **Accepted formats:** PDF or Word (.docx)
-- **File naming:** `LastName_FirstName_SecurityX_Lab.pdf`
-- **Submission deadline:** See Canvas
+- Format: PDF or Word (.docx)
+- File naming: `LastName_FirstName_SecurityX_Lab.pdf`
+- Deadline: See Canvas
 
-### Required Content Checklist
+**Required Content for Each Task (1-4):**
 
-**Your submission MUST include all of the following:**
+Dataset information (name, link, description) • Human-written summary (5-10 log entries, NOT raw logs) • AI-assisted analysis summary • Critical evaluation (your assessment vs AI) • SecurityX terminology (required count per task) • Professional recommendations
 
-#### ✅ For Each Task (1-4):
-
-| Section | Requirement |
-|---------|-------------|
-| 📂 **Dataset Information** | Name, link, and brief description of dataset used |
-| ✍️ **Human-Written Summary** | Your analysis of 5-10 log entries (NOT raw logs) |
-| 🤖 **AI-Assisted Analysis** | Summary of what AI tool concluded |
-| 🎯 **Critical Evaluation** | Your professional assessment - agree/disagree with AI |
-| 📋 **SecurityX Terminology** | Use required number of SecurityX terms appropriately |
-| 💼 **Professional Recommendations** | Next steps, governance controls, or security improvements |
-
-#### ✅ Overall Requirements:
-
-☐ All 4 tasks completed  
-☐ SecurityX-level reasoning demonstrated  
-☐ Proper citation of datasets  
-☐ Human-in-the-loop governance maintained  
-☐ Professional writing and formatting  
-☐ No raw log pasting violations  
+**Overall Requirements:** All 4 tasks completed • SecurityX-level reasoning • Proper dataset citations • Human-in-the-loop governance • Professional formatting • No raw log violations  
 
 ---
 
-## 📊 Grading Rubric
+## 📊 Grading Rubric (15 Points Total)
 
-**Maximum Score: 15 Points**
-
-| Task | Points | Evaluation Criteria |
-|:----:|:------:|---------------------|
-| **Task 1** | 4 pts | Security log analysis quality, SecurityX terminology, critical thinking |
+| Task | Points | Focus |
+|:----:|:------:|-------|
+| **Task 1** | 4 pts | Security log analysis, SecurityX terminology, critical thinking |
 | **Task 2** | 4 pts | Phishing analysis depth, AI evaluation, defense recommendations |
 | **Task 3** | 3 pts | IAM risk assessment, Zero Trust application, human approval justification |
 | **Task 4** | 4 pts | AI governance understanding, risk assessment, professional judgment |
 
-### Detailed Grading Focus
+**High Marks:** SecurityX-level reasoning • Critical AI evaluation • Evidence-based conclusions • Proper governance principles • Correct terminology usage • Actionable recommendations
 
-#### ✅ What Earns High Marks:
-
-- **SecurityX-level professional reasoning** (not just technical descriptions)
-- **Critical evaluation of AI output** (identifying limitations, biases, errors)
-- **Evidence-based conclusions** (separating facts from assumptions)
-- **Proper governance principles** (human-in-the-loop, accountability, auditability)
-- **Appropriate terminology usage** (SecurityX keywords used correctly in context)
-- **Actionable recommendations** (specific, realistic next steps)
-
-#### ❌ What Results in Point Deductions:
-
-- Pasting raw logs (automatic failure)
-- Using unauthorized AI tools
-- Accepting AI output without critical analysis
-- Missing SecurityX terminology requirements
-- Lack of professional judgment
-- Shallow or generic responses
-- Poor documentation of analysis process
+**Point Deductions:** Raw logs (automatic failure) • Unauthorized AI tools • Uncritical acceptance of AI output • Missing terminology • Lack of professional judgment • Shallow responses • Poor documentation
 
 ---
 
 ## 🔑 Final Reminders
 
-```
-╔════════════════════════════════════════════════════════════╗
-║           SecurityX Professional Assessment                ║
-║                                                            ║
-║  You are evaluated on:                                     ║
-║  ✓ Professional judgment and reasoning                     ║
-║  ✓ Governance and compliance awareness                     ║
-║  ✓ Critical thinking about AI limitations                  ║
-║  ✓ Human accountability in decision-making                 ║
-║                                                            ║
-║  You are NOT evaluated on:                                 ║
-║  ✗ What the AI produces                                    ║
-║  ✗ Volume of data analyzed                                 ║
-║  ✗ Technical complexity alone                              ║
-╚════════════════════════════════════════════════════════════╝
-```
+> **SecurityX Professional Assessment**
+>
+> **You ARE evaluated on:** Professional judgment • Governance awareness • Critical thinking about AI limitations • Human accountability
+>
+> **You are NOT evaluated on:** What AI produces • Volume of data • Technical complexity alone
 
-**Key Principle:** This lab tests your ability to use AI **as a tool** while maintaining **human professional judgment** - exactly what SecurityX-level professionals do in real SOC environments.
-
----
+**Key Principle:** This lab tests your ability to use AI as a tool while maintaining human professional judgment - exactly what SecurityX-level professionals do in real SOC environments.
 
 **Questions?** Contact your instructor via Canvas or during lab hours.
