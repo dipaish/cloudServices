@@ -30,7 +30,8 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ---
 
-## 🎯 CompTIA SecurityX Alignment
+<details>
+<summary><h2 style="display: inline;">🎯 CompTIA SecurityX Alignment</h2></summary>
 
 > ⚠️ **IMPORTANT:** This lab is explicitly aligned with **CompTIA SecurityX (advanced security practitioner)** objectives. You must demonstrate SecurityX-style reasoning and professional terminology in all responses.
 
@@ -46,9 +47,12 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 **📍 Assessment Requirement:** Each task response must include SecurityX-level reasoning, appropriate terminology, and professional judgment.
 
+</details>
+
 ---
 
-## 🔐 Lab Setup & Access
+<details>
+<summary><h2 style="display: inline;">🔐 Lab Setup & Access</h2></summary>
 
 ### Video Guide
 
@@ -59,9 +63,12 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 1. **Hugging Face Account** (free): Sign up at https://huggingface.co/join using your Laurea email
 2. **AI Tool Access**: Use ONLY the course-provided AI Space (link in Canvas). Using unauthorized tools = automatic disqualification.
 
+</details>
+
 ---
 
-## 📂 Approved Public Datasets
+<details>
+<summary><h2 style="display: inline;">📂 Approved Public Datasets</h2></summary>
 
 > **Requirement:** You must use **at least ONE** dataset from the approved list below.
 
@@ -73,9 +80,12 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 | 📧 **Email & Phishing** | **Phishing Email Dataset** | Labeled phishing and legitimate emails | Phishing detection, social engineering analysis, email security patterns | https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset |
 | 📧 **Email & Phishing** | **Enron Email Dataset** | Public historical email corpus | Email pattern analysis, communication security research | https://www.cs.cmu.edu/~enron/ |
 
+</details>
+
 ---
 
-## ⚠️ CRITICAL GOVERNANCE RULE
+<details open>
+<summary><h2 style="display: inline;">⚠️ CRITICAL GOVERNANCE RULE</h2></summary>
 
 > **⛔ AUTOMATIC FAILURE**  
 > **Do NOT paste raw log files directly into the AI tool**
@@ -104,9 +114,12 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 - Using AI to suggest additional investigation steps
 - Comparing your conclusions with AI-generated insights
 
+</details>
+
 ---
 
-## 🧪 Task Workflow: Step-by-Step Process
+<details open>
+<summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary>
 
 **STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI**
 
@@ -173,6 +186,8 @@ Before using AI, write your own professional analysis using this template:
 | Would a human SOC analyst agree with AI? | |
 | When would you override AI's recommendation? | |
 
+</details>
+
 ---
 
 ## 📝 Lab Tasks (15 Points Total)
@@ -181,9 +196,10 @@ Before using AI, write your own professional analysis using this template:
 
 ---
 
-## 🔹 Task 1: Security Log Analysis
+<details>
+<summary><h2 style="display: inline;">🔹 Task 1: Security Log Analysis (4 pts)</h2></summary>
 
-**📊 Points:** 4 | **🎯 Domain:** Threat Detection & Incident Response
+**🎯 Domain:** Threat Detection & Incident Response
 
 ### Objective
 
@@ -224,9 +240,12 @@ Using **network or authentication logs**, analyse a potential security incident 
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final professional judgment using required terminology
 
-## 🔹 Task 2: Email & Phishing Analysis
+</details>
 
-**📊 Points:** 4 | **🎯 Domain:** Social Engineering & Threat Analysis
+<details>
+<summary><h2 style="display: inline;">🔹 Task 2: Email & Phishing Analysis (4 pts)</h2></summary>
+
+**🎯 Domain:** Social Engineering & Threat Analysis
 
 ### Objective
 
@@ -266,9 +285,12 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final recommendations using required terminology
 
-## 🔹 Task 3: Identity & Access Log Analysis
+</details>
 
-**📊 Points:** 3 | **🎯 Domain:** Identity, Access & Privilege Management
+<details>
+<summary><h2 style="display: inline;">🔹 Task 3: Identity & Access Log Analysis (3 pts)</h2></summary>
+
+**🎯 Domain:** Identity, Access & Privilege Management
 
 ### Objective
 
@@ -308,9 +330,12 @@ Analyse Identity and Access Management (IAM) logs to identify potential account 
 5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
 6. **SecurityX Assessment:** Your final judgment on risk and human approval needs
 
-## 🔹 Task 4: AI Governance & Risk Evaluation
+</details>
 
-**📊 Points:** 4 | **🎯 Domain:** Governance, Risk & Compliance (GRC) + Emerging Technologies
+<details>
+<summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (4 pts)</h2></summary>
+
+**🎯 Domain:** Governance, Risk & Compliance (GRC) + Emerging Technologies
 
 ### Objective
 
@@ -364,9 +389,12 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 | **🤖 AI Evaluation** | Did AI overgenerate or hallucinate? Did AI miss patterns I identified? Would a human SOC analyst agree? Did AI make unsupported assumptions? |
 | **⚖️ Governance** | Is human approval required? Is AI appropriate for this decision? Can this be audited? Have I maintained human accountability? |
 
+</details>
+
 ---
 
-## 📤 Submission Requirements
+<details open>
+<summary><h2 style="display: inline;">📤 Submission Requirements</h2></summary>
 
 **Submit ONE document via Canvas:**
 - Format: PDF or Word (.docx)
@@ -379,9 +407,12 @@ Dataset information (name, link, description) • Human-written summary (5-10 lo
 
 **Overall Requirements:** All 4 tasks completed • SecurityX-level reasoning • Proper dataset citations • Human-in-the-loop governance • Professional formatting • No raw log violations  
 
+</details>
+
 ---
 
-## 📊 Grading Rubric (15 Points Total)
+<details>
+<summary><h2 style="display: inline;">📊 Grading Rubric (15 Points Total)</h2></summary>
 
 | Task | Points | Focus |
 |:----:|:------:|-------|
@@ -393,6 +424,8 @@ Dataset information (name, link, description) • Human-written summary (5-10 lo
 **High Marks:** SecurityX-level reasoning • Critical AI evaluation • Evidence-based conclusions • Proper governance principles • Correct terminology usage • Actionable recommendations
 
 **Point Deductions:** Raw logs (automatic failure) • Unauthorized AI tools • Uncritical acceptance of AI output • Missing terminology • Lack of professional judgment • Shallow responses • Poor documentation
+
+</details>
 
 ---
 
