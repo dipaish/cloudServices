@@ -86,16 +86,6 @@ Use ONLY the course-provided AI Space
 ────────────────────────────────────────────
 ```
 
-⚠️ **PROHIBITED Tools:**
-
-❌ Google Colab  
-❌ Kaggle notebooks  
-❌ Local AI installations  
-❌ ChatGPT, Claude, or any other AI tools  
-❌ Custom scripts or environments  
-
-**Reason:** Using unauthorized tools violates lab governance requirements and will result in **automatic disqualification**.
-
 ---
 
 ## 📂 Approved Public Datasets
@@ -184,72 +174,86 @@ Use ONLY the course-provided AI Space
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  STEP 1: Human Analysis → STEP 2: Summarise → STEP 3: AI   │
+│  STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### 🔍 Step 1: Review the Dataset (Human Analysis)
+### 🔍 Step 1: Manual Dataset Review
 
 **Your Actions:**
 
-✅ Download and open the dataset  
-✅ Identify suspicious activity and anomalies  
-✅ Understand normal vs abnormal patterns  
-✅ Select 5-10 representative log entries  
-✅ Document your initial observations  
+1. Download and open your chosen dataset
+2. Review the data to understand normal vs abnormal patterns
+3. Identify suspicious activity and anomalies
+4. Select 5-10 representative entries that illustrate the pattern
+5. Document your observations
 
-**Questions to Ask:**
-- What stands out as unusual?
-- Are there patterns in timing, IPs, or user behavior?
-- What context is available?
-- What information is missing?
-
----
-
-### ✍️ Step 2: Create a Log Summary (Human-Written)
-
-**Your Summary Should Include:**
-
-| Element | Description |
-|---------|-------------|
-| **Pattern** | What abnormal behavior did you observe? |
-| **Frequency** | How many times did it occur? |
-| **Timing** | When did it happen? (timeframe, duration) |
-| **Context** | Additional relevant details (user roles, IP addresses, etc.) |
-| **Severity** | Your initial assessment of risk level |
-
-**Example Summary:**
-
-```
-📋 Authentication Log Summary:
-
-• 18 failed login attempts from IP 192.168.1.45
-• All attempts occurred within 3-minute window
-• Successful login followed the failed attempts
-• Target account has administrator privileges
-• Attempts used different passwords (brute-force pattern)
-• No MFA challenge recorded
-• Time: 2:15 AM - 2:18 AM (off-hours)
-```
+**Key Questions:**
+- What behavior is unusual?
+- What patterns emerge?
+- What context or information is missing?
 
 ---
 
-### 🤖 Step 3: Use the AI Space (Decision Support)
+### ✍️ Step 2: Write Your Summary & Analysis
 
-**Your Actions:**
+**Part A: Create Log Summary**
 
-1️⃣ Paste **your summary only** (not raw logs)  
-2️⃣ Review AI-generated output  
-3️⃣ **Critically evaluate** AI conclusions  
-4️⃣ Compare with your own analysis  
-5️⃣ Document agreements and disagreements  
+Write a concise summary of what you observed (5-10 bullet points):
+- What happened?
+- How many times?
+- When (timing/duration)?
+- Who/what was involved?
+- Any relevant context?
 
-**Critical Evaluation Questions:**
-- Did AI identify the same risks you did?
-- Did AI miss any important details?
-- Did AI make unsupported assumptions?
-- Is AI output realistic for this scenario?
-- Would a human SOC analyst agree?
+**Part B: Document YOUR Analysis (CRITICAL - Do This Before AI)**
+
+Before using AI, write your own professional analysis:
+
+```
+📝 Template for Your Analysis:
+
+Security Assessment: [HIGH/MEDIUM/LOW RISK] - [Your conclusion]
+
+Evidence:
+• [What patterns indicate this?]
+• [What specific details support your conclusion?]
+• [What makes this suspicious?]
+
+Concerns/Gaps:
+• [What information is missing?]
+• [What assumptions are you making?]
+• [What needs further investigation?]
+
+Recommendations:
+1. [Immediate action needed?]
+2. [Follow-up investigation steps?]
+3. [Prevention measures?]
+```
+
+**Why This Matters:** You need your own documented analysis BEFORE using AI so you can compare and critically evaluate AI's conclusions. This demonstrates human-in-the-loop governance.
+
+---
+
+### 🤖 Step 3: Use AI & Critically Evaluate
+
+**Process:**
+
+1️⃣ Paste **your summary only** (Part A from Step 2) into the approved AI tool  
+2️⃣ Review what the AI concludes  
+3️⃣ **Compare** AI output with YOUR analysis (Part B from Step 2)  
+4️⃣ **Document the comparison** - where you agree, disagree, and why  
+
+**Critical Evaluation Framework:**
+
+| Question | Your Answer |
+|----------|-------------|
+| Did AI reach the same conclusions as you? | |
+| Did AI identify risks you missed? | |
+| Did AI miss risks you identified? | |
+| Did AI make unsupported assumptions or hallucinate? | |
+| Would a human SOC analyst agree with AI? | |
+| When would you override AI's recommendation? | |
 
 ---
 
@@ -299,12 +303,14 @@ Using **network or authentication logs**, analyse a potential security incident 
 
 ### What to Submit
 
-1. **Dataset Used:** Name and link
-2. **Your Log Summary:** 5-10 representative entries analyzed (human-written)
-3. **Your Initial Analysis:** What patterns did you identify?
-4. **AI-Assisted Analysis:** What did the AI tool conclude?
-5. **Critical Evaluation:** Do you agree with AI? Why or why not?
-6. **SecurityX Assessment:** Professional judgment on incident severity and next steps
+**Follow the 3-step workflow, then submit:**
+
+1. **Dataset:** Name and link to the dataset you used
+2. **Your Summary:** The human-written log summary (Step 2, Part A)
+3. **Your Analysis:** Your documented analysis BEFORE using AI (Step 2, Part B)
+4. **AI Output:** Summary of what the AI tool concluded
+5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
+6. **SecurityX Assessment:** Your final professional judgment using required terminology
 
 ---
 
@@ -345,12 +351,14 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 
 ### What to Submit
 
-1. **Dataset Used:** Name and link
-2. **Email Summary:** Analysis of 5-10 emails (phishing and legitimate)
-3. **Phishing Indicators:** What red flags did you identify?
-4. **AI Classification:** How did AI classify these emails?
-5. **Critical Evaluation:** Did AI miss any indicators? False positives?
-6. **SecurityX Assessment:** Recommendations for layered email security controls
+**Follow the 3-step workflow, then submit:**
+
+1. **Dataset:** Name and link to the dataset you used
+2. **Your Summary:** Human-written summary of 5-10 emails (Step 2, Part A)
+3. **Your Analysis:** Phishing indicators and risks YOU identified (Step 2, Part B)
+4. **AI Output:** How AI classified the emails and what it concluded
+5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
+6. **SecurityX Assessment:** Your final recommendations using required terminology
 
 ---
 
@@ -362,20 +370,7 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 
 ### Objective
 
-Analyse Identity and Access Management (IAM) logs to identify potential account compromise or privilege abuse.
-
-### Example Log Summary Format
-
-```
-🔑 IAM Log Summary:
-
-• User logged in from Sweden at 09:15 UTC
-• Same user logged in from Singapore at 09:40 UTC (25 min later)
-• MFA challenge not completed for Singapore login
-• Sensitive internal resources accessed after Singapore login
-• Account has elevated privileges (admin role)
-• No travel notification on file
-```
+Analyse Identity and Access Management (IAM) logs to identify potential account compromise or privilege abuse. Look for patterns like impossible travel, privilege escalation, or suspicious access to sensitive resources.
 
 ### SecurityX Learning Outcomes
 
@@ -404,12 +399,14 @@ Analyse Identity and Access Management (IAM) logs to identify potential account 
 
 ### What to Submit
 
-1. **Dataset Used:** Name and link
-2. **IAM Log Summary:** Analysis of suspicious access patterns
-3. **Risk Assessment:** What identity risks did you identify?
-4. **AI Analysis:** What did AI conclude about the activity?
-5. **Zero Trust Application:** How would Zero Trust principles apply?
-6. **SecurityX Assessment:** Should this require human approval? Why?
+**Follow the 3-step workflow, then submit:**
+
+1. **Dataset:** Name and link to the dataset you used
+2. **Your Summary:** Human-written summary of IAM activity (Step 2, Part A)
+3. **Your Analysis:** Identity risks and Zero Trust concerns YOU identified (Step 2, Part B)
+4. **AI Output:** What AI concluded about the suspicious activity
+5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
+6. **SecurityX Assessment:** Your final judgment on risk and human approval needs
 
 ---
 
@@ -453,12 +450,14 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 
 ### What to Submit
 
-1. **AI Risk Assessment:** What risks did you observe when using AI for log analysis?
-2. **Hallucination Examples:** Did AI make any unsupported claims or assumptions?
-3. **Governance Controls:** What policies would you implement for AI use in SOC?
-4. **Human-in-the-Loop:** When should humans override AI recommendations?
-5. **Auditability Requirements:** How would you document AI-assisted decisions?
-6. **SecurityX Assessment:** Professional recommendations for responsible AI use in cybersecurity
+**This task evaluates your entire lab experience:**
+
+1. **AI Risk Assessment:** What risks did you observe when using AI across all tasks?
+2. **Hallucination Examples:** Did AI make unsupported claims? (cite specific examples from Tasks 1-3)
+3. **Critical Evaluation:** Where did AI excel? Where did it fail? Use Step 3 framework
+4. **Governance Controls:** What policies would you implement for AI use in SOC?
+5. **Human-in-the-Loop:** When should humans override AI? (use examples from your tasks)
+6. **SecurityX Assessment:** Professional recommendations for responsible AI governance
 
 ---
 
