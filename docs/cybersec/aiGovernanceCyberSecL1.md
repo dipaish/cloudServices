@@ -30,7 +30,7 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ---
 
-<details>
+<details markdown="1" >
 <summary><h2 style="display: inline;">🎯 CompTIA SecurityX Alignment</h2></summary>
 
 > ⚠️ **IMPORTANT:** This lab is explicitly aligned with **CompTIA SecurityX (advanced security practitioner)** objectives. You must demonstrate SecurityX-style reasoning and professional terminology in all responses.
@@ -51,7 +51,7 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ---
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">🔐 Lab Setup & Access</h2></summary>
 
 ### Video Guide
@@ -67,7 +67,7 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 
 ---
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">📂 Approved Public Datasets</h2></summary>
 
 > **Requirement:** You must use **at least ONE** dataset from the approved list below.
@@ -84,7 +84,7 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 
 ---
 
-<details open>
+<details open markdown="1">
 <summary><h2 style="display: inline;">⚠️ CRITICAL GOVERNANCE RULE</h2></summary>
 
 > **⛔ AUTOMATIC FAILURE**  
@@ -118,7 +118,7 @@ A short instructional video (link in Canvas) covers: AI Space access, log summar
 
 ---
 
-<details open>
+<details open markdown="1">
 <summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary>
 
 **STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI**
@@ -196,7 +196,7 @@ Before using AI, write your own professional analysis using this template:
 
 ---
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 1: Security Log Analysis (4 pts)</h2></summary>
 
 **🎯 Domain:** Threat Detection & Incident Response
@@ -242,7 +242,7 @@ Using **network or authentication logs**, analyse a potential security incident 
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 2: Email & Phishing Analysis (4 pts)</h2></summary>
 
 **🎯 Domain:** Social Engineering & Threat Analysis
@@ -287,7 +287,7 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 3: Identity & Access Log Analysis (3 pts)</h2></summary>
 
 **🎯 Domain:** Identity, Access & Privilege Management
@@ -332,7 +332,7 @@ Analyse Identity and Access Management (IAM) logs to identify potential account 
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (4 pts)</h2></summary>
 
 **🎯 Domain:** Governance, Risk & Compliance (GRC) + Emerging Technologies
@@ -393,7 +393,7 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 
 ---
 
-<details open>
+<details open markdown="1">
 <summary><h2 style="display: inline;">📤 Submission Requirements</h2></summary>
 
 **Submit ONE document via Canvas:**
@@ -411,7 +411,7 @@ Dataset information (name, link, description) • Human-written summary (5-10 lo
 
 ---
 
-<details>
+<details markdown="1">
 <summary><h2 style="display: inline;">📊 Grading Rubric (15 Points Total)</h2></summary>
 
 | Task | Points | Focus |
