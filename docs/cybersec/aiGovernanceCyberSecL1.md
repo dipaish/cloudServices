@@ -1,10 +1,6 @@
 # AI, Governance & Cybersecurity Lab
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  🎯 CompTIA SecurityX Aligned  │  📊 15 Points  │  👤 Individual │
-└─────────────────────────────────────────────────────────────────┘
-```
+**🎯 CompTIA SecurityX Aligned  │  📊 15 Points  │  👤 Individual**
 
 ---
 
@@ -78,13 +74,12 @@ This lab reflects **real Security Operations Centre (SOC) workflows**, where ana
 
 ### Step 2: Access AI Tool (MANDATORY)
 
-```
-🤖 APPROVED AI TOOL ONLY
-────────────────────────────────────────────
-Use ONLY the course-provided AI Space
-📍 Link provided in Canvas
-────────────────────────────────────────────
-```
+**🤖 APPROVED AI TOOL ONLY**
+
+> Use ONLY the course-provided AI Space  
+> 📍 Link provided in Canvas
+
+**⚠️ Using unauthorized tools = automatic disqualification**
 
 ---
 
@@ -92,46 +87,13 @@ Use ONLY the course-provided AI Space
 
 > **Requirement:** You must use **at least ONE** dataset from the approved list below.
 
-### Dataset Categories
-
-#### 🌐 Network & Attack Logs
-
-| Dataset | Description | Link |
-|---------|-------------|------|
-| **CICIDS** | Canadian Institute for Cybersecurity - comprehensive network intrusion datasets | https://www.unb.ca/cic/datasets/ |
-
-**Use Cases:** DDoS detection, network anomalies, intrusion attempts, traffic analysis
-
----
-
-#### 🔑 Authentication & Insider Threat Logs
-
-| Dataset | Description | Link |
-|---------|-------------|------|
-| **CERT Insider Threat** | SEI/CMU synthetic insider threat scenarios | https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=508099 |
-
-**Use Cases:** Failed logins, privilege escalation, suspicious access patterns, account compromise
-
----
-
-#### 🛡️ SOC & Network Metadata
-
-| Dataset | Description | Link |
-|---------|-------------|------|
-| **Security Onion / Zeek** | Real-world SOC sample logs and network metadata | https://github.com/Security-Onion-Solutions/securityonion-sample-data |
-
-**Use Cases:** Network monitoring, protocol analysis, connection patterns, metadata investigation
-
----
-
-#### 📧 Email & Phishing Data
-
-| Dataset | Description | Link |
-|---------|-------------|------|
-| **Phishing Email Dataset** | Labeled phishing and legitimate emails | https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset |
-| **Enron Email Dataset** | Public historical email corpus | https://www.cs.cmu.edu/~enron/ |
-
-**Use Cases:** Phishing detection, social engineering analysis, email security patterns
+| Category | Dataset | Description | Use Cases | Link |
+|----------|---------|-------------|-----------|------|
+| 🌐 **Network & Attack** | **CICIDS** | Canadian Institute for Cybersecurity network intrusion datasets | DDoS detection, network anomalies, intrusion attempts, traffic analysis | https://www.unb.ca/cic/datasets/ |
+| 🔑 **Authentication & Insider Threat** | **CERT Insider Threat** | SEI/CMU synthetic insider threat scenarios | Failed logins, privilege escalation, suspicious access patterns, account compromise | https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=508099 |
+| 🛡️ **SOC & Network Metadata** | **Security Onion / Zeek** | Real-world SOC sample logs and network metadata | Network monitoring, protocol analysis, connection patterns, metadata investigation | https://github.com/Security-Onion-Solutions/securityonion-sample-data |
+| 📧 **Email & Phishing** | **Phishing Email Dataset** | Labeled phishing and legitimate emails | Phishing detection, social engineering analysis, email security patterns | https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset |
+| 📧 **Email & Phishing** | **Enron Email Dataset** | Public historical email corpus | Email pattern analysis, communication security research | https://www.cs.cmu.edu/~enron/ |
 
 ---
 
@@ -172,11 +134,7 @@ Use ONLY the course-provided AI Space
 
 ## 🧪 Task Workflow: Step-by-Step Process
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI   │
-└─────────────────────────────────────────────────────────────┘
-```
+**STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI**
 
 ### 🔍 Step 1: Manual Dataset Review
 
@@ -259,11 +217,7 @@ Recommendations:
 
 ## 📝 Lab Tasks (15 Points Total)
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│  Task 1: 4 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 4 pts │
-└──────────────────────────────────────────────────────────────┘
-```
+**Task 1: 4 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 4 pts**
 
 ---
 
@@ -288,18 +242,16 @@ Using **network or authentication logs**, analyse a potential security incident 
 
 **Use at least 3 of the following terms appropriately in your response:**
 
-```
-✓ Indicators of Compromise (IoCs)
-✓ Brute-force attack
-✓ Credential stuffing
-✓ Event correlation
-✓ False positives / False negatives
-✓ Incomplete telemetry
-✓ Human validation
-✓ Threat intelligence
-✓ Attack surface
-✓ Lateral movement
-```
+- Indicators of Compromise (IoCs)
+- Brute-force attack
+- Credential stuffing
+- Event correlation
+- False positives / False negatives
+- Incomplete telemetry
+- Human validation
+- Threat intelligence
+- Attack surface
+- Lateral movement
 
 ### What to Submit
 
@@ -336,18 +288,16 @@ Using public phishing and legitimate email data, analyse and compare AI classifi
 
 **Use at least 3 of the following terms appropriately in your response:**
 
-```
-✓ Social engineering
-✓ Phishing indicators
-✓ Defense in depth
-✓ User awareness training
-✓ Email security gateway
-✓ Contextual analysis
-✓ Human factor risk
-✓ Spear phishing
-✓ Pretexting
-✓ Business Email Compromise (BEC)
-```
+- Social engineering
+- Phishing indicators
+- Defense in depth
+- User awareness training
+- Email security gateway
+- Contextual analysis
+- Human factor risk
+- Spear phishing
+- Pretexting
+- Business Email Compromise (BEC)
 
 ### What to Submit
 
@@ -384,18 +334,16 @@ Analyse Identity and Access Management (IAM) logs to identify potential account 
 
 **Use at least 3 of the following terms appropriately in your response:**
 
-```
-✓ Identity and Access Management (IAM)
-✓ Privileged access
-✓ Zero Trust
-✓ Least privilege
-✓ MFA enforcement
-✓ Risk-based authentication
-✓ Human-in-the-loop
-✓ Impossible travel
-✓ Account takeover
-✓ Session hijacking
-```
+- Identity and Access Management (IAM)
+- Privileged access
+- Zero Trust
+- Least privilege
+- MFA enforcement
+- Risk-based authentication
+- Human-in-the-loop
+- Impossible travel
+- Account takeover
+- Session hijacking
 
 ### What to Submit
 
@@ -433,20 +381,18 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 
 **Use at least 4 of the following terms appropriately in your response:**
 
-```
-✓ Governance framework
-✓ Risk management
-✓ Human-in-the-loop
-✓ Auditability
-✓ Accountability
-✓ AI hallucination / confabulation
-✓ Over-reliance on automation
-✓ Data minimisation
-✓ Decision-support vs decision-making
-✓ Bias in AI models
-✓ Transparency
-✓ Explainability (XAI)
-```
+- Governance framework
+- Risk management
+- Human-in-the-loop
+- Auditability
+- Accountability
+- AI hallucination / confabulation
+- Over-reliance on automation
+- Data minimisation
+- Decision-support vs decision-making
+- Bias in AI models
+- Transparency
+- Explainability (XAI)
 
 ### What to Submit
 
