@@ -8,161 +8,240 @@
 
 This lab provides **hands-on experience with enterprise cybersecurity analysis** using **public security datasets** and **AI-assisted analysis tools**, while applying **governance, risk, and compliance (GRC) principles**.
 
-### 🏢 Real-World SOC Context
+Students act as SOC analysts, using a SIEM (Splunk) to analyse security telemetry and then critically evaluate AI-generated insights while retaining human accountability, as expected at CompTIA SecurityX level.
 
-This lab reflects **real Security Operations Centre (SOC) workflows**, where analysts:
+### Real-World SOC & GRC Context
 
-| SOC Activity | Lab Application |
-|--------------|------------------|
-| 🔍 Analyse logs and alerts | Review network, authentication, and identity logs |
-| 📊 Summarise large datasets | Create human-written summaries of security events |
-| 🤖 Use AI as decision-support | Leverage AI while maintaining critical thinking |
-| ✅ Retain human accountability | Make final judgments on security incidents |
+In enterprise SOCs, analysts must balance detection speed with governance:
+
+| SOC Responsibility | GRC Consideration |
+|-------------------|-------------------|
+| Threat detection | Evidence-based conclusions |
+| Incident analysis | Risk-based decisions |
+| Tool usage | Auditability & accountability |
+| AI assistance | Human-in-the-loop control |
+| Response actions | Compliance & oversight |
+
+> **SecurityX Principle:**  
+> Security tools and AI provide evidence and recommendations — humans retain accountability.
 
 ### 🎓 What You Will Learn
 
-✅ Analyse **security logs** (network, authentication, identity)  
-✅ Recognise **brute-force, credential misuse, and suspicious access patterns**  
-✅ Identify **phishing and social engineering indicators**  
-✅ Critically evaluate **AI-generated security analysis**  
-✅ Apply **AI governance and SecurityX-level professional judgment**  
-✅ Understand **human-in-the-loop** decision-making in cybersecurity
+By completing this lab, students will be able to:
 
----
-
-<details markdown="1" >
-<summary><h2 style="display: inline;">🎯 CompTIA SecurityX Alignment</h2></summary>
-
-> ⚠️ **IMPORTANT:** This lab is explicitly aligned with **CompTIA SecurityX (advanced security practitioner)** objectives. You must demonstrate SecurityX-style reasoning and professional terminology in all responses.
-
-### SecurityX Domains Covered
-
-| Domain | Focus Area |
-|--------|------------|
-| 🚨 **Threat Detection & Incident Response** | Analyse security telemetry, identify IoCs, assess threat patterns |
-| 🔐 **Identity, Access & Privilege Management** | Evaluate IAM logs, apply Zero Trust principles, assess privilege risks |
-| 🎣 **Social Engineering & Email Security** | Identify phishing indicators, evaluate defense layers |
-| 📋 **Governance, Risk & Compliance (GRC)** | Apply governance frameworks, assess AI-specific risks |
-| 🤖 **Emerging Technologies** | Critical evaluation of AI tools, human-in-the-loop decision-making |
-
-**📍 Assessment Requirement:** Each task response must include SecurityX-level reasoning, appropriate terminology, and professional judgment.
-
-</details>
-
----
+- Analyse enterprise security telemetry using a SIEM
+- Identify suspicious activity across host, identity, and email logs
+- Distinguish **evidence-based findings** from assumptions
+- Apply **risk classification** (LOW / MEDIUM / HIGH)
+- Use AI responsibly as **decision support**
+- Critically evaluate AI output for governance risk
+- Demonstrate **SecurityX-level professional judgment**
 
 <details markdown="1">
-<summary><h2 style="display: inline;">🔐 Lab Setup & Access</h2></summary>
+<summary><h2 style="display: inline;">🔐 Lab Environment & Access (Pre-Configured)</h2></summary>
+<br>
 
-### Video Guide
+This lab uses **Splunk Enterprise** as a Security Information and Event Management (SIEM) platform to simulate real-world SOC workflows.
 
-A short instructional video (link in Canvas) covers: AI Space access, log summarization, governance requirements, and SecurityX-level responses.
+The environment is **pre-configured by the instructor**. Students **do NOT upload datasets themselves**.
 
-### Required Accounts
+<br>
 
-1. **Hugging Face Account** (free): Sign up at https://huggingface.co/join using your Laurea email
-2. **AI Tool Access**: Use ONLY the course-provided AI Space (link in Canvas). Using unauthorized tools = automatic disqualification.
 
-</details>
+| Dataset | Format | Purpose | Used In |
+|---------|--------|---------|---------|
+| Sysmon Windows Logs | JSON | Host, process, registry activity | Task 1, Task 3 |
+| Phishing Email Dataset | CSV | Social engineering & phishing | Task 2 |
+| CERT Insider Threat (logon.csv) | CSV | Authentication & access behaviour | Task 3 |
 
----
+**Splunk Index:** `securityx_lab`
 
-<details markdown="1">
-<summary><h2 style="display: inline;">📂 Approved Public Datasets</h2></summary>
+### Student Access
 
-> **Requirement:** You must use **at least ONE** dataset from the approved list below.
-
-| Category | Dataset | Description | Use Cases | Link |
-|----------|---------|-------------|-----------|------|
-| 🌐 **Network & Attack** | **CICIDS** | Canadian Institute for Cybersecurity network intrusion datasets | DDoS detection, network anomalies, intrusion attempts, traffic analysis | https://www.unb.ca/cic/datasets/ |
-| 🔑 **Authentication & Insider Threat** | **CERT Insider Threat** | SEI/CMU synthetic insider threat scenarios | Failed logins, privilege escalation, suspicious access patterns, account compromise | https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=508099 |
-| 🛡️ **SOC & Network Metadata** | **Security Onion / Zeek** | Real-world SOC sample logs and network metadata | Network monitoring, protocol analysis, connection patterns, metadata investigation | https://github.com/Security-Onion-Solutions/securityonion-sample-data |
-| 📧 **Email & Phishing** | **Phishing Email Dataset** | Labeled phishing and legitimate emails | Phishing detection, social engineering analysis, email security patterns | https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset |
-| 📧 **Email & Phishing** | **Enron Email Dataset** | Public historical email corpus | Email pattern analysis, communication security research | https://www.cs.cmu.edu/~enron/ |
+- Students access Splunk using **course-provided credentials**
+- Access is **read-only**
+- This reflects real SOC analyst permissions.
 
 </details>
 
 ---
-
 <details open markdown="1">
-<summary><h2 style="display: inline;">⚠️ CRITICAL GOVERNANCE RULE</h2></summary>
+<summary><h2 style="display: inline;">🧭 Getting Started with Splunk (First-Time Users)</h2></summary>
 
-> **⛔ AUTOMATIC FAILURE**  
-> **Do NOT paste raw log files directly into the AI tool**
+### What is Splunk?
 
-### Required Process (Human-in-the-Loop)
+Splunk is a **Security Information and Event Management (SIEM)** platform used in enterprise SOCs to:
 
-| Step | Action | Why |
-|:----:|--------|-----|
-| **1** | 🧑 **Analyse logs yourself** | Develop your security analysis skills |
-| **2** | 🎯 **Select 5-10 representative entries** | Focus on meaningful patterns |
-| **3** | ✍️ **Write human-created summary** | Demonstrate your understanding |
-| **4** | 🤖 **Use AI for decision support only** | AI assists but doesn't replace judgment |
+- Collect and index security logs
+- Search and filter large volumes of events
+- Correlate activity across systems
+- Support incident detection and investigation
 
-### ❌ Violations That Result in Automatic Failure
+In this lab, you will use Splunk **as a SOC analyst**, not as an administrator.
 
-- Pasting entire raw log files into AI tool
-- Letting AI do initial analysis without human review
-- Submitting AI output without critical evaluation
-- Using unauthorized AI tools
-- Copying log summaries from online sources
+> **Important:** You are analysing *evidence*, not configuring Splunk.
 
-### ✅ Acceptable AI Usage
+---
 
-- Using AI to validate your analysis after you've completed it
-- Asking AI to explain specific technical concepts
-- Using AI to suggest additional investigation steps
-- Comparing your conclusions with AI-generated insights
+### Splunk Interface Basics (What You Need for This Lab)
+
+| Splunk Feature | What You Will Use It For | Example |
+|---------------|--------------------------|---------|
+| **Search Bar** | Run SPL searches to find patterns | Search for failed logins |
+| **Time Picker** | Adjust time range of events | Last 24 hours, last 7 days |
+| **Events View** | Read individual log entries | See detailed authentication logs |
+| **Statistics** | Count, group, and compare events | Count login attempts per user |
+
+You do **not** need dashboards, alerts, or apps for this lab.
+
+---
+
+### Basic SPL (Search Processing Language)
+
+SPL is how you query data in Splunk.  
+Think of it as **“search → filter → summarize”**.
+
+**Examples you will use:**
+
+#### Essential SPL Queries for This Lab
+
+**1️⃣ View All Lab Data**
+```spl
+index=securityx_lab
+```
+*Shows all events in the lab dataset. Use this to get familiar with available data.*
+
+---
+
+**2️⃣ Identify Data Sources**
+```spl
+index=securityx_lab 
+| stats count by sourcetype
+```
+*Lists all log types available (Sysmon, email, IAM). Helps you understand what data you have.*
+
+**Example Output:**
+- `sysmon:json` (15,432 events)
+- `email:csv` (2,891 events)
+- `iam:csv` (8,764 events)
+
+---
+
+**3️⃣ Analyse User Authentication Patterns**
+```spl
+index=securityx_lab sourcetype=iam:csv 
+| stats count by user 
+| sort - count
+```
+*Counts login attempts per user. Useful for identifying accounts with unusual activity.*
+
+**Example Use Case:** Detect brute-force attempts (one user with 500+ failed logins).
+
+---
+
+**4️⃣ Search for Specific Keywords**
+```spl
+index=securityx_lab "failed login" OR "authentication failure"
+```
+*Finds events containing specific phrases. Useful for investigating security incidents.*
+
+---
+
+**5️⃣ Filter by Time and Specific User**
+```spl
+index=securityx_lab sourcetype=iam:csv user="john.doe" 
+earliest=-7d@d latest=now
+```
+*Shows all activity for user "john.doe" in the last 7 days. Essential for investigating specific accounts.*
+
+---
+
+**6️⃣ Identify Process Execution (Sysmon)**
+```spl
+index=securityx_lab sourcetype=sysmon:json EventCode=1 
+| stats count by Image 
+| sort - count
+```
+*Lists all processes that executed on Windows hosts. Helps identify suspicious programs.*
+
+**Example Output:**
+- `C:\Windows\System32\cmd.exe` (234 executions)
+- `C:\Windows\System32\powershell.exe` (89 executions)
+- `C:\Temp\malware.exe` (1 execution) ⚠️
+
+---
+
+> **Remember:** You are **not graded on SPL complexity** — only on your **security reasoning and analysis**.  
+> Basic searches are sufficient. Focus on **understanding what the logs tell you**.
+
+---
+
+### 📚 Learning More About Splunk (Optional)
+
+If you are new to Splunk, these official resources can help:
+
+| Resource | Purpose | Link |
+|----------|---------|------|
+| 🔗 **Splunk Search Fundamentals** | Learn basic SPL syntax and search concepts | [Tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) |
+| 🔗 **SPL Quick Reference** | Command reference and syntax guide | [Documentation](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/WhatsInThisManual) |
+| 🔗 **Splunk Free Training** | Video courses for beginners | [Training Portal](https://www.splunk.com/en_us/training/free-courses/overview.html) |
+
+**Note:** You are **not required** to complete these courses. They are provided as optional resources for students who want to learn more.
 
 </details>
 
 ---
 
-<details open markdown="1">
-<summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary>
+<summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary><br>
 
-**STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI**
+**STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI → STEP 4: Governance Judgment**
 
-### 🔍 Step 1: Manual Dataset Review
+---
+
+### 🔍 Step 1: Manual Security Analysis (Splunk)
 
 **Your Actions:**
 
-1. Download and open your chosen dataset
-2. Review the data to understand normal vs abnormal patterns
-3. Identify suspicious activity and anomalies
-4. Select 5-10 representative entries that illustrate the pattern
-5. Document your observations
+1. Access the preloaded datasets in **Splunk**
+2. Review logs to understand **normal vs abnormal behavior**
+3. Identify suspicious patterns or anomalies
+4. Select **5–10 representative events** that best illustrate the pattern
+5. Document your observations using evidence from SPL searches
 
 **Key Questions:**
-- What behavior is unusual?
-- What patterns emerge?
-- What context or information is missing?
+- What behavior appears unusual or risky?
+- What patterns or repetitions emerge?
+- What context or data is missing?
 
 ---
 
-### ✍️ Step 2: Write Your Summary & Analysis
+### ✍️ Step 2: Write Your Summary & Analysis (Before AI)
 
-**Part A: Create Log Summary**
+#### **Part A: Human Log Summary**
 
-Write a concise summary of what you observed (5-10 bullet points):
+Write a concise summary (5–10 bullet points):
 - What happened?
-- How many times?
-- When (timing/duration)?
-- Who/what was involved?
-- Any relevant context?
+- How frequently did it occur?
+- When did it occur (timing/duration)?
+- Who or what was involved?
+- What contextual details matter?
 
-**Part B: Document YOUR Analysis (CRITICAL - Do This Before AI)**
+#### **Part B: Your Professional Analysis (CRITICAL)**
 
-Before using AI, write your own professional analysis using this template:
+Complete this **before using AI**.
 
-**📝 Your Analysis Template:**
+**📝 Analysis Template:**
 
-- **Security Assessment:** [HIGH/MEDIUM/LOW RISK] - [Your conclusion]
-- **Evidence:** What patterns indicate this? What specific details support your conclusion? What makes this suspicious?
-- **Concerns/Gaps:** What information is missing? What assumptions are you making? What needs further investigation?
-- **Recommendations:** 1) Immediate action needed? 2) Follow-up investigation steps? 3) Prevention measures?
+- **Security Assessment:** LOW / MEDIUM / HIGH risk  
+- **Evidence:** Which events or patterns support this assessment?  
+- **Assumptions & Gaps:** What cannot be concluded? What data is missing?  
+- **Recommendations:**  
+  1) Immediate action (if any)  
+  2) Follow-up investigation steps  
+  3) Preventive or governance controls  
 
-**Why This Matters:** You need your own documented analysis BEFORE using AI so you can compare and critically evaluate AI's conclusions. This demonstrates human-in-the-loop governance.
+**Why This Matters:**  
+SecurityX-level professionals must demonstrate **independent judgment** before consulting AI. This is a core **human-in-the-loop governance requirement**.
 
 ---
 
@@ -170,10 +249,10 @@ Before using AI, write your own professional analysis using this template:
 
 **Process:**
 
-1️⃣ Paste **your summary only** (Part A from Step 2) into the approved AI tool  
-2️⃣ Review what the AI concludes  
-3️⃣ **Compare** AI output with YOUR analysis (Part B from Step 2)  
-4️⃣ **Document the comparison** - where you agree, disagree, and why  
+1️⃣ Paste **your human-written summary only** (Part A) into the AI tool (your choice) 
+2️⃣ Review the AI’s conclusions and recommendations  
+3️⃣ **Compare** AI output with **your own analysis** (Part B)  
+4️⃣ **Document agreement, disagreement, and reasoning**
 
 **Critical Evaluation Framework:**
 
@@ -184,217 +263,149 @@ Before using AI, write your own professional analysis using this template:
 | Did AI miss risks you identified? | |
 | Did AI make unsupported assumptions or hallucinate? | |
 | Would a human SOC analyst agree with AI? | |
-| When would you override AI's recommendation? | |
+| When would you override AI’s recommendation? | |
 
 </details>
 
 ---
-
 ## 📝 Lab Tasks (15 Points Total)
 
 **Task 1: 4 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 4 pts**
 
----
-
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 1: Security Log Analysis (4 pts)</h2></summary>
+<summary><h2 style="display: inline;">🔹 Task 1: Enterprise Security Log Analysis (4 pts)</h2></summary>
 
-**🎯 Domain:** Threat Detection & Incident Response
+**🎯 SecurityX Domain:** Threat Detection & Incident Response
 
 ### Objective
-
-Using **network or authentication logs**, analyse a potential security incident and provide a SecurityX-level assessment.
+Using **Sysmon Windows logs (JSON)** in Splunk, analyse host-level security activity and provide a SecurityX-level risk assessment.
 
 ### SecurityX Learning Outcomes
 
 | Outcome | Description |
-|---------|-------------|
-| 🔍 **Analyse security telemetry** | Review logs to identify anomalies and patterns |
-| 🎯 **Distinguish evidence from assumption** | Separate facts from inference |
-| 📊 **Assess confidence and uncertainty** | Quantify certainty levels in your conclusions |
-| 🚀 **Recommend next investigative steps** | Propose actionable follow-up actions |
+|--------|-------------|
+| 🔍 Analyse security telemetry | Identify abnormal host and process behavior |
+| 🎯 Distinguish evidence from assumption | Separate facts from inference |
+| 📊 Assess uncertainty | Communicate confidence and limitations |
+| 🚀 Recommend next steps | Propose realistic follow-up actions |
 
-### Required SecurityX Terminology
+### Required SecurityX Terminology  
+Use **at least 3**:
 
-**Use at least 3 of the following terms appropriately in your response:**
-
-- Indicators of Compromise (IoCs)
-- Brute-force attack
-- Credential stuffing
-- Event correlation
-- False positives / False negatives
-- Incomplete telemetry
-- Human validation
-- Threat intelligence
-- Attack surface
-- Lateral movement
+IoCs • Event correlation • False positives • Incomplete telemetry • Attack surface • Lateral movement • Human validation
 
 ### What to Submit
 
-**Follow the 3-step workflow, then submit:**
-
-1. **Dataset:** Name and link to the dataset you used
-2. **Your Summary:** The human-written log summary (Step 2, Part A)
-3. **Your Analysis:** Your documented analysis BEFORE using AI (Step 2, Part B)
-4. **AI Output:** Summary of what the AI tool concluded
-5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
-6. **SecurityX Assessment:** Your final professional judgment using required terminology
+1. **Dataset:** Sysmon Windows Logs (preloaded in Splunk)  
+2. **Your Summary:** Human-written log summary (Step 2A)  
+3. **Your Analysis:** Risk assessment before AI (Step 2B)  
+4. **AI Output:** Summary of AI conclusions  
+5. **Critical Evaluation:** Comparison with your analysis  
+6. **SecurityX Judgment:** Final professional conclusion  
 
 </details>
 
-<details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 2: Email & Phishing Analysis (4 pts)</h2></summary>
 
-**🎯 Domain:** Social Engineering & Threat Analysis
+
+<details markdown="1">
+<summary><h2 style="display: inline;">🔹 Task 2: Email & Phishing Risk Analysis (4 pts)</h2></summary>
+
+**🎯 SecurityX Domain:** Social Engineering & Email Security
 
 ### Objective
-
-Using public phishing and legitimate email data, analyse and compare AI classifications of phishing attempts.
+Using the **Phishing Email dataset (CSV)**, analyse phishing indicators and evaluate AI classifications.
 
 ### SecurityX Learning Outcomes
 
 | Outcome | Description |
-|---------|-------------|
-| 🎣 **Identify social engineering tactics** | Recognise manipulation techniques in emails |
-| ⚠️ **Evaluate detection limitations** | Understand what AI can and cannot detect |
-| 🛡️ **Explain layered defenses** | Propose defense-in-depth strategies |
+|--------|-------------|
+| 🎣 Identify social engineering | Recognise phishing techniques |
+| ⚠️ Evaluate detection limits | Understand false positives |
+| 🛡️ Explain layered defenses | Recommend defense-in-depth |
 
-### Required SecurityX Terminology
+### Required SecurityX Terminology  
+Use **at least 3**:
 
-**Use at least 3 of the following terms appropriately in your response:**
-
-- Social engineering
-- Phishing indicators
-- Defense in depth
-- User awareness training
-- Email security gateway
-- Contextual analysis
-- Human factor risk
-- Spear phishing
-- Pretexting
-- Business Email Compromise (BEC)
+Phishing indicators • Social engineering • False positives • Defense in depth • User awareness training • BEC • Contextual analysis
 
 ### What to Submit
 
-**Follow the 3-step workflow, then submit:**
-
-1. **Dataset:** Name and link to the dataset you used
-2. **Your Summary:** Human-written summary of 5-10 emails (Step 2, Part A)
-3. **Your Analysis:** Phishing indicators and risks YOU identified (Step 2, Part B)
-4. **AI Output:** How AI classified the emails and what it concluded
-5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
-6. **SecurityX Assessment:** Your final recommendations using required terminology
+1. **Dataset:** Phishing Email Dataset (preloaded)  
+2. **Your Summary:** 5–10 email summaries  
+3. **Your Analysis:** Indicators and risks you identified  
+4. **AI Output:** AI classification summary  
+5. **Critical Evaluation:** Comparison with your findings  
+6. **SecurityX Assessment:** Risk-based recommendations  
 
 </details>
 
 <details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 3: Identity & Access Log Analysis (3 pts)</h2></summary>
 
-**🎯 Domain:** Identity, Access & Privilege Management
+**🎯 SecurityX Domain:** Identity, Access & Privilege Management
 
 ### Objective
-
-Analyse Identity and Access Management (IAM) logs to identify potential account compromise or privilege abuse. Look for patterns like impossible travel, privilege escalation, or suspicious access to sensitive resources.
+Analyse **authentication and access behavior** using IAM logs (`logon.csv`) and assess identity-related risk.
 
 ### SecurityX Learning Outcomes
 
 | Outcome | Description |
-|---------|-------------|
-| 🔐 **Assess identity risk** | Evaluate likelihood of account compromise |
-| 🎯 **Apply Zero Trust principles** | Implement "never trust, always verify" mindset |
-| 👤 **Justify human approval thresholds** | Determine when automation requires human oversight |
+|--------|-------------|
+| 🔐 Assess identity risk | Evaluate account misuse likelihood |
+| 🎯 Apply Zero Trust | Justify least-privilege reasoning |
+| 👤 Human approval thresholds | Decide when automation must stop |
 
-### Required SecurityX Terminology
+### Required SecurityX Terminology  
+Use **at least 3**:
 
-**Use at least 3 of the following terms appropriately in your response:**
-
-- Identity and Access Management (IAM)
-- Privileged access
-- Zero Trust
-- Least privilege
-- MFA enforcement
-- Risk-based authentication
-- Human-in-the-loop
-- Impossible travel
-- Account takeover
-- Session hijacking
+IAM • Least privilege • Zero Trust • Risk-based authentication • Account takeover • Lateral movement • Human-in-the-loop
 
 ### What to Submit
 
-**Follow the 3-step workflow, then submit:**
-
-1. **Dataset:** Name and link to the dataset you used
-2. **Your Summary:** Human-written summary of IAM activity (Step 2, Part A)
-3. **Your Analysis:** Identity risks and Zero Trust concerns YOU identified (Step 2, Part B)
-4. **AI Output:** What AI concluded about the suspicious activity
-5. **Critical Evaluation:** Compare your analysis with AI output (Step 3 framework)
-6. **SecurityX Assessment:** Your final judgment on risk and human approval needs
+1. **Dataset:** CERT Insider Threat – IAM logs  
+2. **Your Summary:** Human-written login summary  
+3. **Your Analysis:** Identity risks identified  
+4. **AI Output:** AI interpretation  
+5. **Critical Evaluation:** Comparison  
+6. **SecurityX Judgment:** Final risk decision  
 
 </details>
+
+
 
 <details markdown="1">
 <summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (4 pts)</h2></summary>
 
-**🎯 Domain:** Governance, Risk & Compliance (GRC) + Emerging Technologies
+**🎯 SecurityX Domain:** Governance, Risk & Compliance + Emerging Technologies
 
 ### Objective
-
-Evaluate AI-specific risks in cybersecurity operations and propose appropriate governance controls.
+Evaluate **AI-specific risks** observed during Tasks 1–3 and propose governance controls.
 
 ### SecurityX Learning Outcomes
 
 | Outcome | Description |
-|---------|-------------|
-| ⚖️ **Assess AI-specific risks** | Identify unique risks introduced by AI tools |
-| 📋 **Propose governance controls** | Recommend policies and procedures for AI use |
-| 🔍 **Maintain accountability** | Ensure human responsibility for AI-assisted decisions |
-| 📊 **Ensure auditability** | Enable tracing and review of AI-influenced decisions |
+|--------|-------------|
+| ⚖️ Assess AI risk | Identify automation-related risks |
+| 📋 Propose governance controls | Policies, procedures, oversight |
+| 🔍 Maintain accountability | Humans remain responsible |
+| 📊 Ensure auditability | Decisions must be reviewable |
 
-### Required SecurityX Terminology
+### Required SecurityX Terminology  
+Use **at least 4**:
 
-**Use at least 4 of the following terms appropriately in your response:**
-
-- Governance framework
-- Risk management
-- Human-in-the-loop
-- Auditability
-- Accountability
-- AI hallucination / confabulation
-- Over-reliance on automation
-- Data minimisation
-- Decision-support vs decision-making
-- Bias in AI models
-- Transparency
-- Explainability (XAI)
+Human-in-the-loop • Auditability • Accountability • AI hallucination • Decision-support vs decision-making • Bias • Transparency • Explainability (XAI)
 
 ### What to Submit
 
-**This task evaluates your entire lab experience:**
-
-1. **AI Risk Assessment:** What risks did you observe when using AI across all tasks?
-2. **Hallucination Examples:** Did AI make unsupported claims? (cite specific examples from Tasks 1-3)
-3. **Critical Evaluation:** Where did AI excel? Where did it fail? Use Step 3 framework
-4. **Governance Controls:** What policies would you implement for AI use in SOC?
-5. **Human-in-the-Loop:** When should humans override AI? (use examples from your tasks)
-6. **SecurityX Assessment:** Professional recommendations for responsible AI governance
+1. AI risk assessment across all tasks  
+2. Examples of AI overconfidence or hallucination  
+3. Where AI helped vs failed  
+4. Governance controls you recommend  
+5. When humans must override AI  
+6. Final SecurityX-level judgment  
 
 </details>
 
----
-
-<details markdown="1">
-<summary><h2 style="display: inline;">✅ Quality Checklist: SecurityX-Level Analysis</h2></summary>
-
-**Use this checklist before submitting each task:**
-
-| Category | Key Questions |
-|----------|---------------|
-| **🔍 Log Understanding** | What is normal behavior? What patterns are abnormal? What is the baseline? |
-| **📊 Evidence Quality** | What evidence supports my conclusions? What information is missing? What assumptions am I making? What is my confidence level? |
-| **🤖 AI Evaluation** | Did AI overgenerate or hallucinate? Did AI miss patterns I identified? Would a human SOC analyst agree? Did AI make unsupported assumptions? |
-| **⚖️ Governance** | Is human approval required? Is AI appropriate for this decision? Can this be audited? Have I maintained human accountability? |
-
-</details>
 
 ---
 
@@ -406,41 +417,7 @@ Evaluate AI-specific risks in cybersecurity operations and propose appropriate g
 - File naming: `LastName_FirstName_SecurityX_Lab.pdf`
 - Deadline: See Canvas
 
-**Required Content for Each Task (1-4):**
 
-Dataset information (name, link, description) • Human-written summary (5-10 log entries, NOT raw logs) • AI-assisted analysis summary • Critical evaluation (your assessment vs AI) • SecurityX terminology (required count per task) • Professional recommendations
-
-**Overall Requirements:** All 4 tasks completed • SecurityX-level reasoning • Proper dataset citations • Human-in-the-loop governance • Professional formatting • No raw log violations  
-
-</details>
-
----
-
-<details markdown="1">
-<summary><h2 style="display: inline;">📊 Grading Rubric (15 Points Total)</h2></summary>
-
-| Task | Points | Focus |
-|:----:|:------:|-------|
-| **Task 1** | 4 pts | Security log analysis, SecurityX terminology, critical thinking |
-| **Task 2** | 4 pts | Phishing analysis depth, AI evaluation, defense recommendations |
-| **Task 3** | 3 pts | IAM risk assessment, Zero Trust application, human approval justification |
-| **Task 4** | 4 pts | AI governance understanding, risk assessment, professional judgment |
-
-**High Marks:** SecurityX-level reasoning • Critical AI evaluation • Evidence-based conclusions • Proper governance principles • Correct terminology usage • Actionable recommendations
-
-**Point Deductions:** Raw logs (automatic failure) • Unauthorized AI tools • Uncritical acceptance of AI output • Missing terminology • Lack of professional judgment • Shallow responses • Poor documentation
-
-</details>
-
----
-
-## 🔑 Final Reminders
-
-> **SecurityX Professional Assessment**
->
-> **You ARE evaluated on:** Professional judgment • Governance awareness • Critical thinking about AI limitations • Human accountability
->
-> **You are NOT evaluated on:** What AI produces • Volume of data • Technical complexity alone
 
 **Key Principle:** This lab tests your ability to use AI as a tool while maintaining human professional judgment - exactly what SecurityX-level professionals do in real SOC environments.
 
