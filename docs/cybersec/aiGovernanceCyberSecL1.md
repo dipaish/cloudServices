@@ -341,11 +341,13 @@ Use **at least 3** of these terms appropriately in your submission:
 #### **Component 1: Data Source & Evidence (1 pt)**
 
 **Required:**
+
 - State data source: `index=securityx_lab sourcetype=winLogs`
 - Specify time range analyzed
 - **Include 1 Splunk screenshot** showing your query and results
 
 **Example:**
+
 > "Analyzed Windows logs from `index=securityx_lab sourcetype=winLogs` from January 10-14, 2026. Focused on EventIDs 10, 13, and 4799."
 >
 > *[Screenshot: Splunk query showing EventID counts]*
@@ -372,27 +374,31 @@ Use **at least 3** of these terms appropriately in your submission:
 
 #### **Component 3: Risk Analysis - BEFORE AI (1 pt)**
 
-**Your independent security assessment**
+**Pick ONE event pattern from Component 2 and analyze it**
 
 **Template:**
 
 **🔴 Risk Level:** HIGH / MEDIUM / LOW
 
 **📊 Evidence & SecurityX Analysis:**
-
 - Use **at least 3 SecurityX terms**
-- What IoCs or patterns did you find?
+- What IoCs did you find?
 - How do events correlate?
 
-**❓ What's Missing?**
+**❓ What's Missing?** [What additional data would help?]
 
-- What additional data would help your investigation?
+**🛡️ Recommendations:** [1-2 immediate actions]
 
-**🛡️ Recommendations:**
+**Example (analyzing the lsass.exe access from Component 2):**
 
-1. **Right Now:** [Immediate action]
-2. **Investigate Next:** [Further analysis needed]
-3. **Prevent Future:** [Long-term controls]
+> **🔴 Risk Level:** HIGH
+>
+> **📊 Evidence & SecurityX Analysis:**  
+> The 15 lsass.exe access attempts are clear **IoCs** for credential dumping. **Event correlation** with registry changes (EventID 13) and 02:30 AM timing exceeds **baseline behavior** for legitimate tools, suggesting **lateral movement** preparation.
+>
+> **❓ What's Missing?** Network logs to confirm exfiltration; process creation logs (EventID 1) showing how powershell launched.
+>
+> **🛡️ Recommendations:** Isolate host immediately, check auth logs for unusual logins, deploy EDR/PAWs/MFA.
 
 ---
 
@@ -412,7 +418,7 @@ Use **at least 3** of these terms appropriately in your submission:
 
 #### **Component 5: Critical Evaluation of AI (1 pt)**
 
-**Answer these questions:**
+**Answer these questions briefly in your own words:**
 
 - **Agreement:** Did AI reach same conclusions as you?
 - **AI Strengths:** What did AI identify that you missed?
@@ -535,16 +541,23 @@ Use **at least 5 terms** appropriately in your analysis:
 
 ### 📝 What to Submit
 
-#### **Component 1: Your Manual Email Analysis (1 pt)**
+#### **Component 1: Your Manual Email Analysis (2 pt)**
 
 Analyze **3-5 emails** from the `email_log` dataset **without AI assistance**.
 
 **For each email, document:**
+
 - Email text snippet (first 50-100 characters)
 - Phishing indicators identified in the text (reference table above)
 - Your classification: PHISHING / LEGITIMATE
 - Risk rating: LOW / MEDIUM / HIGH
 - Brief justification (2-3 sentences)
+
+**Example Table:**
+
+| Email Text Snippet | Phishing Indicators | Classification | Risk Rating | Justification |
+|-------------------|---------------------|----------------|-------------|---------------|
+| "URGENT: Your account will be suspended unless you verify your password immediately..." | Urgency language, credential request, action demand | PHISHING | HIGH | Uses fear tactics combined with direct password request. Legitimate companies never ask for passwords via email. The combination of urgency and credential harvesting is classic phishing. |
 
 **📸 Screenshot Requirement:**  
 Include **1 Splunk screenshot** showing your query and the `text_combined` field results.
@@ -556,27 +569,15 @@ Include **1 Splunk screenshot** showing your query and the `text_combined` field
 Use an AI tool (ChatGPT, Copilot, Claude) to:
 1. Paste **3-5 email samples** you analyzed earlier
 2. Ask: *"Classify these emails as legitimate or phishing. Identify indicators and provide risk ratings."*
-3. **Copy the complete AI output** into your submission
+3. **Take the scrernshot of the complete AI output inclding your prompt** into your submission
 
 ---
 
-#### **Component 3: Critical Comparison (1 pt)**
-
-Create a comparison table showing **3 examples** where AI agreed/disagreed with your analysis:
-
-| Email Text Snippet | Your Classification | AI Classification | Key Difference | Who Was Right? |
-|--------------------|---------------------|-------------------|----------------|----------------|
-| "urgent verify account password..." | PHISHING | PHISHING | We both identified urgency + credential request | Agreement |
-| "team meeting tomorrow 2pm..." | LEGITIMATE | PHISHING | AI flagged "urgent" keyword, I saw legitimate context | Me - false positive |
-| "congratulations winner claim prize..." | PHISHING | LEGITIMATE | I identified lottery scam language, AI missed it | Me - financial lure |
-
----
-
-#### **Component 4: SecurityX Risk Assessment (1 pt)**
+#### **Component 3: SecurityX Risk Assessment (1 pt)**
 
 Write **150-200 words** answering:
 
-**"Based on your email analysis, what are the TOP 3 email security risks for an imaginary company, and what layered defenses (technical + human + policy) would you recommend?"**
+**"Based on your email analysis, what are the TOP 3 email security risks for a ompany, and what layered defenses (technical + human + policy) would you recommend?"**
 
 **Use SecurityX terminology and structure your answer as:**
 - **Risk 1:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
@@ -702,17 +703,16 @@ Use **at least 3** of these terms:
 **Required:**
 - State data source: `index=securityx_lab sourcetype=iam_log`
 - Specify time range analyzed
-- **Include 1 Splunk screenshot** showing your query and results
+- **Briefly summarize your findings** (2-3 sentences identifying 1-2 suspicious users)
+- **Include 1 Splunk screenshot** showing your SPL query and results
 
-**Analysis Instructions:**
-1. Run queries to identify 1-2 users with suspicious patterns
-2. Document what makes their behavior anomalous
-3. Compare to baseline (e.g., "Average user: 30 logins/day, Suspicious user: 300 logins/day")
+**Instructions:**
+You are NOT expected to analyze all 142,833 events. Run a few SPL queries to identify suspicious patterns (e.g., users with unusually high login counts, off-hours activity, multiple PC access). Summarize your key observations briefly.
 
 **Example:**
-> "Analyzed IAM logs from `index=securityx_lab sourcetype=iam_log` covering 1/14-1/26/2026. Identified user DTAA/CLB0995 with 1,200 login attempts (vs baseline 50/day) and user accessing 15 different PCs in 24 hours."
+> "Analyzed IAM logs from `index=securityx_lab sourcetype=iam_log` covering 1/14-1/26/2026. Identified user DTAA/CLB0995 with 1,200 login attempts (vs baseline 50/day) and another user accessing 15 different PCs in 24 hours."
 >
-> *[Screenshot: Splunk query showing user login counts]*
+> *[Screenshot: Splunk SPL query showing user login counts, e.g., `index=securityx_lab sourcetype=iam_log | stats count by user | sort - count`]*
 
 ---
 
@@ -721,10 +721,12 @@ Use **at least 3** of these terms:
 **Your observations BEFORE using AI**
 
 **Requirements:**
+
 - 3-5 bullet points summarizing suspicious patterns
 - Include specific details: usernames, login counts, timing, devices
 
 **Example:**
+
 - User DTAA/CLB0995: 1,200 logins in one day (baseline: 50)
 - Off-hours activity: 45 logins between 2-4 AM
 - Device hopping: Accessed 12 different PCs in 6 hours
@@ -733,36 +735,47 @@ Use **at least 3** of these terms:
 
 #### **Component 3: Risk Assessment & AI Comparison (1 pt)**
 
-**Part A: Your Risk Analysis (BEFORE AI)**
+**Step 1: Your Risk Analysis (BEFORE AI)**
 
-**🔴 Risk Level:** HIGH / MEDIUM / LOW
+Pick ONE suspicious pattern from Component 2 and briefly analyze:
 
-**📊 Evidence & SecurityX Analysis:**
-- Use **at least 3 SecurityX terms**
-- What makes this behavior suspicious?
+- **🔴 Risk Level:** HIGH / MEDIUM / LOW
+- **📊 Evidence:** What makes this behavior suspicious? Use **at least 3 SecurityX terms**
+- **🛡️ Recommendation:** What should be done immediately?
 
-**❓ What's Missing?**
-- What additional data would help?
+**Step 2: Get AI Input**
 
-**🛡️ Recommendations:**
-1. **Right Now:** [Immediate action]
-2. **Investigate Next:** [Further analysis]
-3. **Prevent Future:** [Long-term controls]
+Paste your Component 2 summary into an AI tool and get its risk assessment.
 
-**Part B: AI Analysis & Critical Evaluation**
+**Step 3: Compare & Evaluate**
 
-- Paste your summary into an AI tool
-- Document AI's conclusions
-- Compare: Did AI agree? What did AI miss? Override needed?
+Answer these 3 questions (2-3 sentences each):
+
+1. **Did AI agree with your risk level? What was similar/different?**
+2. **What is ONE thing AI identified that you missed OR one weakness in AI's analysis?**
+3. **Who should make the final decision to take action - you or the AI? Why?** (Explain accountability)
+
+---
+
+**Example:**
+
+| Step | Component | 👤 YOUR RESPONSE (Fill this in) | ✅ EXAMPLE (Reference only) |
+|------|-----------|----------------------------------|------------------------------|
+| **Step 1** | **🔴 Risk Level** | [HIGH / MEDIUM / LOW] | HIGH |
+| | **📊 Evidence (use 3+ SecurityX terms)** | [Write your analysis here] | User DTAA/CLB0995's 1,200 logins (vs **baseline behavior** of 50/day) suggests **account takeover**. Off-hours authentication violates **Zero Trust** principles. |
+| | **🛡️ Recommendation** | [Write your immediate action] | Force password reset, enable MFA immediately |
+| **Step 2** | **AI Input** | [Paste what AI said] | AI assigned HIGH risk. Suggested credential stuffing attack from botnet. Recommended checking for data exfiltration and implementing behavioral analytics. |
+| **Step 3** | **Q1: Did AI agree?** | [Write your comparison in 2-3 sentences] | YES - AI also rated it HIGH risk and identified account compromise. We both flagged the excessive login volume as the primary indicator. |
+| | **Q2: AI Strength OR Weakness?** | [Write one strength or weakness in 2-3 sentences] | AI suggested checking for credential stuffing attacks from botnets, which I didn't consider. However, AI assumed malicious intent without considering this could be legitimate automated system access. |
+| | **Q3: Who decides & why?** | [Explain who is accountable in 2-3 sentences] | Human analyst remains accountable. AI provides **decision-support**, but I must validate with IT team before locking the account to avoid disrupting legitimate business operations. **Human-in-the-loop** is essential. |
 
 ---
 
 </details>
 
 
-
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (3 pts)</h2></summary>
+<summary><h2 style="display: inline;">Task 4: AI Governance & Risk Evaluation (3 pts)</h2></summary>
 
 **🎯 SecurityX Domain:** Governance, Risk & Compliance + Emerging Technologies (AI in Cybersecurity)
 
@@ -792,44 +805,21 @@ Use **at least 4** of these terms in your analysis:
 
 ### 📝 What to Submit
 
-**Submit a comprehensive AI governance analysis (300-400 words total) that includes ALL of the following:**
+**Write a brief AI governance reflection (150-200 words) addressing:**
 
-#### **Part A: AI Performance Comparison**
+**Compare AI performance across Tasks 1-3:**
 
-Create a table evaluating AI across all three tasks:
+- What did AI do well in helping your analysis?
+- What did AI miss or get wrong?
+- When should you override AI recommendations?
+- Who is accountable for final security decisions?
 
-| Task | What AI Did Well | What AI Missed/Got Wrong |
-|------|------------------|--------------------------|
-| **Task 1: Endpoint Security (winLogs)** | [Specific strength] | [Specific weakness with example] |
-| **Task 2: Email & Phishing (email_log)** | [Specific strength] | [Specific weakness with example] |
-| **Task 3: Identity & Access (iam_log)** | [Specific strength] | [Specific weakness with example] |
+**Requirements:**
 
-#### **Part B: Write Your Analysis**
+- Give at least ONE specific example from your lab work
+- Use **at least 3 SecurityX terms** (HITL, accountability, AI hallucination, decision-support, automation bias)
+- Explain the principle of human-in-the-loop. 
 
-In **200-300 words**, address these three questions:
-
-**1. What are the TOP 3 AI risks you observed, and what governance controls would you implement?**
-
-Format: **Risk 1:** [Name] - Evidence from [Task X] - Governance Control: [Specific mechanism]
-
-**2. When should analysts OVERRIDE AI recommendations?**
-
-Provide: Decision criteria + 2 specific scenarios from your lab work
-
-**3. Who maintains accountability for security decisions when using AI tools?**
-
-Explain the principle of human-in-the-loop and final decision ownership
-
----
-
-### 🎯 Grading
-
-| Criterion | Points |
-|-----------|--------|
-| Comparison table with specific examples from all 3 tasks | 1 pt |
-| 3 AI risks with evidence + governance controls | 1 pt |
-| Override criteria with 2 scenarios + accountability | 1 pt |
-| **Uses 4+ SecurityX terms correctly** | **Required** |
 
 ---
 
