@@ -208,9 +208,9 @@ If you are new to Splunk, these official resources can help:
 </details>
 
 ---
-## 📝 Lab Tasks (15 Points Total)
+## 📝 Lab Tasks (13 Points Total)
 
-**Task 1: 5 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 3 pts**
+**Task 1: 5 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 1 pt**
 
 You'll complete four tasks that build on each other. First, analyze **Windows logs** to catch credential dumping and persistence attacks. Then examine **emails** to spot phishing attempts. Next, investigate **login patterns** to find compromised accounts. Finally, step back and evaluate: Where did AI help? Where did it fail? What governance controls should we put in place? The key throughout is analyzing data yourself first, then using AI as a second opinion but not the other way around.
 
@@ -775,7 +775,7 @@ Answer these 3 questions (2-3 sentences each):
 
 
 <details markdown="1">
-<summary><h2 style="display: inline;">Task 4: AI Governance & Risk Evaluation (3 pts)</h2></summary>
+<summary><h2 style="display: inline;">Task 4: AI Governance & Risk Evaluation (1 pt)</h2></summary>
 
 **🎯 SecurityX Domain:** Governance, Risk & Compliance + Emerging Technologies (AI in Cybersecurity)
 
