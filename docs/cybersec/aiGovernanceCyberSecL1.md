@@ -845,26 +845,6 @@ Use **at least 4** of these terms in your analysis:
 ---
 
 </details>
-
-
----
-
-<details open markdown="1">
-<summary><h2 style="display: inline;">📤 Submission Requirements</h2></summary>
-
-**Submit ONE document via Canvas:**
-- Format: PDF or Word (.docx)
-- File naming: `LastName_FirstName_SecurityX_Lab.pdf`
-- Deadline: See Canvas
-
-
-
-**Key Principle:** This lab tests your ability to use AI as a tool while maintaining human professional judgment - exactly what SecurityX-level professionals do in real SOC environments.
-
-**Questions?** Contact your instructor via Canvas or during lab hours.
-
-</details>
-
 ---
 
 ## 📖 Glossary
