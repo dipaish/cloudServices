@@ -1,4 +1,4 @@
-# AI, Governance & Cybersecurity Lab
+# AI Enhanced Enterprise Security Using Real Public Datasets
 
 **🎯 CompTIA SecurityX Aligned  │  📊 15 Points  │  👤 Individual**
 
