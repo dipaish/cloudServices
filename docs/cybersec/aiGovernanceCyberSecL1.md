@@ -118,24 +118,22 @@ index=securityx_lab
 index=securityx_lab 
 | stats count by sourcetype
 ```
-*Lists all log types available (Sysmon, email, IAM). Helps you understand what data you have.*
+*Lists all log types available (email_log,iam_log). Helps you understand what data you have.*
 
 **Example Output:**
-- `sysmon:json` (15,432 events)
-- `email:csv` (2,891 events)
-- `iam:csv` (8,764 events)
+- `winLogs` (915 events)
+- `email_log` (4045)
+- `iam_log:` (450882)
 
 ---
 
 **3️⃣ Analyse User Authentication Patterns**
 ```spl
-index=securityx_lab sourcetype=iam:csv 
+index=securityx_lab sourcetype=iam_log
 | stats count by user 
 | sort - count
 ```
 *Counts login attempts per user. Useful for identifying accounts with unusual activity.*
-
-**Example Use Case:** Detect brute-force attempts (one user with 500+ failed logins).
 
 ---
 
@@ -149,17 +147,17 @@ index=securityx_lab "failed login" OR "authentication failure"
 
 **5️⃣ Filter by Time and Specific User**
 ```spl
-index=securityx_lab sourcetype=iam:csv user="john.doe" 
+index=securityx_lab sourcetype="iam_log" user="DTAA/CLB0995"
 earliest=-7d@d latest=now
 ```
-*Shows all activity for user "john.doe" in the last 7 days. Essential for investigating specific accounts.*
+*Shows all activity for user "DTAA/CLB0995" in the last 7 days. Essential for investigating specific accounts.*
 
 ---
 
-**6️⃣ Identify Process Execution (Sysmon)**
+**6️⃣ Identify Process Execution (winLogs)**
 ```spl
-index=securityx_lab sourcetype=sysmon:json EventCode=1 
-| stats count by Image 
+index=securityx_lab sourcetype=winLogs EventID=1
+| stats count by Image
 | sort - count
 ```
 *Lists all processes that executed on Windows hosts. Helps identify suspicious programs.*
@@ -191,218 +189,643 @@ If you are new to Splunk, these official resources can help:
 </details>
 
 ---
+<details markdown="1">
+<summary><h2 >🧪 Task Workflow: Step-by-Step Process</h2></summary>
 
-<summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary><br>
-
-**STEP 1: Human Analysis → STEP 2: Summarize → STEP 3: AI → STEP 4: Governance Judgment**
-
----
-
-### 🔍 Step 1: Manual Security Analysis (Splunk)
-
-**Your Actions:**
-
-1. Access the preloaded datasets in **Splunk**
-2. Review logs to understand **normal vs abnormal behavior**
-3. Identify suspicious patterns or anomalies
-4. Select **5–10 representative events** that best illustrate the pattern
-5. Document your observations using evidence from SPL searches
-
-**Key Questions:**
-- What behavior appears unusual or risky?
-- What patterns or repetitions emerge?
-- What context or data is missing?
+**Human Analysis First → AI as Support → Critical Evaluation → Governance Decision**
 
 ---
 
-### ✍️ Step 2: Write Your Summary & Analysis (Before AI)
-
-#### **Part A: Human Log Summary**
-
-Write a concise summary (5–10 bullet points):
-- What happened?
-- How frequently did it occur?
-- When did it occur (timing/duration)?
-- Who or what was involved?
-- What contextual details matter?
-
-#### **Part B: Your Professional Analysis (CRITICAL)**
-
-Complete this **before using AI**.
-
-**📝 Analysis Template:**
-
-- **Security Assessment:** LOW / MEDIUM / HIGH risk  
-- **Evidence:** Which events or patterns support this assessment?  
-- **Assumptions & Gaps:** What cannot be concluded? What data is missing?  
-- **Recommendations:**  
-  1) Immediate action (if any)  
-  2) Follow-up investigation steps  
-  3) Preventive or governance controls  
-
-**Why This Matters:**  
-SecurityX-level professionals must demonstrate **independent judgment** before consulting AI. This is a core **human-in-the-loop governance requirement**.
+| Step | What You Do | Key Actions | Why It Matters |
+|------|-------------|-------------|----------------|
+| **🔍 STEP 1<br>Manual Analysis<br>(Splunk)** | Investigate logs independently | • Run SPL queries in Splunk<br>• Identify suspicious patterns<br>• Select 3-5 representative events<br>• Document observations | Establish **your own understanding** before AI influence |
+| **✍️ STEP 2A<br>Write Summary<br>(Human Only)** | Summarize findings in 3-5 bullets | • What happened?<br>• How often? When?<br>• Who/what was involved?<br>• What context matters? | Create **evidence-based summary** for AI input |
+| **🎯 STEP 2B<br>Risk Assessment<br>(BEFORE AI)** | Make your professional judgment | • Risk level: LOW/MEDIUM/HIGH<br>• Evidence supporting your rating<br>• Data gaps & assumptions<br>• Your recommendations | Demonstrate **independent security judgment** (SecurityX requirement) |
+| **🤖 STEP 3<br>Use AI Tool<br>(Decision Support)** | Paste summary → Get AI analysis | • Input your summary (Step 2A only)<br>• Review AI conclusions<br>• Compare with your assessment | AI provides **second opinion**, not primary decision |
+| **⚖️ STEP 4<br>Critical Evaluation<br>(Governance)** | Document AI strengths/weaknesses | • Did AI agree with you?<br>• What did AI miss/add?<br>• Any hallucinations?<br>• When to override AI? | Show **human-in-the-loop accountability** and critical thinking |
 
 ---
 
-### 🤖 Step 3: Use AI & Critically Evaluate
-
-**Process:**
-
-1️⃣ Paste **your human-written summary only** (Part A) into the AI tool (your choice) 
-2️⃣ Review the AI’s conclusions and recommendations  
-3️⃣ **Compare** AI output with **your own analysis** (Part B)  
-4️⃣ **Document agreement, disagreement, and reasoning**
-
-**Critical Evaluation Framework:**
-
-| Question | Your Answer |
-|----------|-------------|
-| Did AI reach the same conclusions as you? | |
-| Did AI identify risks you missed? | |
-| Did AI miss risks you identified? | |
-| Did AI make unsupported assumptions or hallucinate? | |
-| Would a human SOC analyst agree with AI? | |
-| When would you override AI’s recommendation? | |
+**💡 SecurityX Principle:** Humans analyze first, AI assists second, humans decide final action. This ensures accountability and prevents over-reliance on automation.
 
 </details>
 
 ---
 ## 📝 Lab Tasks (15 Points Total)
 
-**Task 1: 4 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 4 pts**
-
+**Task 1: 5 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 3 pts**
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 1: Enterprise Security Log Analysis (4 pts)</h2></summary>
+<summary><h2 style="display: inline;">Task 1: Enterprise Security Log Analysis (5 pts)</h2></summary>
 
 **🎯 SecurityX Domain:** Threat Detection & Incident Response
 
 ### Objective
-Using **Sysmon Windows logs (JSON)** in Splunk, analyse host-level security activity and provide a SecurityX-level risk assessment.
 
-### SecurityX Learning Outcomes
+Analyse **Windows logs** in Splunk to identify and assess potential security threats at the host level. Demonstrate professional SOC analyst judgment by distinguishing evidence from assumptions.
 
-| Outcome | Description |
-|--------|-------------|
-| 🔍 Analyse security telemetry | Identify abnormal host and process behavior |
-| 🎯 Distinguish evidence from assumption | Separate facts from inference |
-| 📊 Assess uncertainty | Communicate confidence and limitations |
-| 🚀 Recommend next steps | Propose realistic follow-up actions |
+> **📌 Important:** The Sysmon logs (Winlogs) are **already loaded in Splunk** under `index=securityx_lab sourcetype=winLogs`. You do **NOT** need to upload any data.
 
-### Required SecurityX Terminology  
-Use **at least 3**:
+> **About This Dataset:** These logs come from **Sysmon (System Monitor)**, a Windows system service that records detailed system activity including process creation, network connections, and registry changes. This data is essential for detecting advanced threats like credential dumping, persistence mechanisms, and lateral movement — techniques commonly used by attackers after initial compromise.
 
-IoCs • Event correlation • False positives • Incomplete telemetry • Attack surface • Lateral movement • Human validation
+---
 
-### What to Submit
+### What You Will Analyse
 
-1. **Dataset:** Sysmon Windows Logs (preloaded in Splunk)  
-2. **Your Summary:** Human-written log summary (Step 2A)  
-3. **Your Analysis:** Risk assessment before AI (Step 2B)  
-4. **AI Output:** Summary of AI conclusions  
-5. **Critical Evaluation:** Comparison with your analysis  
-6. **SecurityX Judgment:** Final professional conclusion  
+Windows logs in this dataset capture security-relevant activity including:
 
+- **Process access** (EventID=10): What processes accessed other processes (245 events)
+- **Registry modifications** (EventID=13): Registry key value changes (208 events)
+- **Registry operations** (EventID=12): Registry object creation/deletion (77 events)
+- **Group enumeration** (EventID=4799): User group membership queries (186 events)
+- **File creation** (EventID=11): Files created or modified (4 events)
+- **Process creation** (EventID=1): New process execution (1 event)
+
+> **Note:** EventID counts are based on the current dataset. Focus on the most frequent events (10, 13, 12, 4799) for pattern analysis.
+
+---
+
+### Suggested SPL Queries for This Task
+
+**🔍 Start Here: View All Available EventIDs**
+```spl
+index=securityx_lab sourcetype=winLogs
+| stats count by EventID
+| sort - count
+```
+*This shows what types of events are available and their frequency. EventIDs 10, 13, 12, and 4799 are most common.*
+
+---
+
+**🔍 Investigate Process Access (EventID 10 - Most Common)**
+```spl
+index=securityx_lab sourcetype=winLogs EventID=10
+| stats count by SourceImage, TargetImage, GrantedAccess
+| sort - count
+```
+*EventID 10 tracks when one process accesses another. Look for suspicious processes accessing critical system processes (like lsass.exe for credential dumping).*
+
+---
+
+**🔍 Monitor Registry Modifications (EventID 13)**
+```spl
+index=securityx_lab sourcetype=winLogs EventID=13
+| stats count by Image, TargetObject, Details
+| sort - count
+```
+*Registry changes can indicate persistence mechanisms. Look for modifications to autorun keys, Windows Defender settings, or security policies.*
+
+---
+
+**🔍 Check Group Membership Enumeration (EventID 4799)**
+```spl
+index=securityx_lab sourcetype=winLogs EventID=4799
+| stats count by SubjectUserName, TargetUserName
+| sort - count
+```
+*Frequent group membership queries can indicate reconnaissance activity by an attacker mapping privileged accounts.*
+
+---
+
+**🔍 Review All Activity by Process**
+```spl
+index=securityx_lab sourcetype=winLogs
+| stats count by Image, EventID
+| sort - count
+```
+*Identify which processes are most active. Unusual processes or high activity from administrative tools can be suspicious.*
+
+---
+
+### What to Look For (Investigation Tips)
+
+Based on the actual EventIDs in the dataset, focus on these indicators:
+
+| Indicator | What It Might Mean | Example | EventID |
+|-----------|-------------------|---------|---------|
+| **Suspicious process accessing LSASS** | Credential dumping attempt | `mimikatz.exe` or unknown tool accessing `lsass.exe` | 10 |
+| **Registry persistence modifications** | Malware establishing persistence | Changes to `Run`, `RunOnce`, or `Startup` registry keys | 13 |
+| **Windows Defender registry changes** | Attacker disabling security | Modifications to `Windows Defender` settings | 13 |
+| **Frequent group enumeration** | Reconnaissance activity | Repeated queries of admin/privileged groups | 4799 |
+| **Unusual registry key creation** | New persistence mechanism | New registry keys in startup locations | 12 |
+| **Multiple registry deletions** | Anti-forensics/cleanup | Deletion of evidence or security logs | 12 |
+| **Files in suspicious locations** | Malware staging | Executables in `Temp` or `AppData` folders | 11 |
+
+> **Focus Area:** Since EventID 10 (Process Access - 245 events) and EventID 13 (Registry Modification - 208 events) are most common, prioritize analysing these for suspicious patterns.
+
+---
+
+> 📚 **Framework References:** [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon), [MITRE ATT&CK](https://attack.mitre.org/) (T1003, T1547, T1562, T1087), [Windows Security Auditing](https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/security-auditing-overview)
+
+---
+
+### SecurityX Terminology
+
+Use **at least 3** of these terms appropriately in your submission:
+
+| Term | Definition | Example in Context |
+|------|------------|-------------------|
+| **IoCs** (Indicators of Compromise) | Observable artifacts that indicate a potential security breach | "Registry modification at startup key is an IoC for persistence" |
+| **Event correlation** | Connecting multiple security events to identify attack patterns | "Correlating EventID 10 (LSASS access) with EventID 13 (Defender disabled) suggests coordinated attack" |
+| **False positives** | Legitimate activity incorrectly flagged as malicious | "Admin tool accessing LSASS may be false positive if from approved PAW" |
+| **Incomplete telemetry** | Missing log data that limits investigation | "No network logs available to confirm if credentials were exfiltrated" |
+| **Attack surface** | All possible points an attacker could exploit | "Registry Run keys expand attack surface for persistence mechanisms" |
+| **Lateral movement** | Attacker moving between systems after initial compromise | "After credential dump, checking for lateral movement to other hosts" |
+| **Human validation** | Manual analyst review before taking action | "AI suggests HIGH risk but human validation needed before quarantine" |
+| **Threat intelligence** | Information about known threats and attackers | "Checking IP against threat intel feeds to confirm C2 infrastructure" |
+| **Baseline behavior** | Normal activity patterns for comparison | "50 logins/day is baseline; 500 logins indicates anomaly" |
+
+---
+
+### 📝 What to Submit
+
+#### **Component 1: Data Source & Evidence (1 pt)**
+
+**Required:**
+- State data source: `index=securityx_lab sourcetype=winLogs`
+- Specify time range analyzed
+- **Include 1 Splunk screenshot** showing your query and results
+
+**Example:**
+> "Analyzed Windows logs from `index=securityx_lab sourcetype=winLogs` from January 10-14, 2026. Focused on EventIDs 10, 13, and 4799."
+>
+> *[Screenshot: Splunk query showing EventID counts]*
+
+---
+
+#### **Component 2: Human-Written Summary (1 pt)**
+
+**Your observations BEFORE using AI**
+
+**Requirements:**
+- 3-5 bullet points summarizing patterns
+- Include specific details: EventIDs, processes, registry keys, timing
+- Your interpretation, not raw logs
+
+**Example:**
+- EventID 10: "powershell.exe" accessed "lsass.exe" 15 times
+- EventID 13: Registry key `HKLM\...\Run\UpdateCheck` created
+- Timing: All activity between 02:30-03:15 AM
+
+---
+
+#### **Component 3: Risk Analysis - BEFORE AI (1 pt)**
+
+**Your independent security assessment**
+
+**Template:**
+
+**🔴 Risk Level:** HIGH / MEDIUM / LOW
+
+**📊 Evidence & SecurityX Analysis:**
+- Use **at least 3 SecurityX terms**
+- What IoCs or patterns did you find?
+- How do events correlate?
+
+**❓ What's Missing?**
+- What additional data would help your investigation?
+
+**🛡️ Recommendations:**
+1. **Right Now:** [Immediate action]
+2. **Investigate Next:** [Further analysis needed]
+3. **Prevent Future:** [Long-term controls]
+
+---
+
+#### **Component 4: AI Tool Output (1 pt)**
+
+**Using AI as decision support**
+
+**Requirements:**
+- Paste your summary (Component 2) into an AI tool
+- Document AI's conclusion: risk level, IoCs identified, recommendations
+
+**Example:**
+> "AI classified as HIGH risk. Identified LSASS access and Defender tampering. Recommended checking for Pass-the-Hash attacks."
+
+---
+
+#### **Component 5: Critical Evaluation of AI (1 pt)**
+
+**Answer these questions:**
+
+- **Agreement:** Did AI reach same conclusions as you?
+- **AI Strengths:** What did AI identify that you missed?
+- **AI Weaknesses:** What did AI miss?
+- **AI Hallucination:** Did AI make unsupported assumptions?
+- **Human Override:** Would you override AI? Why?
+
+---
 </details>
 
-
-
+---
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 2: Email & Phishing Risk Analysis (4 pts)</h2></summary>
+<summary><h2 style="display: inline;">Task 2: Email & Phishing Risk Analysis (4 pts)</h2></summary>
 
 **🎯 SecurityX Domain:** Social Engineering & Email Security
 
 ### Objective
-Using the **Phishing Email dataset (CSV)**, analyse phishing indicators and evaluate AI classifications.
+Using the **`email_log` dataset (42,148 events)** in Splunk, analyze phishing campaigns, email-based social engineering techniques, and assess the accuracy of AI-assisted threat classifications. Apply critical thinking to differentiate legitimate emails from sophisticated phishing attempts and recommend defense-in-depth controls.
 
-### SecurityX Learning Outcomes
+> **📌 Important:** The email logs are **already loaded in Splunk** under `index=securityx_lab sourcetype=email_log`. You do **NOT** need to upload any data.
+>
+> **About This Dataset:** This is a publicly available email dataset containing both **legitimate business emails (label=0)** and **phishing/spam emails (label=1)**. The emails include the complete message body text in the `text_combined` field. This real-world data helps you practice identifying social engineering tactics, urgency language, credential requests, and other phishing indicators that attackers use to manipulate victims.
 
-| Outcome | Description |
-|--------|-------------|
-| 🎣 Identify social engineering | Recognise phishing techniques |
-| ⚠️ Evaluate detection limits | Understand false positives |
-| 🛡️ Explain layered defenses | Recommend defense-in-depth |
+---
 
-### Required SecurityX Terminology  
-Use **at least 3**:
+> **⚠️ Content Warning:** This dataset contains real phishing/spam emails which may include vulgar language, scams, inappropriate content, grammatical errors, and nonsensical text. This is authentic cybersecurity training data. If you encounter offensive content, remember this reflects real-world threats that security professionals must analyze professionally and objectively.
 
-Phishing indicators • Social engineering • False positives • Defense in depth • User awareness training • BEC • Contextual analysis
+---
 
-### What to Submit
+### 📊 Splunk Queries for Email Analysis
 
-1. **Dataset:** Phishing Email Dataset (preloaded)  
-2. **Your Summary:** 5–10 email summaries  
-3. **Your Analysis:** Indicators and risks you identified  
-4. **AI Output:** AI classification summary  
-5. **Critical Evaluation:** Comparison with your findings  
-6. **SecurityX Assessment:** Risk-based recommendations  
+Use these queries to investigate the `email_log` data in your `securityx_lab` index:
+
+1. **View all email data:**
+   ```spl
+   index=securityx_lab sourcetype=email_log
+   | table _time, text_combined, label
+   | head 20
+   ```
+   *Shows email text content and classification labels*
+
+2. **Count emails by classification:**
+   ```spl
+   index=securityx_lab sourcetype=email_log
+   | stats count by label
+   ```
+   *See how many phishing vs legitimate emails exist*
+   
+   **Understanding Labels:**
+   - **label=0** → LEGITIMATE emails (normal business communications)
+   - **label=1** → PHISHING/SPAM emails (malicious/suspicious)
+
+3. **Search for urgency language (phishing indicator):**
+   ```spl
+   index=securityx_lab sourcetype=email_log label=1
+   (text_combined="*urgent*" OR text_combined="*immediately*" OR text_combined="*verify*" OR text_combined="*suspended*")
+   | table _time, text_combined, label
+   ```
+   *Find phishing emails (label=1) using urgency tactics*
+
+4. **Search for financial/credential requests:**
+   ```spl
+   index=securityx_lab sourcetype=email_log label=1
+   (text_combined="*password*" OR text_combined="*account*" OR text_combined="*prize*" OR text_combined="*winner*" OR text_combined="*bank*")
+   | table _time, text_combined, label
+   ```
+   *Identify phishing emails (label=1) requesting sensitive information or offering fake rewards*
+
+5. **Find emails with specific phishing keywords:**
+   ```spl
+   index=securityx_lab sourcetype=email_log label=1
+   (text_combined="*click here*" OR text_combined="*confirm*" OR text_combined="*update*" OR text_combined="*expire*")
+   | table _time, text_combined, label
+   ```
+   *Common phishing call-to-action phrases in spam emails (label=1)*
+
+6. **Compare: View legitimate emails for context:**
+   ```spl
+   index=securityx_lab sourcetype=email_log label=0
+   | table _time, text_combined, label
+   | head 10
+   ```
+   *Review normal business emails (label=0) to understand baseline communication patterns*
+
+---
+
+### 🎯 Common Phishing Indicators in Email Text
+
+| Indicator | What to Look For | Example Keywords |
+|-----------|------------------|------------------|
+| **Urgency language** | Time-pressure tactics | "urgent", "immediately", "suspended", "expire", "act now" |
+| **Financial lures** | Fake prizes or money offers | "winner", "prize", "lottery", "claim", "million dollars" |
+| **Credential requests** | Asks for passwords/accounts | "password", "verify account", "confirm identity", "update payment" |
+| **Authority impersonation** | Claims to be from banks/gov | "bank", "IRS", "security team", "official notification" |
+| **Action demands** | Commands to click/respond | "click here", "download", "open attachment", "reply immediately" |
+| **Generic greetings** | Impersonal salutation | "Dear customer", "Dear user", "Dear sir/madam" |
+| **Spelling/grammar errors** | Poor English quality | Typos, awkward phrasing, missing articles |
+
+---
+
+> 📚 **Framework Reference:** [MITRE ATT&CK](https://attack.mitre.org/) - T1566 (Phishing), T1598 (Phishing for Information)
+
+---
+
+### 📖 SecurityX Terminology
+
+Use **at least 5 terms** appropriately in your analysis:
+
+| Term | Definition | Example Usage |
+|------|------------|---------------|
+| **Phishing Indicators** | Observable email characteristics that suggest malicious intent | "The email contained 3 phishing indicators: urgency language, spoofed sender domain, and credential request." |
+| **Business Email Compromise (BEC)** | Advanced social engineering targeting employees to transfer funds or data | "This appears to be a BEC attempt impersonating the CFO requesting wire transfer." |
+| **Social Engineering** | Psychological manipulation to trick users into security mistakes | "The attacker used social engineering by creating false urgency." |
+| **Defense-in-Depth** | Layered security controls (technical + awareness + policy) | "Recommend defense-in-depth: email filtering + user training + MFA." |
+| **False Positive** | Legitimate email incorrectly flagged as malicious | "This newsletter was a false positive due to promotional language." |
+| **Spear Phishing** | Targeted attack customized for specific individuals/organizations | "Email references internal project names - likely spear phishing research." |
+| **User Awareness Training** | Education programs to help staff recognize threats | "Monthly user awareness training reduced click rates by 40%." |
+
+---
+
+### 📝 What to Submit
+
+#### **Component 1: Your Manual Email Analysis (1 pt)**
+
+Analyze **3-5 emails** from the `email_log` dataset **without AI assistance**.
+
+**For each email, document:**
+- Email text snippet (first 50-100 characters)
+- Phishing indicators identified in the text (reference table above)
+- Your classification: PHISHING / LEGITIMATE
+- Risk rating: LOW / MEDIUM / HIGH
+- Brief justification (2-3 sentences)
+
+**📸 Screenshot Requirement:**  
+Include **1 Splunk screenshot** showing your query and the `text_combined` field results.
+
+---
+
+#### **Component 2: AI-Assisted Classification (1 pt)**
+
+Use an AI tool (ChatGPT, Copilot, Claude) to:
+1. Paste **3-5 email samples** you analyzed earlier
+2. Ask: *"Classify these emails as legitimate or phishing. Identify indicators and provide risk ratings."*
+3. **Copy the complete AI output** into your submission
+
+---
+
+#### **Component 3: Critical Comparison (1 pt)**
+
+Create a comparison table showing **3 examples** where AI agreed/disagreed with your analysis:
+
+| Email Text Snippet | Your Classification | AI Classification | Key Difference | Who Was Right? |
+|--------------------|---------------------|-------------------|----------------|----------------|
+| "urgent verify account password..." | PHISHING | PHISHING | We both identified urgency + credential request | Agreement |
+| "team meeting tomorrow 2pm..." | LEGITIMATE | PHISHING | AI flagged "urgent" keyword, I saw legitimate context | Me - false positive |
+| "congratulations winner claim prize..." | PHISHING | LEGITIMATE | I identified lottery scam language, AI missed it | Me - financial lure |
+
+---
+
+#### **Component 4: SecurityX Risk Assessment (1 pt)**
+
+Write **150-200 words** answering:
+
+**"Based on your email analysis, what are the TOP 3 email security risks for an imaginary company, and what layered defenses (technical + human + policy) would you recommend?"**
+
+**Use SecurityX terminology and structure your answer as:**
+- **Risk 1:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
+- **Risk 2:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
+- **Risk 3:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
+
+**Example:**
+> **Risk 1:** Business Email Compromise (BEC) - Attackers pretending to be company executives to trick finance staff into transferring money 
+> 
+> **Control:** 
+> - **Technical:** Email authentication (DMARC/SPF/DKIM) to verify sender identity
+> - **Human:** Train employees to recognize executive impersonation tactics
+> - **Policy:** Require phone call or in-person confirmation for all wire transfer requests over $10,000
+
+
+---
 
 </details>
 
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 3: Identity & Access Log Analysis (3 pts)</h2></summary>
+<summary><h2 style="display: inline;">Task 3: Identity & Access Log Analysis (3 pts)</h2></summary>
 
 **🎯 SecurityX Domain:** Identity, Access & Privilege Management
 
 ### Objective
-Analyse **authentication and access behavior** using IAM logs (`logon.csv`) and assess identity-related risk.
 
-### SecurityX Learning Outcomes
+Analyse **authentication and access behavior** using the **`iam_log` dataset (142,833 events)** in Splunk to identify suspicious login patterns, potential insider threats, and compromised accounts. Apply Zero Trust principles and risk-based authentication concepts.
 
-| Outcome | Description |
-|--------|-------------|
-| 🔐 Assess identity risk | Evaluate account misuse likelihood |
-| 🎯 Apply Zero Trust | Justify least-privilege reasoning |
-| 👤 Human approval thresholds | Decide when automation must stop |
+> **📌 Important:** The IAM logs are **already loaded in Splunk** under `index=securityx_lab sourcetype=iam_log`. This dataset is from **Carnegie Mellon University's CERT Division Insider Threat Program** — a real-world collection of employee authentication activity used for cybersecurity research and training.
 
-### Required SecurityX Terminology  
-Use **at least 3**:
+---
 
-IAM • Least privilege • Zero Trust • Risk-based authentication • Account takeover • Lateral movement • Human-in-the-loop
+### 📊 Splunk Queries for IAM Analysis
 
-### What to Submit
+Use these queries to investigate authentication patterns:
 
-1. **Dataset:** CERT Insider Threat – IAM logs  
-2. **Your Summary:** Human-written login summary  
-3. **Your Analysis:** Identity risks identified  
-4. **AI Output:** AI interpretation  
-5. **Critical Evaluation:** Comparison  
-6. **SecurityX Judgment:** Final risk decision  
+1. **View IAM log structure:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log
+   | head 20
+   ```
+   *Understand the data structure and available fields*
+
+2. **Count login activity by user:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log
+   | stats count by user
+   | sort - count
+   ```
+   *Identify users with highest login volumes - look for anomalies*
+
+3. **Analyze login patterns by time:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log
+   | stats count by date_hour
+   | sort date_hour
+   ```
+   *Find unusual login times (e.g., 2 AM-5 AM may indicate compromised accounts)*
+
+4. **Identify accounts with unusual activity:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log
+   | stats count by user, pc
+   | sort - count
+   ```
+   *Look for users accessing multiple PCs or unusual device patterns*
+
+5. **Investigate specific user behavior:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log user="*CLB*"
+   | stats count by date_mday, date_hour
+   | sort date_mday, date_hour
+   ```
+   *Deep dive into specific user's login timeline*
+
+6. **Find off-hours authentication:**
+   ```spl
+   index=securityx_lab sourcetype=iam_log (date_hour<6 OR date_hour>22)
+   | stats count by user, date_hour, pc
+   | sort - count
+   ```
+   *Identify potential unauthorized access during non-business hours*
+
+---
+
+### 🎯 What to Look For (Investigation Tips)
+
+| Indicator | What It Might Mean | Example |
+|-----------|-------------------|---------|
+| **Excessive login attempts** | Brute force or credential stuffing | User with 500+ logins in one day vs baseline of 20 |
+| **Off-hours authentication** | Compromised account or insider threat | Logins at 2 AM-5 AM from user who normally works 9 AM-5 PM |
+| **Multiple PC access** | Lateral movement or account sharing | User accessing 10 different PCs in one day |
+| **Unusual login frequency** | Automated access or bot activity | Login every 2 minutes for hours |
+| **Geographic anomalies** | Account takeover | User logging in from different locations simultaneously |
+| **Dormant account activity** | Compromised credentials | Account inactive for 6 months suddenly active |
+
+---
+
+> 📚 **Framework References:** [MITRE ATT&CK](https://attack.mitre.org/) (T1078, T1110, T1021), [NIST Zero Trust](https://www.nist.gov/publications/zero-trust-architecture), [CERT Insider Threat](https://insights.sei.cmu.edu/insider-threat/)
+
+---
+
+### SecurityX Terminology
+
+Use **at least 3** of these terms:
+
+| Term | Definition | Example in Context |
+|------|------------|-------------------|
+| **Least privilege** | Users only have minimum access needed for their role | "User accessing admin shares violates least privilege principle" |
+| **Zero Trust** | Never trust, always verify - continuous authentication | "Zero Trust requires validating this off-hours login despite valid credentials" |
+| **Baseline behavior** | Normal activity patterns for comparison | "50 logins/day is baseline; 500 logins indicates anomaly" |
+| **Risk-based authentication** | Access decisions based on context and risk indicators | "Off-hours login from new device triggers MFA challenge" |
+| **Account takeover** | Attacker gains control of legitimate user account | "Sudden change in login times suggests account takeover" |
+| **Lateral movement** | Attacker moving between systems/accounts | "User accessing multiple servers in 10 minutes shows lateral movement" |
+| **Insider threat** | Malicious or negligent employee risk | "Employee downloading sensitive data before resignation is insider threat indicator" |
+
+---
+
+### 📝 What to Submit
+
+#### **Component 1: Data Source & Authentication Pattern Analysis (1 pt)**
+
+**Required:**
+- State data source: `index=securityx_lab sourcetype=iam_log`
+- Specify time range analyzed
+- **Include 1 Splunk screenshot** showing your query and results
+
+**Analysis Instructions:**
+1. Run queries to identify 1-2 users with suspicious patterns
+2. Document what makes their behavior anomalous
+3. Compare to baseline (e.g., "Average user: 30 logins/day, Suspicious user: 300 logins/day")
+
+**Example:**
+> "Analyzed IAM logs from `index=securityx_lab sourcetype=iam_log` covering 1/14-1/26/2026. Identified user DTAA/CLB0995 with 1,200 login attempts (vs baseline 50/day) and user accessing 15 different PCs in 24 hours."
+>
+> *[Screenshot: Splunk query showing user login counts]*
+
+---
+
+#### **Component 2: Human-Written Summary (1 pt)**
+
+**Your observations BEFORE using AI**
+
+**Requirements:**
+- 3-5 bullet points summarizing suspicious patterns
+- Include specific details: usernames, login counts, timing, devices
+
+**Example:**
+- User DTAA/CLB0995: 1,200 logins in one day (baseline: 50)
+- Off-hours activity: 45 logins between 2-4 AM
+- Device hopping: Accessed 12 different PCs in 6 hours
+
+---
+
+#### **Component 3: Risk Assessment & AI Comparison (1 pt)**
+
+**Part A: Your Risk Analysis (BEFORE AI)**
+
+**🔴 Risk Level:** HIGH / MEDIUM / LOW
+
+**📊 Evidence & SecurityX Analysis:**
+- Use **at least 3 SecurityX terms**
+- What makes this behavior suspicious?
+
+**❓ What's Missing?**
+- What additional data would help?
+
+**🛡️ Recommendations:**
+1. **Right Now:** [Immediate action]
+2. **Investigate Next:** [Further analysis]
+3. **Prevent Future:** [Long-term controls]
+
+**Part B: AI Analysis & Critical Evaluation**
+
+- Paste your summary into an AI tool
+- Document AI's conclusions
+- Compare: Did AI agree? What did AI miss? Override needed?
+
+---
 
 </details>
 
 
 
 <details markdown="1">
-<summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (4 pts)</h2></summary>
+<summary><h2 style="display: inline;">🔹 Task 4: AI Governance & Risk Evaluation (3 pts)</h2></summary>
 
-**🎯 SecurityX Domain:** Governance, Risk & Compliance + Emerging Technologies
+**🎯 SecurityX Domain:** Governance, Risk & Compliance + Emerging Technologies (AI in Cybersecurity)
 
 ### Objective
-Evaluate **AI-specific risks** observed during Tasks 1–3 and propose governance controls.
 
-### SecurityX Learning Outcomes
+Synthesize findings from Tasks 1-3 to evaluate AI's role in security operations. Assess AI-specific risks, identify when AI tools succeed vs fail, and propose governance controls that ensure human accountability while leveraging AI decision-support.
 
-| Outcome | Description |
-|--------|-------------|
-| ⚖️ Assess AI risk | Identify automation-related risks |
-| 📋 Propose governance controls | Policies, procedures, oversight |
-| 🔍 Maintain accountability | Humans remain responsible |
-| 📊 Ensure auditability | Decisions must be reviewable |
+> **📌 Why This Matters:** SecurityX professionals must govern how AI is deployed in SOCs. The ability to critically assess AI accuracy, identify hallucinations, and maintain human accountability distinguishes advanced practitioners from basic analysts.
 
-### Required SecurityX Terminology  
-Use **at least 4**:
+---
 
-Human-in-the-loop • Auditability • Accountability • AI hallucination • Decision-support vs decision-making • Bias • Transparency • Explainability (XAI)
+### 📖 Key SecurityX Terminology
 
-### What to Submit
+Use **at least 4** of these terms in your analysis:
 
-1. AI risk assessment across all tasks  
-2. Examples of AI overconfidence or hallucination  
-3. Where AI helped vs failed  
-4. Governance controls you recommend  
-5. When humans must override AI  
-6. Final SecurityX-level judgment  
+| Term | Definition |
+|------|------------|
+| **Human-in-the-loop (HITL)** | Human oversight before critical automated actions |
+| **Accountability** | Humans remain responsible for decisions, even when using AI |
+| **AI hallucination** | AI generates false information not based on evidence |
+| **Decision-support vs decision-making** | AI advises; humans decide |
+| **Automation bias** | Over-trusting automated systems without scrutiny |
+
+> 📚 **Reference Frameworks:** [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework), [OWASP Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [Microsoft Responsible AI](https://www.microsoft.com/en-us/ai/responsible-ai)
+
+---
+
+### 📝 What to Submit
+
+**Submit a comprehensive AI governance analysis (300-400 words total) that includes ALL of the following:**
+
+#### **Part A: AI Performance Comparison**
+
+Create a table evaluating AI across all three tasks:
+
+| Task | What AI Did Well | What AI Missed/Got Wrong |
+|------|------------------|--------------------------|
+| **Task 1: Endpoint Security (winLogs)** | [Specific strength] | [Specific weakness with example] |
+| **Task 2: Email & Phishing (email_log)** | [Specific strength] | [Specific weakness with example] |
+| **Task 3: Identity & Access (iam_log)** | [Specific strength] | [Specific weakness with example] |
+
+#### **Part B: Write Your Analysis**
+
+In **200-300 words**, address these three questions:
+
+**1. What are the TOP 3 AI risks you observed, and what governance controls would you implement?**
+
+Format: **Risk 1:** [Name] - Evidence from [Task X] - Governance Control: [Specific mechanism]
+
+**2. When should analysts OVERRIDE AI recommendations?**
+
+Provide: Decision criteria + 2 specific scenarios from your lab work
+
+**3. Who maintains accountability for security decisions when using AI tools?**
+
+Explain the principle of human-in-the-loop and final decision ownership
+
+---
+
+### 🎯 Grading
+
+| Criterion | Points |
+|-----------|--------|
+| Comparison table with specific examples from all 3 tasks | 1 pt |
+| 3 AI risks with evidence + governance controls | 1 pt |
+| Override criteria with 2 scenarios + accountability | 1 pt |
+| **Uses 4+ SecurityX terms correctly** | **Required** |
+
+---
 
 </details>
 
