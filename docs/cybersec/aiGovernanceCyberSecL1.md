@@ -98,12 +98,9 @@ You do **not** need dashboards, alerts, or apps for this lab.
 
 ### Basic SPL (Search Processing Language)
 
-SPL is how you query data in Splunk.  
-Think of it as **“search → filter → summarize”**.
+SPL is how you query data in Splunk. Think of it as **“search → filter → summarize”**.
 
-**Examples you will use:**
-
-#### Essential SPL Queries for This Lab
+#### Some SPL Queries for This Lab
 
 **1️⃣ View All Lab Data**
 ```spl
@@ -169,7 +166,7 @@ index=securityx_lab sourcetype=winLogs EventID=1
 
 ---
 
-> **Remember:** You are **not graded on SPL complexity** — only on your **security reasoning and analysis**.  
+> **Remember:** You are **not graded on SPL complexity**, only on your **security reasoning and analysis**.  
 > Basic searches are sufficient. Focus on **understanding what the logs tell you**.
 
 ---
@@ -190,7 +187,7 @@ If you are new to Splunk, these official resources can help:
 
 ---
 <details markdown="1">
-<summary><h2 >🧪 Task Workflow: Step-by-Step Process</h2></summary>
+<summary><h2 style="display: inline;">🧪 Task Workflow: Step-by-Step Process</h2></summary>
 
 **Human Analysis First → AI as Support → Critical Evaluation → Governance Decision**
 
@@ -214,6 +211,9 @@ If you are new to Splunk, these official resources can help:
 ## 📝 Lab Tasks (15 Points Total)
 
 **Task 1: 5 pts  │  Task 2: 4 pts  │  Task 3: 3 pts  │  Task 4: 3 pts**
+
+You'll complete four tasks that build on each other. First, analyze **Windows logs** to catch credential dumping and persistence attacks. Then examine **emails** to spot phishing attempts. Next, investigate **login patterns** to find compromised accounts. Finally, step back and evaluate: Where did AI help? Where did it fail? What governance controls should we put in place? The key throughout is analyzing data yourself first, then using AI as a second opinion but not the other way around.
+
 <details markdown="1">
 <summary><h2 style="display: inline;">Task 1: Enterprise Security Log Analysis (5 pts)</h2></summary>
 
@@ -225,7 +225,7 @@ Analyse **Windows logs** in Splunk to identify and assess potential security thr
 
 > **📌 Important:** The Sysmon logs (Winlogs) are **already loaded in Splunk** under `index=securityx_lab sourcetype=winLogs`. You do **NOT** need to upload any data.
 
-> **About This Dataset:** These logs come from **Sysmon (System Monitor)**, a Windows system service that records detailed system activity including process creation, network connections, and registry changes. This data is essential for detecting advanced threats like credential dumping, persistence mechanisms, and lateral movement — techniques commonly used by attackers after initial compromise.
+> **About This Dataset:** These logs come from **Sysmon (System Monitor)**, a Windows tool that tracks what's happening on a computer — which programs run, what files change, and how the system is being used. This helps us spot attackers trying to steal passwords, or hide malware.
 
 ---
 
@@ -357,11 +357,13 @@ Use **at least 3** of these terms appropriately in your submission:
 **Your observations BEFORE using AI**
 
 **Requirements:**
+
 - 3-5 bullet points summarizing patterns
 - Include specific details: EventIDs, processes, registry keys, timing
 - Your interpretation, not raw logs
 
 **Example:**
+
 - EventID 10: "powershell.exe" accessed "lsass.exe" 15 times
 - EventID 13: Registry key `HKLM\...\Run\UpdateCheck` created
 - Timing: All activity between 02:30-03:15 AM
@@ -377,14 +379,17 @@ Use **at least 3** of these terms appropriately in your submission:
 **🔴 Risk Level:** HIGH / MEDIUM / LOW
 
 **📊 Evidence & SecurityX Analysis:**
+
 - Use **at least 3 SecurityX terms**
 - What IoCs or patterns did you find?
 - How do events correlate?
 
 **❓ What's Missing?**
+
 - What additional data would help your investigation?
 
 **🛡️ Recommendations:**
+
 1. **Right Now:** [Immediate action]
 2. **Investigate Next:** [Further analysis needed]
 3. **Prevent Future:** [Long-term controls]
@@ -396,6 +401,7 @@ Use **at least 3** of these terms appropriately in your submission:
 **Using AI as decision support**
 
 **Requirements:**
+
 - Paste your summary (Component 2) into an AI tool
 - Document AI's conclusion: risk level, IoCs identified, recommendations
 
@@ -845,3 +851,29 @@ Explain the principle of human-in-the-loop and final decision ownership
 **Key Principle:** This lab tests your ability to use AI as a tool while maintaining human professional judgment - exactly what SecurityX-level professionals do in real SOC environments.
 
 **Questions?** Contact your instructor via Canvas or during lab hours.
+
+</details>
+
+---
+
+## 📖 Glossary
+
+**Key terms used throughout this lab:**
+
+| Term | Definition |
+|------|------------|
+| **SOC** | Security Operations Center - A centralized team that monitors, detects, analyzes, and responds to cybersecurity incidents using technology and processes |
+| **SIEM** | Security Information and Event Management - A platform that collects, correlates, and analyzes security logs from across an organization (Splunk is a SIEM) |
+| **GRC** | Governance, Risk, and Compliance - Framework ensuring organizations meet regulatory requirements, manage risks, and maintain accountability |
+| **SecurityX** | CompTIA's advanced cybersecurity certification focusing on threat management, vulnerability assessment, incident response, and enterprise security architecture |
+| **SPL** | Search Processing Language - The query language used in Splunk to search, filter, and analyze log data |
+| **Sysmon** | System Monitor - Windows system service that logs detailed system activity including process creation, network connections, and file modifications |
+| **IoCs** | Indicators of Compromise - Observable artifacts (files, IPs, processes, registry keys) that indicate a potential security breach |
+| **MITRE ATT&CK** | A globally-accessible knowledge base of adversary tactics and techniques based on real-world observations of cyberattacks |
+| **Telemetry** | Automated collection and transmission of data from remote sources (security logs, system events, network traffic) for monitoring and analysis |
+| **Human-in-the-loop (HITL)** | A design pattern where humans provide oversight and validation before critical automated actions are executed |
+| **AI Hallucination** | When AI generates false information or makes unsupported claims not based on available evidence |
+| **Zero Trust** | Security model based on "never trust, always verify" - continuous authentication and authorization regardless of network location |
+| **EventID** | A unique identifier assigned to specific types of Windows log events (e.g., EventID 10 = Process Access) |
+| **Defense-in-Depth** | Layered security strategy using multiple defensive mechanisms (technical controls, policies, training) to protect assets |
+| **BEC** | Business Email Compromise - Social engineering attack where attackers impersonate executives to trick employees into transferring funds or data |
