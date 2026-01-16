@@ -126,7 +126,7 @@ If you can't complete a step due to permissions:
 
 ---
 <details markdown="1">
-<summary><h2 style="display: inline;"> ## Task 1: Identity Verification & MFA (4 Points) </summary>
+<summary><h2 style="display: inline;">Task 1: Identity Verification & MFA (4 Points) </summary>
 
 **Zero Trust Principle:** 🔐 **Verify Explicitly** | ⏱️ **Time: 30-40 minutes**
 
@@ -201,7 +201,7 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 ---
 </details>
 <details markdown="1">
-<summary><h2 style="display: inline;"> ## Task 2: Least Privilege Access Enforcement (4 Points) </summary>
+<summary><h2 style="display: inline;"> Task 2: Least Privilege Access Enforcement (4 Points) </summary>
 
 **Zero Trust Principle:** 🔑 **Use Least Privilege** | ⏱️ **Time: 40-50 minutes**
 
@@ -351,7 +351,7 @@ This is **least privilege** in action that is just enough to do the job, no more
 
 <details markdown="1">
 <summary><h2 style="display: inline;">
-## Task 3: Network Segmentation & Assume Breach (4 Points) </summary>
+Task 3: Network Segmentation & Assume Breach (4 Points) </summary>
 
 **Zero Trust Principle:** 🚧 **Assume Breach** | ⏱️ **Time: 35-45 minutes**
 
@@ -488,7 +488,7 @@ Design your network **assuming attackers are already inside**. Even if an attack
 </details>
 <details markdown="1">
 <summary><h2 style="display: inline;">
-## Task 4: Continuous Security Assessment (3 Points) </summary>
+Task 4: Continuous Security Assessment (3 Points) </summary>
 
 **Zero Trust Principle:** 📊 **Continuous Verification** | ⏱️ **Time: 25-35 minutes**
 
