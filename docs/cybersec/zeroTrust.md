@@ -190,10 +190,10 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 1. **Screenshot 1:** Security Defaults set to "Enabled" in Microsoft Entra ID
 2. **Screenshot 2:** Sign-in logs showing MFA authentication attempts
 3. **Written explanation (4-6 sentences):** Address the following:
-   - Describe your identity environment (number of users, test user creation status)
-   - How does MFA implement "Verify Explicitly"?
-   - Why is verifying identity better than trusting the network?
-   - What happens if someone steals a password but doesn't have the second factor?
+    - Describe your identity environment (number of users, test user creation status)
+    - How does MFA implement "Verify Explicitly"?
+    - Why is verifying identity better than trusting the network?
+    - What happens if someone steals a password but doesn't have the second factor?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
