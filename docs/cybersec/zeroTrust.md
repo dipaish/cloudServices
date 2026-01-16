@@ -523,7 +523,7 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 
 💡 **What Defender does:** It continuously scans your Azure resources for security vulnerabilities, misconfigurations, and threats. It compares your setup against industry best practices.
 
-#### Step 2: Review Your Secure Score
+#### Step 2: Review Your Secure Score (Optional - No points)
 
 1. From the Defender for Cloud main page, find your **Secure Score**
     - It's displayed as a percentage (e.g., "62% Secure Score")
@@ -594,19 +594,6 @@ Example analysis:
 
 1. **Screenshot 1:** Microsoft Defender for Cloud overview showing your Secure Score (with percentage and breakdown)
 2. **Screenshot 2:** Recommendations list showing your two selected recommendations with their details visible
-3. **Written analysis for each of your two recommendations:** Address the following for each:
-    - **Recommendation name**  What does it say to fix?
-    - **Security risk** What threat does this address?
-    - **Zero Trust principle** Which principle (Verify Explicitly / Least Privilege / Assume Breach)?
-    - **Impact** Why would fixing this improve security?
-
-4. **Overall reflection (3-4 sentences):** Address the following:
-    - How does continuous monitoring support Zero Trust?
-    - Why can't security be a "set it and forget it" approach?
-    - How would you use Secure Score in an enterprise security role?
-
-> ⚠️ **ACADEMIC INTEGRITY WARNING**  
-> Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
 </details>
