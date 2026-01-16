@@ -63,6 +63,7 @@ nav:
       - User Management: linux/user-management.md
   - AI & Cybersecurity:
       - AI, Governance & Cybersecurity Lab: cybersec/aiGovernanceCyberSecL1.md
+      - Zero Trust Security Lab: cybersec/zeroTrust.md
 
 markdown_extensions:
   - admonition
