@@ -190,10 +190,10 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 1. **Screenshot 1:** Security Defaults set to "Enabled" in Microsoft Entra ID
 2. **Screenshot 2:** Sign-in logs showing MFA authentication attempts
 3. **Written explanation (4-6 sentences):**
-   1. Describe your identity environment (number of users, test user creation status)
-   2. How does MFA implement "Verify Explicitly"?
-   3. Why is verifying identity better than trusting the network?
-   4. What happens if someone steals a password but doesn't have the second factor?
+4. Describe your identity environment (number of users, test user creation status)
+5. How does MFA implement "Verify Explicitly"?
+6. Why is verifying identity better than trusting the network?
+7. What happens if someone steals a password but doesn't have the second factor?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -331,12 +331,12 @@ This is **least privilege** in action that is just enough to do the job, no more
 1. **Screenshot 1:** IAM role assignments showing Reader role assigned to the test user (or explanation if you couldn't create a test user)
 2. **Screenshot 2:** Error message when test user tries to create/modify a resource AND/OR Activity Log showing the failed attempt with authorization error
 3. **Written explanation (3-5 sentences):**
-   1. Describe your test environment setup (resource group, test user status)
-   2. Why is "deny by default" a security win?
-   3. How does least privilege limit damage if credentials are compromised?
-   4. In an enterprise, why would you use Reader role for auditors or reporting tools?
-   5. What could an attacker do with Reader access vs. Contributor access?
-   6. Why was it important to test with a separate account rather than your main account?
+4. Describe your test environment setup (resource group, test user status)
+5. Why is "deny by default" a security win?
+6. How does least privilege limit damage if credentials are compromised?
+7. In an enterprise, why would you use Reader role for auditors or reporting tools?
+8. What could an attacker do with Reader access vs. Contributor access?
+9. Why was it important to test with a separate account rather than your main account?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -466,12 +466,12 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. **Screenshot 1:** Virtual network `ZTVNet` showing both subnets (`frontend` and `backend`) with their address ranges
 2. **Screenshot 2:** Network Security Group `backend-nsg` with inbound security rules (showing your custom rule and default rules) associated with the backend subnet
 3. **Written explanation (3-5 sentences):**
-   1. Describe your network setup (VNet name, subnet ranges, NSG configuration)
-   2. How does network segmentation implement "Assume Breach"?
-   3. What is lateral movement and why is it dangerous?
-   4. If an attacker compromises a frontend web server, how does the NSG protect the backend?
-   5. Why is "deny by default" important in network security?
-   6. How would you extend this in a real enterprise (e.g., adding a database subnet)?
+4. Describe your network setup (VNet name, subnet ranges, NSG configuration)
+5. How does network segmentation implement "Assume Breach"?
+6. What is lateral movement and why is it dangerous?
+7. If an attacker compromises a frontend web server, how does the NSG protect the backend?
+8. Why is "deny by default" important in network security?
+9. How would you extend this in a real enterprise (e.g., adding a database subnet)?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -585,15 +585,15 @@ Example analysis:
 1. **Screenshot 1:** Microsoft Defender for Cloud overview showing your Secure Score (with percentage and breakdown)
 2. **Screenshot 2:** Recommendations list showing your two selected recommendations with their details visible
 3. **Written analysis for each of your two recommendations:**
-   1. **Recommendation name**  What does it say to fix?
-   2. **Security risk** What threat does this address?
-   3. **Zero Trust principle** Which principle (Verify Explicitly / Least Privilege / Assume Breach)?
-   4. **Impact** — Why would fixing this improve security?
+4. **Recommendation name**  What does it say to fix?
+5. **Security risk** What threat does this address?
+6. **Zero Trust principle** Which principle (Verify Explicitly / Least Privilege / Assume Breach)?
+7. **Impact** — Why would fixing this improve security?
 
-4. **Overall reflection (3-4 sentences):**
-   1. How does continuous monitoring support Zero Trust?
-   2. Why can't security be a "set it and forget it" approach?
-   3. How would you use Secure Score in an enterprise security role?
+8. **Overall reflection (3-4 sentences):**
+9. How does continuous monitoring support Zero Trust?
+10. Why can't security be a "set it and forget it" approach?
+11. How would you use Secure Score in an enterprise security role?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
