@@ -546,7 +546,7 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 - This helps prioritize security work and fix high-impact items first
 - Enterprises track this metric to measure security improvement
 
-#### Step 3: Analyze Security Recommendations
+#### Step 3: Analyze Security Recommendations (Optional - No points)
 
 1. From Defender for Cloud, click **Recommendations** in the left menu
 2. You'll see a list of security recommendations, such as:
@@ -597,8 +597,5 @@ Example analysis:
 
 ---
 </details>
-**Less important:** Perfect tool execution or getting everything working flawlessly.
-
-> 💡 **Remember:** This is about learning security principles, not memorizing Azure menus. Focus on the "why" behind each action.  
 
 
