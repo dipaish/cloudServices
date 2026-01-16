@@ -1,4 +1,4 @@
-dd# Applying Zero Trust Principles in an Enterprise Cloud Environment  
+# Applying Zero Trust Principles in an Enterprise Cloud Environment  
 **Enterprise Security Practitioner Lab │ 15 Points │ Individual Practical Task**
 
 ---
