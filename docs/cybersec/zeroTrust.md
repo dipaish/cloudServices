@@ -166,7 +166,9 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 3. Click **Manage Security Defaults**
 4. Set to **Enabled** (if not already)
 5. Click **Save**
+
 💡 **What this does:** Security Defaults automatically require MFA for all users. When signing in, users must provide:
+
    - Something they know (password)
    - Something they have (phone app code or SMS)
 
@@ -283,6 +285,7 @@ This is **least privilege** in action that is just enough to do the job, no more
    - Click **+ Create** 
    - Try to add any resource (e.g., Storage account)
    - You should see: **"You don't have authorization"** or **"Failed - Forbidden"**
+
 7. Try another action:
 
    - Try to delete the resource group
@@ -291,6 +294,7 @@ This is **least privilege** in action that is just enough to do the job, no more
 💡 **This failure is success!** The system correctly blocked unauthorized actions.
 
 **If you CANNOT create users (Option B):**
+
 - Explain in your submission how the Reader role would restrict actions
 - Describe what would happen if a test user with only Reader access tried to modify resources
 - Reference your subscription-level permissions showing why you can't test this restriction
@@ -304,11 +308,13 @@ This is **least privilege** in action that is just enough to do the job, no more
 
    - **Timespan:** Last 1 hour
    - **Event initiated by:** `readertest` (your test username)
+
 4. Look for the failed operations:
 
    - Status icon will show red ❌
    - Operation might be "Create deployment" or "Delete resource group"
    - **Status:** Failed
+
 5. Click on a failed operation to see details
 6. You should see **"Authorization failed"** with error code
 
@@ -427,6 +433,7 @@ Design your network **assuming attackers are already inside**. Even if an attack
 
    - Click **+ Add**
    - Configure the rule:
+
      - **Source:** IP Addresses
      - **Source IP addresses:** `10.0.1.0/24` (your frontend subnet)
      - **Destination:** Any
@@ -437,6 +444,7 @@ Design your network **assuming attackers are already inside**. Even if an attack
      - **Priority:** `100`
      - **Name:** `Allow-Frontend-HTTPS`
      - **Description:** "Only allow HTTPS traffic from frontend subnet"
+
    - Click **Add**
 
 💡 **What this rule means:** Only the frontend subnet can communicate with backend, and only via HTTPS (port 443). Everything else is denied by default.
@@ -446,8 +454,10 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. In your `backend-nsg`, go to **Subnets** (in the left menu under Settings)
 2. Click **+ Associate**
 3. Select:
+
    - **Virtual network:** `ZTVNet`
    - **Subnet:** `backend`
+
 4. Click **OK**
 5. Wait a few seconds for the association
 
@@ -522,8 +532,7 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 8. You'll see **Defender plans**:
 
    - Most will show **Off** or **Free tier** (this is fine for students)
-   - The free tier still provides valuable recommendations
-9. Review what's enabled
+   - The free tier still provides valuable recommendations9. Review what's enabled
 
 💡 **What Defender does:** It continuously scans your Azure resources for security vulnerabilities, misconfigurations, and threats. It compares your setup against industry best practices.
 
@@ -610,8 +619,7 @@ Example analysis:
    - **Recommendation name**  What does it say to fix?
    - **Security risk** What threat does this address?
    - **Zero Trust principle** Which principle (Verify Explicitly / Least Privilege / Assume Breach)?
-   - **Impact** — Why would fixing this improve security?
-4. **Overall reflection (3-4 sentences):**
+   - **Impact** — Why would fixing this improve security?4. **Overall reflection (3-4 sentences):**
 
    - How does continuous monitoring support Zero Trust?
    - Why can't security be a "set it and forget it" approach?
