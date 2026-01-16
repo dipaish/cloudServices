@@ -782,6 +782,35 @@ h6 .headerlink {
 }
 
 /* ===== LIST STYLING ===== */
+/* Exclude navigation/sidebar lists from styling */
+#sidebar ul,
+#sidebar ol,
+#sidebar li,
+nav ul,
+nav ol,
+nav li,
+.sidebar ul,
+.sidebar ol,
+.sidebar li,
+.md-nav ul,
+.md-nav ol,
+.md-nav li,
+.md-sidebar ul,
+.md-sidebar ol,
+.md-sidebar li,
+header ul,
+header ol,
+header li,
+.navbar ul,
+.navbar ol,
+.navbar li {
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Only style lists in main content area */
 .content ul,
 .content ol {
     color: #1a1a1a !important;
@@ -791,10 +820,10 @@ h6 .headerlink {
     color: #1a1a1a !important;
 }
 
-/* General list styling for all ordered lists */
-.content ol,
-article ol,
-main ol {
+/* General list styling for all ordered lists IN CONTENT ONLY */
+.content ol:not(nav ol):not(.md-nav ol),
+article ol:not(nav ol):not(.md-nav ol),
+main .content ol {
     list-style-type: decimal !important;
     list-style-position: outside !important;
     margin-left: 0 !important;
@@ -802,18 +831,18 @@ main ol {
     margin-bottom: 1em !important;
 }
 
-.content ol li,
-article ol li,
-main ol li {
+.content ol li:not(nav li):not(.md-nav li),
+article ol li:not(nav li):not(.md-nav li),
+main .content ol li {
     display: list-item !important;
     margin-bottom: 0.5em !important;
     padding-left: 0.5em !important;
 }
 
-/* General unordered list styling */
-.content ul,
-article ul,
-main ul {
+/* General unordered list styling IN CONTENT ONLY */
+.content ul:not(nav ul):not(.md-nav ul),
+article ul:not(nav ul):not(.md-nav ul),
+main .content ul {
     list-style-type: disc !important;
     list-style-position: outside !important;
     margin-left: 0 !important;
@@ -821,9 +850,9 @@ main ul {
     margin-bottom: 1em !important;
 }
 
-.content ul li,
-article ul li,
-main ul li {
+.content ul li:not(nav li):not(.md-nav li),
+article ul li:not(nav li):not(.md-nav li),
+main .content ul li {
     display: list-item !important;
     margin-bottom: 0.5em !important;
     padding-left: 0.5em !important;
@@ -832,7 +861,7 @@ main ul li {
 /* Nested ordered lists */
 .content ol ol,
 article ol ol,
-main ol ol {
+main .content ol ol {
     list-style-type: lower-alpha !important;
     margin-top: 0.5em !important;
     margin-bottom: 0.5em !important;
@@ -842,7 +871,7 @@ main ol ol {
 /* Nested unordered lists */
 .content ul ul,
 article ul ul,
-main ul ul {
+main .content ul ul {
     list-style-type: circle !important;
     margin-top: 0.5em !important;
     margin-bottom: 0.5em !important;
@@ -852,13 +881,13 @@ main ul ul {
 /* Third level nested lists */
 .content ol ol ol,
 article ol ol ol,
-main ol ol ol {
+main .content ol ol ol {
     list-style-type: lower-roman !important;
 }
 
 .content ul ul ul,
 article ul ul ul,
-main ul ul ul {
+main .content ul ul ul {
     list-style-type: square !important;
 }
 
