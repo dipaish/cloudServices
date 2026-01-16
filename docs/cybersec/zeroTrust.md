@@ -220,7 +220,6 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 1. In Azure Portal, search for **"Resource groups"**
 2. Click **+ Create**
 3. Fill in the details:
-
    - **Subscription:** Your student/free subscription
    - **Resource group name:** `ZTLabEsp26`
    - **Region:** Choose any (e.g., North Europe)
@@ -237,7 +236,6 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 1. In Microsoft Entra ID, go to **Users** → **All users**
 2. Click **+ New user** → **Create new user**
 3. Create the user:
-
    - User principal name: `readertest@yourdomain`
    - Display name: `Reader Test User`
    - **Check** "Account enabled" (we'll use this account)
@@ -247,11 +245,9 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 6. Click **Access control (IAM)**
 7. Click **+ Add** → **Add role assignment**
 8. **Role tab:**
-
    - Select **"Reader"**
    - Click **Next**
 9. **Members tab:**
-
    - Click **+ Select members**
    - Search for `readertest` (your test user)
    - Click **Select**, then **Next**
@@ -281,13 +277,11 @@ This is **least privilege** in action that is just enough to do the job, no more
 4. Use the temporary password, then set a new password
 5. Navigate to **Resource groups** → `ZTLabEsp26`
 6. Try to create a resource (this should fail):
-
    - Click **+ Create** 
    - Try to add any resource (e.g., Storage account)
    - You should see: **"You don't have authorization"** or **"Failed - Forbidden"**
 
 7. Try another action:
-
    - Try to delete the resource group
    - Should also fail with authorization error
 
@@ -305,12 +299,10 @@ This is **least privilege** in action that is just enough to do the job, no more
 1. **While still logged in as the test user**, navigate to `ZTLabEsp26`
 2. Click **Activity log** in the left menu
 3. Add filters:
-
    - **Timespan:** Last 1 hour
    - **Event initiated by:** `readertest` (your test username)
 
 4. Look for the failed operations:
-
    - Status icon will show red ❌
    - Operation might be "Create deployment" or "Delete resource group"
    - **Status:** Failed
@@ -373,7 +365,6 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. In Azure Portal, search for **"Virtual networks"**
 2. Click **+ Create**
 3. **Basics tab:**
-
    - **Subscription:** Your student/free subscription
    - **Resource group:** Select `ZTLabEsp26` (reuse from Task 2)
    - **Name:** `ZTVNet`
@@ -381,19 +372,16 @@ Design your network **assuming attackers are already inside**. Even if an attack
 4. Click **Next: IP Addresses**
 
 5. **IP Addresses tab:**
-
    - **IPv4 address space:** Keep default (e.g., `10.0.0.0/16`)
    - You'll see a default subnet — we'll modify this
    
 6. **Create the frontend subnet:**
-
    - If there's a default subnet, click the **pencil icon** to edit it, or click **+ Add subnet**
    - **Subnet name:** `frontend`
    - **Subnet address range:** `10.0.1.0/24` (adjust if your address space is different)
    - Click **Save** or **Add**
 
 7. **Create the backend subnet:**
-
    - Click **+ Add subnet**
    - **Subnet name:** `backend`
    - **Subnet address range:** `10.0.2.0/24`
@@ -409,7 +397,6 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. In Azure Portal, search for **"Network security groups"**
 2. Click **+ Create**
 3. Fill in the details:
-
    - **Subscription:** Your subscription
    - **Resource group:** `ZTLabEsp26`
    - **Name:** `backend-nsg`
@@ -425,15 +412,12 @@ Design your network **assuming attackers are already inside**. Even if an attack
 
 1. In your `backend-nsg`, go to **Inbound security rules** (in the left menu under Settings)
 2. Review the default rules:
-
    - You'll see rules like `AllowVNetInBound`, `DenyAllInBound`
    - These are Azure's default protections
 
 3. **Add a custom restrictive rule** (to demonstrate control):
-
    - Click **+ Add**
    - Configure the rule:
-
      - **Source:** IP Addresses
      - **Source IP addresses:** `10.0.1.0/24` (your frontend subnet)
      - **Destination:** Any
@@ -444,7 +428,6 @@ Design your network **assuming attackers are already inside**. Even if an attack
      - **Priority:** `100`
      - **Name:** `Allow-Frontend-HTTPS`
      - **Description:** "Only allow HTTPS traffic from frontend subnet"
-
    - Click **Add**
 
 💡 **What this rule means:** Only the frontend subnet can communicate with backend, and only via HTTPS (port 443). Everything else is denied by default.
@@ -454,7 +437,6 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. In your `backend-nsg`, go to **Subnets** (in the left menu under Settings)
 2. Click **+ Associate**
 3. Select:
-
    - **Virtual network:** `ZTVNet`
    - **Subnet:** `backend`
 
@@ -473,7 +455,6 @@ Design your network **assuming attackers are already inside**. Even if an attack
 6. Click on **Effective security rules** (under Support + troubleshooting)
 7. You may need to select a network interface (if none exist, you'll see the default rules)
 8. Review all rules that are active:
-
    - Your custom rule (priority 100)
    - Default Azure rules (higher priority numbers)
    - See which rules ALLOW vs DENY traffic
@@ -521,7 +502,6 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 2. Click on **Microsoft Defender for Cloud** in the results
 3. If prompted, click **Get Started** or **Enable Defender**
 4. You'll see the overview page with:
-
    - **Secure Score** (your security rating)
    - **Recommendations** (things to improve)
    - **Alerts** (potential threats detected)
@@ -530,28 +510,25 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 6. Expand your subscription (click the **>** arrow)
 7. Click on your subscription name
 8. You'll see **Defender plans**:
-
    - Most will show **Off** or **Free tier** (this is fine for students)
-   - The free tier still provides valuable recommendations9. Review what's enabled
+   - The free tier still provides valuable recommendations
+9. Review what's enabled
 
 💡 **What Defender does:** It continuously scans your Azure resources for security vulnerabilities, misconfigurations, and threats. It compares your setup against industry best practices.
 
 #### Step 2: Review Your Secure Score
 
 1. From the Defender for Cloud main page, find your **Secure Score**
-
    - It's displayed as a percentage (e.g., "62% Secure Score")
    - And as points (e.g., "15 out of 24 points")
 
 2. Click on **Secure Score** to see details
 3. Review the breakdown:
-
    - **Recommendations by severity:** High, Medium, Low
    - **Affected resources:** How many resources have issues
    - **Score by subscription:** Your overall security rating
 
 4. Click on different tabs to explore:
-
    - **Score over time:** See if your security is improving
    - **Recommendations:** Specific actions to improve your score
 
@@ -566,7 +543,6 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 
 1. From Defender for Cloud, click **Recommendations** in the left menu
 2. You'll see a list of security recommendations, such as:
-
    - "MFA should be enabled on accounts with owner permissions"
    - "Storage accounts should restrict network access"
    - "Network Security Groups should have inbound rules restricted"
@@ -575,7 +551,6 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 3. **Select two recommendations** that interest you (pick ones relevant to your work)
 
 4. For each recommendation:
-
    - Click on it to see details
    - Read the **Description** — what's the security risk?
    - Read **Remediation steps** — how to fix it
@@ -595,13 +570,11 @@ Example analysis:
 #### Step 4: Explore Advanced Features (Optional but Recommended)
 
 1. Check **Security alerts** (if any):
-
    - Click **Security alerts** in the left menu
    - Real alerts show potential attacks or suspicious activity
    - This is continuous monitoring in action
 
 2. Review **Inventory**:
-
    - Click **Inventory** in the left menu
    - See all your Azure resources and their security status
    - Spot which resources have security issues
