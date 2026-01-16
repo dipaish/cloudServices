@@ -26,7 +26,6 @@ This task teaches you **Zero Trust security**, a modern approach to enterprise s
 🔗 https://learn.microsoft.com/en-us/training/paths/zero-trust-principles/
 
 **What you'll learn:**
-
 - What Zero Trust means and why it matters
 - **The 3 core principles:**
   - **Verify explicitly** Always authenticate and authorize
@@ -153,7 +152,6 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 1. In Microsoft Entra ID, go to **Users** → **All users**
 2. Click **+ New user** → **Create new user**
 3. Set up the user:
-
    - User principal name: `testuser01@yourdomain`
    - Display name: `Test User 01`
    - **Uncheck** "Account enabled" for now (safety measure)
@@ -168,9 +166,7 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 3. Click **Manage Security Defaults**
 4. Set to **Enabled** (if not already)
 5. Click **Save**
-
 💡 **What this does:** Security Defaults automatically require MFA for all users. When signing in, users must provide:
-   
    - Something they know (password)
    - Something they have (phone app code or SMS)
 
@@ -178,7 +174,6 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 1. In Microsoft Entra ID, go to **Sign-in logs** (under Monitoring)
 2. Review recent sign-in attempts
 3. Look for columns showing:
-
    - **Authentication requirement:** Single-factor or Multi-factor
    - **Status:** Success or Failure
    - **MFA result:** Satisfied, Required, or Not Required
