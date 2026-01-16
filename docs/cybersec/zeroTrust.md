@@ -1,4 +1,4 @@
-# Applying Zero Trust Principles in an Enterprise Cloud Environment  
+dd# Applying Zero Trust Principles in an Enterprise Cloud Environment  
 **Enterprise Security Practitioner Lab │ 15 Points │ Individual Practical Task**
 
 ---
@@ -125,8 +125,8 @@ If you can't complete a step due to permissions:
 > ⏱️ **Planning tip:** Allow extra time for documentation and written explanations (30-45 minutes total).
 
 ---
-
-## Task 1: Identity Verification & MFA (4 Points)
+<details markdown="1">
+<summary><h2 style="display: inline;"> ## Task 1: Identity Verification & MFA (4 Points) </summary>
 
 **Zero Trust Principle:** 🔐 **Verify Explicitly** | ⏱️ **Time: 30-40 minutes**
 
@@ -199,8 +199,9 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
-
-## Task 2: Least Privilege Access Enforcement (4 Points)
+</details>
+<details markdown="1">
+<summary><h2 style="display: inline;"> ## Task 2: Least Privilege Access Enforcement (4 Points) </summary>
 
 **Zero Trust Principle:** 🔑 **Use Least Privilege** | ⏱️ **Time: 40-50 minutes**
 
@@ -346,8 +347,11 @@ This is **least privilege** in action that is just enough to do the job, no more
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
+</details>
 
-## Task 3: Network Segmentation & Assume Breach (4 Points)
+<details markdown="1">
+<summary><h2 style="display: inline;">
+## Task 3: Network Segmentation & Assume Breach (4 Points) </summary>
 
 **Zero Trust Principle:** 🚧 **Assume Breach** | ⏱️ **Time: 35-45 minutes**
 
@@ -481,8 +485,10 @@ Design your network **assuming attackers are already inside**. Even if an attack
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
-
-## Task 4: Continuous Security Assessment (3 Points)
+</details>
+<details markdown="1">
+<summary><h2 style="display: inline;">
+## Task 4: Continuous Security Assessment (3 Points) </summary>
 
 **Zero Trust Principle:** 📊 **Continuous Verification** | ⏱️ **Time: 25-35 minutes**
 
@@ -603,7 +609,7 @@ Example analysis:
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
-
+</details>
 **Less important:** Perfect tool execution or getting everything working flawlessly.
 
 > 💡 **Remember:** This is about learning security principles, not memorizing Azure menus. Focus on the "why" behind each action.  
