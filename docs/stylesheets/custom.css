@@ -791,6 +791,77 @@ h6 .headerlink {
     color: #1a1a1a !important;
 }
 
+/* General list styling for all ordered lists */
+.content ol,
+article ol,
+main ol {
+    list-style-type: decimal !important;
+    list-style-position: outside !important;
+    margin-left: 0 !important;
+    padding-left: 2em !important;
+    margin-bottom: 1em !important;
+}
+
+.content ol li,
+article ol li,
+main ol li {
+    display: list-item !important;
+    margin-bottom: 0.5em !important;
+    padding-left: 0.5em !important;
+}
+
+/* General unordered list styling */
+.content ul,
+article ul,
+main ul {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    margin-left: 0 !important;
+    padding-left: 2em !important;
+    margin-bottom: 1em !important;
+}
+
+.content ul li,
+article ul li,
+main ul li {
+    display: list-item !important;
+    margin-bottom: 0.5em !important;
+    padding-left: 0.5em !important;
+}
+
+/* Nested ordered lists */
+.content ol ol,
+article ol ol,
+main ol ol {
+    list-style-type: lower-alpha !important;
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    padding-left: 2em !important;
+}
+
+/* Nested unordered lists */
+.content ul ul,
+article ul ul,
+main ul ul {
+    list-style-type: circle !important;
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    padding-left: 2em !important;
+}
+
+/* Third level nested lists */
+.content ol ol ol,
+article ol ol ol,
+main ol ol ol {
+    list-style-type: lower-roman !important;
+}
+
+.content ul ul ul,
+article ul ul ul,
+main ul ul ul {
+    list-style-type: square !important;
+}
+
 /* Ensure ordered lists display properly inside details/collapsible sections */
 details ol,
 details ul {

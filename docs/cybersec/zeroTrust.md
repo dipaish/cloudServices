@@ -232,6 +232,7 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 **⚠️ Important:** You need a separate test account to properly test restrictions. Your main account likely has Owner permissions at the subscription level, which would override the Reader role.
 
 **Option A: If you CAN create users (ideal):**
+
 1. In Microsoft Entra ID, go to **Users** → **All users**
 2. Click **+ New user** → **Create new user**
 3. Create the user:
@@ -253,6 +254,7 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 10. Click **Review + assign**
 
 **Option B: If you CANNOT create users (restricted tenant):**
+
 1. Navigate to your `ZTLabEsp26` resource group
 2. Click **Access control (IAM)** → **Role assignments**
 3. **Document your current role** (likely Owner or Contributor at subscription level)
@@ -270,6 +272,7 @@ This is **least privilege** in action that is just enough to do the job, no more
 #### Step 3: Test the Restriction with the Test User Account
 
 **If you created a test user (Option A):**
+
 1. **Important:** Open a **private/incognito browser window**
 2. Go to [Azure Portal](https://portal.azure.com)
 3. Sign in with your **test user account** (`readertest@yourdomain`)
@@ -295,6 +298,7 @@ This is **least privilege** in action that is just enough to do the job, no more
 #### Step 4: Verify the Security Control Worked
 
 **If using test user account:**
+
 1. **While still logged in as the test user**, navigate to `ZTLabEsp26`
 2. Click **Activity log** in the left menu
 3. Add filters:
@@ -388,7 +392,7 @@ Design your network **assuming attackers are already inside**. Even if an attack
 8. Click **Review + Create**, then **Create**
 9. Wait for deployment (takes 30-60 seconds)
 
-💡 **What you've created:** Two isolated network segments. Resources in `frontend` can't automatically talk to resources in `backend`.
+💡 **What you've created:** Two isolated network segments. Resources in `frontend` can't automatically talk to resources in `backend.
 
 #### Step 2: Create a Network Security Group (NSG)
 

@@ -71,3 +71,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - tables
+  - def_list
+  - attr_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences
