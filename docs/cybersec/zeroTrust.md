@@ -139,61 +139,105 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 
 ### Steps to Complete
 
-#### Step 1: Explore Your Identity Environment
+#### Step 1: Explore Your Account and Identity Settings
 1. Sign in to [Azure Portal](https://portal.azure.com)
-2. Search for **"Microsoft Entra ID"** (formerly Azure Active Directory)
-3. Click on **Overview** to see your tenant information
-4. Navigate to **Users** → **All users**
-5. Review the existing user accounts
+2. In the top-right corner, **click on your account name/profile picture**
+3. Click **View account** to open your Microsoft account page
+4. Review the following sections:
 
-💡 **What you're seeing:** Your tenant is the identity boundary. Every user here needs verification.
+**Account Overview:**
+   - Your **display name** and **email address**
+   - Your **home organization** (the tenant you belong to)
+   - Check if you have access to **other organizations** (listed below home organization)
 
-#### Step 2: Create a Test User (If Allowed)
-1. In Microsoft Entra ID, go to **Users** → **All users**
-2. Click **+ New user** → **Create new user**
-3. Set up the user:
-    - User principal name: `testuser01@yourdomain`
-    - Display name: `Test User 01`
-    - **Uncheck** "Account enabled" for now (safety measure)
-    - Set a temporary password
-4. Assign no admin roles (keep it as a standard user)
+5. In the left menu, click **Security info** (or **Security**):
+   - Review your **sign-in methods**
+   - Look for:
+     - **Password** (something you know)
+     - **Microsoft Authenticator app** (something you have)
+     - **Phone number** (for SMS codes)
+     - **Email** (for verification)
+   - Note which MFA methods are already configured
 
-🔒 **If restricted:** Many student tenants don't allow user creation. That's fine! Document the error message you see, and continue using your own account for the remaining steps.
+6. Click **My sign-ins** (if available):
+   - Review recent sign-in activity
+   - Check locations and devices used
 
-#### Step 3: Enable MFA Protection
-1. In Microsoft Entra ID, go to **Properties**
-2. Scroll down to find **Manage Security Defaults**
-3. Click **Manage Security Defaults**
-4. Set to **Enabled** (if not already)
-5. Click **Save**
+7. In the left menu, click **My Access**:
+   - Click **Overview** to see your access summary
+   - Review any **Access packages** assigned to you (if any)
+   - Check **Request history** to see past access requests
+   - Note: This shows enterprise access management your organization controls what you can access
 
-💡 **What this does:** Security Defaults automatically require MFA for all users. When signing in, users must provide:
+💡 **What you're seeing:** Your identity profile shows how you're verified and what access you have. The "My Access" section shows enterprise-controlled permissions your organization decides what resources you can use. This is the foundation of Zero Trust you must prove who you are before accessing resources.
 
-   - Something they know (password)
-   - Something they have (phone app code or SMS)
+🔒 **Note:** You're exploring YOUR account, not managing other users. This is realistic most users can only see and manage their own security settings, just like in real enterprises.
 
-#### Step 4: Check Authentication Activity
-1. In Microsoft Entra ID, go to **Sign-in logs** (under Monitoring)
-2. Review recent sign-in attempts
-3. Look for columns showing:
-    - **Authentication requirement:** Single-factor or Multi-factor
-    - **Status:** Success or Failure
-    - **MFA result:** Satisfied, Required, or Not Required
-4. Click on a log entry to see detailed authentication steps
+#### Step 2: Verify MFA is Required for Your Account
+1. Go back to your **Security info** page (from Step 1)
+2. Check if you have **multiple authentication methods** set up:
+   - If you see Microsoft Authenticator, Phone, or Email in addition to Password → **MFA is enabled** ✅
+   - If you only see Password → MFA might not be enforced (less common for student accounts)
 
-💡 **What to look for:** Successful MFA sign-ins show the identity was verified explicitly, not just trusted.
+3. Try to add an additional authentication method:
+   - Click **+ Add sign-in method**
+   - See what options are available (Authenticator app, Phone, Email)
+   - You don't need to add one if you already have MFA set up
+   - If you want to enhance security, add Microsoft Authenticator app
+
+💡 **What this shows:** Modern Azure accounts require multiple factors. Your organization (university/school) enforces this policy. Even if you don't manage the policy, you experience it as a user.
+
+💡 **Note:** Most student subscriptions have MFA pre-enabled by their institution. You're seeing enterprise security policy in action!
+
+#### Step 3: Test Your MFA Experience
+1. **Sign out** of Azure Portal completely (important!)
+2. Close your browser or use a private/incognito window
+3. Go to [Azure Portal](https://portal.azure.com) again
+4. Sign in with your student/Azure account
+
+**Observe the MFA process:**
+5. After entering your **password** (first factor):
+   - You should be prompted for a **second factor**
+   - This might be:
+     - **Microsoft Authenticator app notification** (approve on your phone)
+     - **Code from Authenticator app** (6-digit number)
+     - **SMS code** sent to your phone
+     - **Phone call** for verification
+6. Complete the MFA challenge
+
+💡 **What just happened:** Zero Trust in action! The system required:
+   - **Something you know** (password)
+   - **Something you have** (phone with authenticator app or SMS)
+
+💡 **Security benefit:** Even if an attacker steals your password through phishing, they cannot sign in without your phone.
+
+#### Step 4: Review Your Authentication History
+1. After signing back in, click your **account icon** in the top-right corner
+2. Click **View account**
+3. In the left menu, click **My sign-ins** or **Recent activity**
+4. Review your sign-in history:
+   - Recent authentication times and dates
+   - Locations (IP addresses or cities)
+   - Devices used (Browser type, OS)
+   - Authentication methods used
+
+
+💡 **What you're seeing:** A record of identity verification events. Each entry proves that "Verify Explicitly" was enforced your credentials were checked every time.
+
+🔒 **If sign-in logs are restricted:** That's fine! Take a screenshot of your Security info page showing your configured MFA methods. In your submission, describe the MFA challenge you experienced during login.
 
 ### 📸 What to Document
 
 **Include in your submission:**
 
-1. **Screenshot 1:** Security Defaults set to "Enabled" in Microsoft Entra ID
-2. **Screenshot 2:** Sign-in logs showing MFA authentication attempts
+1. **Screenshot 1:** Your account **Overview** page.
+2. **Screenshot 2:** Your **My sign-ins** or recent activity page showing authentication history (or screenshot of the MFA prompt during login if logs aren't accessible)
 3. **Written explanation (4-6 sentences):** Address the following:
-        - Describe your identity environment (number of users, test user creation status)
+        - Describe the MFA process you experienced when signing in (what factors did you provide?)
         - How does MFA implement "Verify Explicitly"?
-        - Why is verifying identity better than trusting the network?
-        - What happens if someone steals a password but doesn't have the second factor?
+        - Why is verifying identity with multiple factors better than trusting the network?
+        - What happens if an attacker steals your password but doesn't have access to your phone/authenticator app?
+        - How does reviewing your sign-in activity help detect unauthorized access?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -228,120 +272,125 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 
 💡 **What you're creating:** A container for Azure resources. Think of it like a folder that can hold virtual machines, databases, etc.
 
-#### Step 2: Create and Assign Limited Permissions to a Test User
+#### Step 2: Explore Role-Based Access Control (RBAC) with Your Existing Account
 
-**⚠️ Important:** You need a separate test account to properly test restrictions. Your main account likely has Owner permissions at the subscription level, which would override the Reader role.
+**⚠️ Note:** You'll explore Azure's permission system using your existing account to understand how least privilege works in enterprise environments.
 
-**Option A: If you CAN create users (ideal):**
-
-1. In Microsoft Entra ID, go to **Users** → **All users**
-2. Click **+ New user** → **Create new user**
-3. Create the user:
-    - User principal name: `readertest@yourdomain`
-    - Display name: `Reader Test User`
-    - **Check** "Account enabled" (we'll use this account)
-    - Copy the auto-generated password
-4. **Now assign Reader role to this test user:**
-5. Navigate to your `ZTLabEsp26` resource group
-6. Click **Access control (IAM)**
-7. Click **+ Add** → **Add role assignment**
-8. **Role tab:**
-    - Select **"Reader"**
-    - Click **Next**
-9. **Members tab:**
-    - Click **+ Select members**
-    - Search for `readertest` (your test user)
-    - Click **Select**, then **Next**
-10. Click **Review + assign**
-
-**Option B: If you CANNOT create users (restricted tenant):**
+**Part A: Check Your Current Permissions**
 
 1. Navigate to your `ZTLabEsp26` resource group
-2. Click **Access control (IAM)** → **Role assignments**
-3. **Document your current role** (likely Owner or Contributor at subscription level)
-4. Take a screenshot showing you cannot assign Reader-only access
-5. **For your submission:** Explain that least privilege requires separate test accounts, but your tenant restrictions prevent this
+2. Click **Access control (IAM)** in the left menu
+3. Click the **Role assignments** tab at the top
+4. Find your account in the list:
+   - Look for your email address or username
+   - Note your role (likely **Owner** or **Contributor** at subscription level)
+   - This shows you have high-level permissions
 
-💡 **What Reader means:**
+**Part B: Explore the Reader Role (Least Privilege Example)**
 
-- ✅ Can view resources and their settings
-- ❌ Cannot create, modify, or delete anything
-- ❌ Cannot change permissions
+5. Click the **Roles** tab at the top (next to Role assignments)
+6. In the search box, type **"Reader"**
+7. Click on the **View** on the right side of the role to open its details
+8. Click **Permissions** to see what Reader can and cannot do
+9. Review the key restrictions:
+   - ✅ **Can:** View resources and their settings
+   - ❌ **Cannot:** Create, modify, or delete anything
+   - ❌ **Cannot:** Change permissions or access controls
 
-This is **least privilege** in action that is just enough to do the job, no more.
+💡 **This is least privilege:** Reader role gives just enough access to view information, nothing more.
 
-#### Step 3: Test the Restriction with the Test User Account
+**Part C: Compare Reader with Your Role**
 
-**If you created a test user (Option A):**
+10. Click the **Roles** tab again
+11. Search for your role (**Owner** or **Contributor**)
+12. Click on your role to see its permissions
+13. Notice the much broader permissions you have:
+    - Owner: Can do everything including manage access
+    - Contributor: Can create, modify, delete resources but cannot manage access
 
-1. **Important:** Open a **private/incognito browser window**
-2. Go to [Azure Portal](https://portal.azure.com)
-3. Sign in with your **test user account** (`readertest@yourdomain`)
-4. Use the temporary password, then set a new password
-5. Navigate to **Resource groups** → `ZTLabEsp26`
-6. Try to create a resource (this should fail):
-    - Click **+ Create** 
-    - Try to add any resource (e.g., Storage account)
-    - You should see: **"You don't have authorization"** or **"Failed - Forbidden"**
+💡 **Key difference:** Your account has extensive permissions. Reader accounts have minimal permissions. In a real enterprise, different people get different roles based on what they need to do.
 
-7. Try another action:
-    - Try to delete the resource group
-    - Should also fail with authorization error
+**Part D: Verify Your Access Level**
 
-💡 **This failure is success!** The system correctly blocked unauthorized actions.
+14. Go back to your `ZTLabEsp26` resource group overview
+15. Click **Access control (IAM)** again
+16. Click **Check access** button
+17. Enter your email address and click **Check access**
+18. Review all the permissions you have listed
 
-**If you CANNOT create users (Option B):**
+💡 **What you're seeing:** You have extensive access (intentional for learning). In Step 3, you'll see how security controls can restrict actions even for high-privilege accounts like yours.
 
-- Explain in your submission how the Reader role would restrict actions
-- Describe what would happen if a test user with only Reader access tried to modify resources
-- Reference your subscription-level permissions showing why you can't test this restriction
+#### Step 3: Implement and Test Access Restrictions Using Resource Locks
 
-#### Step 4: Verify the Security Control Worked
+**Instead of creating test users, you'll use Resource Locks** - a powerful Azure feature that enforces restrictions even on high-privilege accounts. This demonstrates that security controls can override permissions, a key Zero Trust principle.
 
-**If using test user account:**
+1. Navigate to your `ZTLabEsp26` resource group
+2. In the left menu, scroll down to **Settings** → **Locks**
+3. Click **+ Add**
+4. Configure the lock:
+   - **Lock name:** `prevent-delete`
+   - **Lock type:** Select **Delete** (prevents deletion but allows modifications)
+   - **Notes:** "Zero Trust protection simulating least privilege"
+5. Click **OK**
 
-1. **While still logged in as the test user**, navigate to `ZTLabEsp26`
+💡 **What this simulates:** Even though YOU have Owner permissions, the system now blocks deletion. This demonstrates that security controls can override even high-level permissions a key Zero Trust principle.
+
+6. **Test the restriction:**
+   - While viewing your `ZTLabEsp26` resource group, click **Delete resource group** at the top
+   - Enter the resource group name when prompted
+   - Click **Delete**
+   - **You should see an error:** "Failed to delete resource group" with message about the lock
+   - ✅ **This failure is success!** The system correctly enforced the restriction.
+
+7. **Try creating a resource (this should still work):**
+   - Click **+ Create**
+   - Search for "Storage account"
+   - Click **Create** on Storage account
+   - Fill in basic details:
+     - **Storage account name:** `zttest` + random numbers (must be globally unique)
+     - Keep other defaults
+   - Click **Review + Create** (don't actually create it, just verify you could proceed this far)
+   - ❌ Click **Cancel** to abort (we don't need to actually create it)
+
+💡 **What you've proven:** Resource locks allow granular control. You can read and create (like a Contributor), but cannot delete (protection even against your own account if compromised).
+
+#### Step 4: Verify the Security Control in Audit Logs
+
+1. Navigate to your `ZTLabEsp26` resource group
 2. Click **Activity log** in the left menu
 3. Add filters:
-    - **Timespan:** Last 1 hour
-    - **Event initiated by:** `readertest` (your test username)
+   - **Timespan:** Last 1 hour
+   - **Operation:** Type "delete" to filter
+4. Look for your failed delete attempt:
+   - Status icon will show red ❌
+   - **Operation:** "Delete resource group"
+   - **Status:** Failed
+5. Click on the failed operation to see details
+6. In the JSON tab, look for:
+   - **Status:** "Failed"
+   - **Error message** mentioning resource lock or "scope is locked"
 
-4. Look for the failed operations:
-    - Status icon will show red ❌
-    - Operation might be "Create deployment" or "Delete resource group"
-    - **Status:** Failed
+💡 **What you're seeing:** The audit trail proves the security control worked. In a real breach scenario, these logs would show what an attacker tried but couldn't do even with compromised credentials with high privileges.
 
-5. Click on a failed operation to see details
-6. You should see **"Authorization failed"** with error code
+7. **View the lock protection:**
+   - Go back to **Locks** under Settings
+   - You should see your `prevent-delete` lock listed
+   - Click on it to see details
+   - Note that you can remove it (because you're Owner), but an attacker with only Contributor access could not
 
-**Then switch back to your main account:**
-
-1. Open a new browser window (not incognito)
-2. Sign in with your main Azure account
-3. Go to `ZTLabEsp26` → **Activity log**
-4. You can now view all activities including the test user's failed attempts
-
-💡 **What you're proving:** The audit trail shows the security control working. In a real breach investigation, these logs would show what an attacker tried but couldn't do.
-
-**If you couldn't create a test user:**
-
-- Check Activity Log with your main account
-- Look for any authorization-related events
-- Document the limitation and explain the security concept
+💡 **Real-world application:** In enterprises, critical resource groups have deletion locks that even admins cannot easily remove, requiring additional approval workflows.
 
 ### 📸 What to Document
 
 **Include in your submission:**
 
-1. **Screenshot 1:** IAM role assignments showing Reader role assigned to the test user (or explanation if you couldn't create a test user)
-2. **Screenshot 2:** Error message when test user tries to create/modify a resource AND/OR Activity Log showing the failed attempt with authorization error
-3. **Written explanation (3-5 sentences):** Address the following:
-    - Describe your test environment setup (resource group, test user status)
+1. **Screenshot 1:** Expanded Activity Log of your resource group. You created above.
+2. **Screenshot 2:** The failed deletion attempt error message showing the blocked deletion.
+3. **Written explanation (5-6 sentences):** Address the following:
+    - Explain the difference between Reader, Contributor, and Owner roles
     - Why is "deny by default" a security win?
-    - How does least privilege limit damage if credentials are compromised?
-    - In an enterprise, why would you use Reader role for auditors or reporting tools?
-    - What could an attacker do with Reader access vs. Contributor access?
-    - Why was it important to test with a separate account rather than your main account?
+    - How did the resource lock demonstrate protection even against high-privilege accounts?
+    - In an enterprise, why would you use Reader role for auditors or reporting tools?ess?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -379,22 +428,41 @@ Design your network **assuming attackers are already inside**. Even if an attack
 
 5. **IP Addresses tab:**
     - **IPv4 address space:** Keep default (e.g., `10.0.0.0/16`)
-    - You'll see a default subnet — we'll modify this
+    - You'll see a **default subnet** listed (usually named "default" with address range `10.0.0.0/24`)
    
-6. **Create the frontend subnet:**
-    - If there's a default subnet, click the **pencil icon** to edit it, or click **+ Add subnet**
-    - **Subnet name:** `frontend`
-    - **Subnet address range:** `10.0.1.0/24` (adjust if your address space is different)
-    - Click **Save** or **Add**
+6. **Delete the default subnet:**
+    - Find the **default subnet** in the list
+    - Click the **trash/delete icon** (🗑️) on the right side of the subnet row
+    - Confirm the deletion
+    - The subnet list should now be empty
 
-7. **Create the backend subnet:**
-    - Click **+ Add subnet**
-    - **Subnet name:** `backend`
-    - **Subnet address range:** `10.0.2.0/24`
-    - Click **Add**
+7. **Create the frontend subnet:**
+    - Click **+ Add a ubnet** button
+    - A panel will open on the right side with the following fields:
+      - **Name:** Enter `frontend`
+      - **Subnet purpose:** Leave as "Default"
+      - **Starting address:** Enter `10.0.1.0`
+      - **Size:** Select `/24 (256 addresses)` from the dropdown
+      - **Subnet address range:** Should automatically show `10.0.1.0 - 10.0.1.255`
+    - Leave other settings as default
+    - Click **Add** at the bottom
 
-8. Click **Review + Create**, then **Create**
-9. Wait for deployment (takes 30-60 seconds)
+8. **Create the backend subnet:**
+    - Click **+ Add subnet** button again
+    - In the panel that opens:
+      - **Name:** Enter `backend`
+      - **Subnet purpose:** Leave as "Default"
+      - **Starting address:** Enter `10.0.2.0`
+      - **Size:** Select `/24 (256 addresses)` from the dropdown
+      - **Subnet address range:** Should automatically show `10.0.2.0 - 10.0.2.255`
+    - Leave other settings as default
+    - Click **Add** at the bottom
+
+9. **Verify both subnets are created:**
+    - You should now see two subnets listed: `frontend (10.0.1.0/24)` and `backend (10.0.2.0/24)`
+
+10. Click **Review + Create**, then **Create**
+11. Wait for deployment (takes 30-60 seconds)
 
 💡 **What you've created:** Two isolated network segments. Resources in `frontend` can't automatically talk to resources in `backend.
 
@@ -451,21 +519,33 @@ Design your network **assuming attackers are already inside**. Even if an attack
 
 💡 **What happened:** Your security rules now protect the backend subnet. Any resource placed in that subnet is automatically protected.
 
-#### Step 5: Review Effective Security Rules
+#### Step 5: Review Your Network Security Configuration
 
 1. Go back to **Virtual networks** → `ZTVNet`
-2. Click on **Subnets** in the left menu
+2. Click on **Subnets** under **Settings** in the left menu
 3. Click on the **backend** subnet
-4. Under "Network security group," you should see `backend-nsg`
-5. Go back to your NSG: **Network security groups** → `backend-nsg`
-6. Click on **Effective security rules** (under Support + troubleshooting)
-7. You may need to select a network interface (if none exist, you'll see the default rules)
-8. Review all rules that are active:
-    - Your custom rule (priority 100)
-    - Default Azure rules (higher priority numbers)
-    - See which rules ALLOW vs DENY traffic
+4. Under "Network security group," you should see `backend-nsg` listed
+5. Take note that the NSG is now protecting this subnet
 
-💡 **What you're seeing:** The complete security policy for the backend subnet. This shows exactly what traffic is blocked vs allowed.
+💡 **What you're seeing:** The NSG is associated with the backend subnet, meaning all its security rules are now active for any resources placed in this subnet.
+
+**To review your security rules:**
+
+6. Go back to **Network security groups** → `backend-nsg`
+7. Click on **Inbound security rules** (under Settings)
+8. Review the rules displayed:
+   - Your custom rule `Allow-Frontend-HTTPS` (priority 100)
+   - Default Azure rules: `AllowVNetInBound` (priority 65000)
+   - Default Azure rules: `AllowAzureLoadBalancerInBound` (priority 65001)
+   - Default Azure rules: `DenyAllInBound` (priority 65500)
+
+9. **Understanding the rule priorities:**
+   - **Lower number = higher priority** (your rule 100 is checked first)
+   - **Your custom rule (100):** Allows HTTPS from frontend subnet only
+   - **Default rules (65000+):** Azure's built-in protections
+   - **DenyAllInBound (65500):** Blocks everything else by default
+
+💡 **What you've proven:** The complete security policy is active. Even without resources deployed, the "deny by default" protection is in place. This demonstrates Zero Trust: assume breach and segment networks before attackers can move laterally.
 
 ### 📸 What to Document
 
@@ -474,12 +554,9 @@ Design your network **assuming attackers are already inside**. Even if an attack
 1. **Screenshot 1:** Virtual network `ZTVNet` showing both subnets (`frontend` and `backend`) with their address ranges
 2. **Screenshot 2:** Network Security Group `backend-nsg` with inbound security rules (showing your custom rule and default rules) associated with the backend subnet
 3. **Written explanation (3-5 sentences):** Address the following:
-    - Describe your network setup (VNet name, subnet ranges, NSG configuration)
     - How does network segmentation implement "Assume Breach"?
     - What is lateral movement and why is it dangerous?
     - If an attacker compromises a frontend web server, how does the NSG protect the backend?
-    - Why is "deny by default" important in network security?
-    - How would you extend this in a real enterprise (e.g., adding a database subnet)?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -503,99 +580,164 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 
 ### Steps to Complete
 
-#### Step 1: Enable Microsoft Defender for Cloud
+#### Step 1: Enable or Access Microsoft Defender for Cloud
 
 1. In Azure Portal, search for **"Microsoft Defender for Cloud"**
 2. Click on **Microsoft Defender for Cloud** in the results
-3. If prompted, click **Get Started** or **Enable Defender**
-4. You'll see the overview page with:
-    - **Secure Score** (your security rating)
-    - **Recommendations** (things to improve)
-    - **Alerts** (potential threats detected)
+3. **If prompted:** Click **Get Started** or **Enable Defender** (some students may need this step)
+4. You'll see the **Overview** page showing:
+    - **Azure subscriptions:** Number of subscriptions (e.g., "2")
+    - **Assessed resources:** Usually "0" for new/student accounts
+    - **Attack paths:** Shows "--" (no data yet)
+    - **Security alerts:** Shows "--" (no alerts yet)
 
-5. In the left menu, click **Environment settings**
-6. Expand your subscription (click the **>** arrow)
-7. Click on your subscription name
-8. You'll see **Defender plans**:
-    - Most will show **Off** or **Free tier** (this is fine for students)
-    - The free tier still provides valuable recommendations
-9. Review what's enabled
+4. **Review the Security posture section:**
+   - **Critical recommendations:** Likely "0" for your new lab resources
+   - **Attack paths:** Shows "0"
+   - **Overdue recommendations:** Shows "0/0"
+   - **Total secure score:** May show "N/A" if no resources are fully assessed yet
 
-💡 **What Defender does:** It continuously scans your Azure resources for security vulnerabilities, misconfigurations, and threats. It compares your setup against industry best practices.
+💡 **Why you might see N/A or zeros:** For student subscriptions with minimal resources (just resource groups and virtual networks), Defender may not have much to assess yet. This is normal! The key learning is understanding HOW continuous monitoring works.
 
-#### Step 2: Review Your Secure Score (Optional - No points)
+5. **Explore Environment settings:**
+   - In the left menu, click **Environment settings** under **Management**
+   - Expand your subscription (click the **>** arrow)
+   - Click on your subscription name
+   - Review **Defender plans**:
+     - Most will show **Off** or **Free tier** (standard for student accounts)
+     - The free tier still provides foundational security posture management
 
-1. From the Defender for Cloud main page, find your **Secure Score**
-    - It's displayed as a percentage (e.g., "62% Secure Score")
-    - And as points (e.g., "15 out of 24 points")
+💡 **What Defender does:** It continuously scans Azure resources for security vulnerabilities, misconfigurations, and threats, comparing your setup against industry best practices. As you deploy more resources, Defender's assessments become more detailed.
 
-2. Click on **Secure Score** to see details
-3. Review the breakdown:
-    - **Recommendations by severity:** High, Medium, Low
-    - **Affected resources:** How many resources have issues
-    - **Score by subscription:** Your overall security rating
+#### Step 2: Explore Security Posture Components
 
-4. Click on different tabs to explore:
-    - **Score over time:** See if your security is improving
-    - **Recommendations:** Specific actions to improve your score
+1. From the Defender for Cloud **Overview** page, review the **Security posture** panel:
+   - Note the **All recommendations by risk** section showing severity counts
+   - You'll see: Critical, High, Medium, Low, Not evaluated (all likely "0" for new labs)
 
-💡 **Understanding Secure Score:**
+2. Click **"Explore your security posture >"** link at the bottom of the Security posture panel
 
-- **Higher is better** (aim for 80%+)
-- Each recommendation you complete increases your score
-- This helps prioritize security work and fix high-impact items first
-- Enterprises track this metric to measure security improvement
+3. On the Recommendations page, look for categories:
+   - **Enable MFA** (Identity and Access)
+   - **Secure score recommendations** 
+   - **Security controls**
 
-#### Step 3: Analyze Security Recommendations (Optional - No points)
+💡 **Understanding why scores show N/A:** Student subscriptions with only basic resources (resource groups, VNets, NSGs) may not generate a numerical secure score yet. Defender needs more assessable resources like VMs, storage accounts, or databases. This doesn't mean Defender isn't working—it's just waiting for more complex resources to evaluate.
 
-1. From Defender for Cloud, click **Recommendations** in the left menu
-2. You'll see a list of security recommendations, such as:
-    - "MFA should be enabled on accounts with owner permissions"
-    - "Storage accounts should restrict network access"
-    - "Network Security Groups should have inbound rules restricted"
-    - "Management ports should be closed on your virtual machines"
+4. **If you see any recommendations:**
+   - Note the recommendation title
+   - Check the severity (High/Medium/Low)
+   - Click on a recommendation to see:
+     - **Description:** What the security risk is
+     - **Remediation steps:** How to fix it
+     - **Affected resources:** What needs attention
 
-3. **Select two recommendations** that interest you (pick ones relevant to your work)
+5. **If you see zero recommendations:**
+   - This means your current setup (resource groups, VNet, NSGs) meets basic security standards
+   - Click **Recommendations** in the left menu to see if any appear there
+   - Take note that "no recommendations" is actually a good security posture for your current resources!
 
-4. For each recommendation:
-    - Click on it to see details
-    - Read the **Description** — what's the security risk?
-    - Read **Remediation steps** — how to fix it
-    - Look at **Affected resources** — what's vulnerable?
-    - Note the **Severity** (High/Medium/Low)
+#### Step 3: Understand Continuous Monitoring Principles
 
-5. **Connect each recommendation to Zero Trust:**
+**Even if Defender shows N/A or zero recommendations, the key learning is understanding HOW enterprises use continuous monitoring:**
 
-Example analysis:
+1. **Review the Inventory:**
+   - Click **Inventory** in the left menu
+   - See all your Azure resources listed:
+     - Resource groups (`ZTLabEsp26`)
+     - Virtual networks (`ZTVNet`)
+     - Network Security Groups (`backend-nsg`)
+     - Subnets (`frontend`, `backend`)
+   - Each resource shows its security status
 
-- **Recommendation:** "MFA should be enabled on accounts with owner permissions"
-- **Zero Trust principle:** Verify Explicitly
-- **Why it matters:** Even privileged accounts must prove their identity with multiple factors. If an owner account password is stolen without MFA, attackers gain full control.
+💡 **What you're seeing:** Defender tracks EVERY resource you create. As resources are added, modified, or deleted, Defender continuously reassesses security posture.
 
-💡 **Think like a security professional:** Each recommendation addresses a specific threat. Ask yourself: "What attack does this prevent?" and "Which Zero Trust principle does this support?"
+2. **Check for Security Alerts (even if empty):**
+   - Click **Security alerts** in the left menu
+   - You'll likely see "No security alerts found" 
+   - This is good! It means no suspicious activity has been detected
 
-#### Step 4: Explore Advanced Features (Optional but Recommended)
+💡 **In real enterprises:** Security teams monitor this daily. Any alerts trigger investigations. An empty alerts page means the continuous monitoring found no threats.
 
-1. Check **Security alerts** (if any):
-    - Click **Security alerts** in the left menu
-    - Real alerts show potential attacks or suspicious activity
-    - This is continuous monitoring in action
+3. **Explore the Workbooks (optional):**
+   - Click **Workbooks** in the left menu
+   - Browse available security monitoring templates
+   - These show how enterprises visualize security data over time
 
-2. Review **Inventory**:
-    - Click **Inventory** in the left menu
-    - See all your Azure resources and their security status
-    - Spot which resources have security issues
+💡 **Continuous verification in action:** Defender runs 24/7, scanning for:
+   - New vulnerabilities discovered in Azure services
+   - Configuration changes that introduce risk
+   - Suspicious authentication attempts
+   - Unusual resource access patterns
+   - Compliance drift from security standards
 
-💡 **Continuous verification means:** Defender runs 24/7, constantly checking for new threats, configuration changes, and vulnerabilities. Security teams review this daily.
+#### Step 4: Connect Defender to Your Zero Trust Labs
+
+**Review how Defender relates to the tasks you've completed:**
+
+1. **Task 1 (Identity & MFA) ↔ Defender:**
+   - Go to **Recommendations** (left menu)
+   - Look for identity-related recommendations (if any)
+   - Common recommendation: "MFA should be enabled on accounts with owner permissions"
+   - **Zero Trust connection:** Verify Explicitly—Defender continuously checks that MFA is enforced
+
+2. **Task 2 (Least Privilege) ↔ Defender:**
+   - Check if Defender flags overprivileged accounts
+   - Your resource lock demonstrates least privilege enforcement
+   - **Zero Trust connection:** Use Least Privilege—Defender monitors for excessive permissions
+
+3. **Task 3 (Network Segmentation) ↔ Defender:**
+   - Defender assesses your NSG rules (`backend-nsg`)
+   - It checks if network segmentation follows best practices
+   - **Zero Trust connection:** Assume Breach—Defender verifies network isolation is maintained
+
+💡 **The continuous verification cycle:**
+   - **Monitor:** Defender scans resources 24/7
+   - **Detect:** Identifies misconfigurations and threats
+   - **Alert:** Notifies security teams
+   - **Respond:** Teams investigate and remediate
+   - **Repeat:** Continuous cycle, not a one-time check
 
 ### 📸 What to Document
 
 **Include in your submission:**
 
-1. **Screenshot 1:** Microsoft Defender for Cloud overview showing your Secure Score (with percentage and breakdown)
-2. **Screenshot 2:** Recommendations list showing your two selected recommendations with their details visible
+1. **Screenshot 1:** Microsoft Defender for Cloud **Overview** page showing:
+   - Azure subscriptions count
+   - Security posture panel (even if showing N/A or zeros)
+   - The "All recommendations by risk" section
+
+2. **Screenshot 2:** Your **Inventory** page showing the resources you created:
+   - Resource group (`ZTLabEsp26`)
+   - Virtual network (`ZTVNet`)
+   - Network Security Group (`backend-nsg`)
+
+3. **Written explanation (3-5 sentences):** Address the following:
+   - Explain what "continuous verification" means in Zero Trust
+   - Why does Defender show N/A or zero scores for your student lab? (Hint: minimal resources)
+   - How would Defender help in a real enterprise with hundreds of resources?
+   - Connect one of your previous tasks (1, 2, or 3) to how Defender would monitor it
+
+
+> ⚠️ **ACADEMIC INTEGRITY WARNING**  
+> Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
+
+💡 **Important note:** If your Defender shows N/A or zeros, don't worry! This is expected for student labs with minimal resources. Your learning objective is understanding HOW continuous monitoring works, not generating a perfect security score.
 
 ---
 </details>
 
 
+---
+
+## 📚 Additional Resources
+
+If you want to learn more about Zero Trust security:
+
+- [Microsoft Security Documentation](https://learn.microsoft.com/en-us/security/)
+- [NIST Zero Trust Architecture](https://www.nist.gov/publications/zero-trust-architecture)
+- [Azure Security Best Practices](https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns)
+
+---
+
+**Good luck with your Zero Trust lab! 🔒**
