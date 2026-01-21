@@ -147,9 +147,9 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 
 **Account Overview:**
 
-      - Your **display name** and **email address**
-      - Your **home organization** (the tenant you belong to)
-      - Check if you have access to **other organizations** (listed below home organization)
+   - Your **display name** and **email address**
+   - Your **home organization** (the tenant you belong to)
+   - Check if you have access to **other organizations** (listed below home organization)
 
 5. In the left menu, click **Security info** (or **Security**):
    - Review your **sign-in methods**
@@ -195,7 +195,6 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 2. Close your browser or use a private/incognito window
 3. Go to [Azure Portal](https://portal.azure.com) again
 4. Sign in with your student/Azure account
-
 **Observe the MFA process:**
 
 5. After entering your **password** (first factor):
@@ -205,7 +204,6 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
          - **Code from Authenticator app** (6-digit number)
          - **SMS code** sent to your phone
          - **Phone call** for verification
-6. Complete the MFA challenge
 
 💡 **What just happened:** Zero Trust in action! The system required:
 
@@ -237,11 +235,11 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 2. **Screenshot 2:** Your **My sign-ins** or recent activity page showing authentication history (or screenshot of the MFA prompt during login if logs aren't accessible)
 3. **Written explanation (4-6 sentences):** Address the following:
 
-         - Describe the MFA process you experienced when signing in (what factors did you provide?)
-         - How does MFA implement "Verify Explicitly"?
-         - Why is verifying identity with multiple factors better than trusting the network?
-         - What happens if an attacker steals your password but doesn't have access to your phone/authenticator app?
-         - How does reviewing your sign-in activity help detect unauthorized access?
+      - Describe the MFA process you experienced when signing in (what factors did you provide?)
+      - How does MFA implement "Verify Explicitly"?
+      - Why is verifying identity with multiple factors better than trusting the network?
+      - What happens if an attacker steals your password but doesn't have access to your phone/authenticator app?
+      - How does reviewing your sign-in activity help detect unauthorized access?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
@@ -286,9 +284,9 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 2. Click **Access control (IAM)** in the left menu
 3. Click the **Role assignments** tab at the top
 4. Find your account in the list:
-   - Look for your email address or username
-   - Note your role (likely **Owner** or **Contributor** at subscription level)
-   - This shows you have high-level permissions
+      - Look for your email address or username
+      - Note your role (likely **Owner** or **Contributor** at subscription level)
+      - This shows you have high-level permissions
 
 **Part B: Explore the Reader Role (Least Privilege Example)**
 
@@ -297,9 +295,9 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 7. Click on the **View** on the right side of the role to open its details
 8. Click **Permissions** to see what Reader can and cannot do
 9. Review the key restrictions:
-   - ✅ **Can:** View resources and their settings
-   - ❌ **Cannot:** Create, modify, or delete anything
-   - ❌ **Cannot:** Change permissions or access controls
+      - ✅ **Can:** View resources and their settings
+      - ❌ **Cannot:** Create, modify, or delete anything
+      - ❌ **Cannot:** Change permissions or access controls
 
 💡 **This is least privilege:** Reader role gives just enough access to view information, nothing more.
 
@@ -332,29 +330,29 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 2. In the left menu, scroll down to **Settings** → **Locks**
 3. Click **+ Add**
 4. Configure the lock:
-   - **Lock name:** `prevent-delete`
-   - **Lock type:** Select **Delete** (prevents deletion but allows modifications)
-   - **Notes:** "Zero Trust protection simulating least privilege"
+      - **Lock name:** `prevent-delete`
+      - **Lock type:** Select **Delete** (prevents deletion but allows modifications)
+      - **Notes:** "Zero Trust protection simulating least privilege"
 5. Click **OK**
 
 💡 **What this simulates:** Even though YOU have Owner permissions, the system now blocks deletion. This demonstrates that security controls can override even high-level permissions a key Zero Trust principle.
 
 6. **Test the restriction:**
-   - While viewing your `ZTLabEsp26` resource group, click **Delete resource group** at the top
-   - Enter the resource group name when prompted
-   - Click **Delete**
-   - **You should see an error:** "Failed to delete resource group" with message about the lock
-   - ✅ **This failure is success!** The system correctly enforced the restriction.
+      - While viewing your `ZTLabEsp26` resource group, click **Delete resource group** at the top
+      - Enter the resource group name when prompted
+      - Click **Delete**
+      - **You should see an error:** "Failed to delete resource group" with message about the lock
+      - ✅ **This failure is success!** The system correctly enforced the restriction.
 
 7. **Try creating a resource (this should still work):**
-   - Click **+ Create**
-   - Search for "Storage account"
-   - Click **Create** on Storage account
-   - Fill in basic details:
-     - **Storage account name:** `zttest` + random numbers (must be globally unique)
-     - Keep other defaults
-   - Click **Review + Create** (don't actually create it, just verify you could proceed this far)
-   - ❌ Click **Cancel** to abort (we don't need to actually create it)
+      - Click **+ Create**
+      - Search for "Storage account"
+      - Click **Create** on Storage account
+      - Fill in basic details:
+      - **Storage account name:** `zttest` + random numbers (must be globally unique)
+      - Keep other defaults
+      - Click **Review + Create** (don't actually create it, just verify you could proceed this far)
+      - ❌ Click **Cancel** to abort (we don't need to actually create it)
 
 💡 **What you've proven:** Resource locks allow granular control. You can read and create (like a Contributor), but cannot delete (protection even against your own account if compromised).
 
@@ -363,24 +361,24 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 1. Navigate to your `ZTLabEsp26` resource group
 2. Click **Activity log** in the left menu
 3. Add filters:
-   - **Timespan:** Last 1 hour
-   - **Operation:** Type "delete" to filter
+      - **Timespan:** Last 1 hour
+      - **Operation:** Type "delete" to filter
 4. Look for your failed delete attempt:
-   - Status icon will show red ❌
-   - **Operation:** "Delete resource group"
-   - **Status:** Failed
+      - Status icon will show red ❌
+      - **Operation:** "Delete resource group"
+      - **Status:** Failed
 5. Click on the failed operation to see details
 6. In the JSON tab, look for:
-   - **Status:** "Failed"
-   - **Error message** mentioning resource lock or "scope is locked"
+      - **Status:** "Failed"
+      - **Error message** mentioning resource lock or "scope is locked"
 
 💡 **What you're seeing:** The audit trail proves the security control worked. In a real breach scenario, these logs would show what an attacker tried but couldn't do even with compromised credentials with high privileges.
 
 7. **View the lock protection:**
-   - Go back to **Locks** under Settings
-   - You should see your `prevent-delete` lock listed
-   - Click on it to see details
-   - Note that you can remove it (because you're Owner), but an attacker with only Contributor access could not
+      - Go back to **Locks** under Settings
+      - You should see your `prevent-delete` lock listed
+      - Click on it to see details
+      - Note that you can remove it (because you're Owner), but an attacker with only Contributor access could not
 
 💡 **Real-world application:** In enterprises, critical resource groups have deletion locks that even admins cannot easily remove, requiring additional approval workflows.
 
@@ -496,16 +494,16 @@ Design your network **assuming attackers are already inside**. Even if an attack
 3. **Add a custom restrictive rule** (to demonstrate control):
    - Click **+ Add**
    - Configure the rule:
-        - **Source:** IP Addresses
-        - **Source IP addresses:** `10.0.1.0/24` (your frontend subnet)
-        - **Destination:** Any
-        - **Service:** Custom
-        - **Destination port ranges:** `443`
-        - **Protocol:** TCP
-        - **Action:** Allow
-        - **Priority:** `100`
-        - **Name:** `Allow-Frontend-HTTPS`
-        - **Description:** "Only allow HTTPS traffic from frontend subnet"
+         - **Source:** IP Addresses
+         - **Source IP addresses:** `10.0.1.0/24` (your frontend subnet)
+         - **Destination:** Any
+         - **Service:** Custom
+         - **Destination port ranges:** `443`
+         - **Protocol:** TCP
+         - **Action:** Allow
+         - **Priority:** `100`
+         - **Name:** `Allow-Frontend-HTTPS`
+         - **Description:** "Only allow HTTPS traffic from frontend subnet"
    - Click **Add**
 
 💡 **What this rule means:** Only the frontend subnet can communicate with backend, and only via HTTPS (port 443). Everything else is denied by default.
@@ -538,16 +536,16 @@ Design your network **assuming attackers are already inside**. Even if an attack
 6. Go back to **Network security groups** → `backend-nsg`
 7. Click on **Inbound security rules** (under Settings)
 8. Review the rules displayed:
-   - Your custom rule `Allow-Frontend-HTTPS` (priority 100)
-   - Default Azure rules: `AllowVNetInBound` (priority 65000)
-   - Default Azure rules: `AllowAzureLoadBalancerInBound` (priority 65001)
-   - Default Azure rules: `DenyAllInBound` (priority 65500)
+      - Your custom rule `Allow-Frontend-HTTPS` (priority 100)
+      - Default Azure rules: `AllowVNetInBound` (priority 65000)
+      - Default Azure rules: `AllowAzureLoadBalancerInBound` (priority 65001)
+      - Default Azure rules: `DenyAllInBound` (priority 65500)
 
 9. **Understanding the rule priorities:**
-   - **Lower number = higher priority** (your rule 100 is checked first)
-   - **Your custom rule (100):** Allows HTTPS from frontend subnet only
-   - **Default rules (65000+):** Azure's built-in protections
-   - **DenyAllInBound (65500):** Blocks everything else by default
+      - **Lower number = higher priority** (your rule 100 is checked first)
+      - **Your custom rule (100):** Allows HTTPS from frontend subnet only
+      - **Default rules (65000+):** Azure's built-in protections
+      - **DenyAllInBound (65500):** Blocks everything else by default
 
 💡 **What you've proven:** The complete security policy is active. Even without resources deployed, the "deny by default" protection is in place. This demonstrates Zero Trust: assume breach and segment networks before attackers can move laterally.
 
@@ -595,7 +593,8 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
     - **Attack paths:** Shows "--" (no data yet)
     - **Security alerts:** Shows "--" (no alerts yet)
 
-4. **Review the Security posture section:**
+**Review the Security posture section:**
+
    - **Critical recommendations:** Likely "0" for your new lab resources
    - **Attack paths:** Shows "0"
    - **Overdue recommendations:** Shows "0/0"
@@ -603,7 +602,8 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 
 💡 **Why you might see N/A or zeros:** For student subscriptions with minimal resources (just resource groups and virtual networks), Defender may not have much to assess yet. This is normal! The key learning is understanding HOW continuous monitoring works.
 
-5. **Explore Environment settings:**
+ **Explore Environment settings:**
+
    - In the left menu, click **Environment settings** under **Management**
    - Expand your subscription (click the **>** arrow)
    - Click on your subscription name
@@ -622,24 +622,24 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 2. Click **"Explore your security posture >"** link at the bottom of the Security posture panel
 
 3. On the Recommendations page, look for categories:
-   - **Enable MFA** (Identity and Access)
-   - **Secure score recommendations** 
-   - **Security controls**
+      - **Enable MFA** (Identity and Access)
+      - **Secure score recommendations** 
+      - **Security controls**
 
 💡 **Understanding why scores show N/A:** Student subscriptions with only basic resources (resource groups, VNets, NSGs) may not generate a numerical secure score yet. Defender needs more assessable resources like VMs, storage accounts, or databases. This doesn't mean Defender isn't working—it's just waiting for more complex resources to evaluate.
 
 4. **If you see any recommendations:**
-   - Note the recommendation title
-   - Check the severity (High/Medium/Low)
-   - Click on a recommendation to see:
-     - **Description:** What the security risk is
-     - **Remediation steps:** How to fix it
-     - **Affected resources:** What needs attention
+      - Note the recommendation title
+      - Check the severity (High/Medium/Low)
+      - Click on a recommendation to see:
+      - **Description:** What the security risk is
+      - **Remediation steps:** How to fix it
+      - **Affected resources:** What needs attention
 
 5. **If you see zero recommendations:**
-   - This means your current setup (resource groups, VNet, NSGs) meets basic security standards
-   - Click **Recommendations** in the left menu to see if any appear there
-   - Take note that "no recommendations" is actually a good security posture for your current resources!
+      - This means your current setup (resource groups, VNet, NSGs) meets basic security standards
+      - Click **Recommendations** in the left menu to see if any appear there
+      - Take note that "no recommendations" is actually a good security posture for your current resources!
 
 #### Step 3: Understand Continuous Monitoring Principles
 
@@ -657,45 +657,47 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 💡 **What you're seeing:** Defender tracks EVERY resource you create. As resources are added, modified, or deleted, Defender continuously reassesses security posture.
 
 2. **Check for Security Alerts (even if empty):**
-   - Click **Security alerts** in the left menu
-   - You'll likely see "No security alerts found" 
-   - This is good! It means no suspicious activity has been detected
+
+      - Click **Security alerts** in the left menu
+      - You'll likely see "No security alerts found" 
+      - This is good! It means no suspicious activity has been detected
 
 💡 **In real enterprises:** Security teams monitor this daily. Any alerts trigger investigations. An empty alerts page means the continuous monitoring found no threats.
 
 3. **Explore the Workbooks (optional):**
-   - Click **Workbooks** in the left menu
-   - Browse available security monitoring templates
-   - These show how enterprises visualize security data over time
+      - Click **Workbooks** in the left menu
+      - Browse available security monitoring templates
+      - These show how enterprises visualize security data over time
 
 💡 **Continuous verification in action:** Defender runs 24/7, scanning for:
-   - New vulnerabilities discovered in Azure services
-   - Configuration changes that introduce risk
-   - Suspicious authentication attempts
-   - Unusual resource access patterns
-   - Compliance drift from security standards
+      - New vulnerabilities discovered in Azure services
+      - Configuration changes that introduce risk
+      - Suspicious authentication attempts
+      - Unusual resource access patterns
+      - Compliance drift from security standards
 
 #### Step 4: Connect Defender to Your Zero Trust Labs
 
 **Review how Defender relates to the tasks you've completed:**
 
 1. **Task 1 (Identity & MFA) ↔ Defender:**
-   - Go to **Recommendations** (left menu)
-   - Look for identity-related recommendations (if any)
-   - Common recommendation: "MFA should be enabled on accounts with owner permissions"
-   - **Zero Trust connection:** Verify Explicitly—Defender continuously checks that MFA is enforced
+      - Go to **Recommendations** (left menu)
+      - Look for identity-related recommendations (if any)
+      - Common recommendation: "MFA should be enabled on accounts with owner permissions"
+      - **Zero Trust connection:** Verify Explicitly—Defender continuously checks that MFA is enforced
 
 2. **Task 2 (Least Privilege) ↔ Defender:**
-   - Check if Defender flags overprivileged accounts
-   - Your resource lock demonstrates least privilege enforcement
-   - **Zero Trust connection:** Use Least Privilege—Defender monitors for excessive permissions
+      - Check if Defender flags overprivileged accounts
+      - Your resource lock demonstrates least privilege enforcement
+      - **Zero Trust connection:** Use Least Privilege—Defender monitors for excessive permissions
 
 3. **Task 3 (Network Segmentation) ↔ Defender:**
-   - Defender assesses your NSG rules (`backend-nsg`)
-   - It checks if network segmentation follows best practices
-   - **Zero Trust connection:** Assume Breach—Defender verifies network isolation is maintained
+      - Defender assesses your NSG rules (`backend-nsg`)
+      - It checks if network segmentation follows best practices
+      - **Zero Trust connection:** Assume Breach—Defender verifies network isolation is maintained
 
 💡 **The continuous verification cycle:**
+
    - **Monitor:** Defender scans resources 24/7
    - **Detect:** Identifies misconfigurations and threats
    - **Alert:** Notifies security teams
@@ -707,24 +709,21 @@ Zero Trust is **never finished**. Security isn't a one-time setup. It requires c
 **Include in your submission:**
 
 1. **Screenshot 1:** Microsoft Defender for Cloud **Overview** page showing:
-   - Azure subscriptions count
-   - Security posture panel (even if showing N/A or zeros)
-   - The "All recommendations by risk" section
+      - Azure subscriptions count
+      - Security posture panel (even if showing N/A or zeros)
+      - The "All recommendations by risk" section
 
 2. **Screenshot 2:** Your **Inventory** page showing the resources you created:
-   - Resource group (`ZTLabEsp26`)
-   - Virtual network (`ZTVNet`)
-   - Network Security Group (`backend-nsg`)
+      - Resource group (`ZTLabEsp26`)
+      - Virtual network (`ZTVNet`)
+      - Network Security Group (`backend-nsg`)
 
-3. **Written explanation (3-5 sentences):** Address the following:
-   - Explain what "continuous verification" means in Zero Trust
-   - Why does Defender show N/A or zero scores for your student lab? (Hint: minimal resources)
-   - How would Defender help in a real enterprise with hundreds of resources?
-   - Connect one of your previous tasks (1, 2, or 3) to how Defender would monitor it
+3. **Written explanation (Just think about the questions below, you don't need to write anything for this part):** Address the following:
+      - Explain what "continuous verification" means in Zero Trust
+      - Why does Defender show N/A or zero scores for your student lab? (Hint: minimal resources)
+      - How would Defender help in a real enterprise with hundreds of resources?
+      - Connect one of your previous tasks (1, 2, or 3) to how Defender would monitor it
 
-
-> ⚠️ **ACADEMIC INTEGRITY WARNING**  
-> Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 💡 **Important note:** If your Defender shows N/A or zeros, don't worry! This is expected for student labs with minimal resources. Your learning objective is understanding HOW continuous monitoring works, not generating a perfect security score.
 
@@ -744,4 +743,3 @@ If you want to learn more about Zero Trust security:
 
 ---
 
-**Good luck with your Zero Trust lab! 🔒**
