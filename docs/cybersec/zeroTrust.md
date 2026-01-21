@@ -74,7 +74,7 @@ This lab teaches **real-world enterprise security skills** that security profess
 | Security Area | What You'll Do |
 |--------------|----------------|
 | **Security Architecture** | Apply Zero Trust design principles |
-| **Identity & Access Control** | Set up MFA and identity-based verification |
+| **Identity & Access Control** | Verify MFA and explore identity-based authentication |
 | **Authorization** | Implement least privilege access |
 | **Network Security** | Create segmentation to block lateral movement |
 | **Threat Modeling** | Design defenses assuming attackers are inside |
@@ -146,9 +146,10 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 4. Review the following sections:
 
 **Account Overview:**
-   - Your **display name** and **email address**
-   - Your **home organization** (the tenant you belong to)
-   - Check if you have access to **other organizations** (listed below home organization)
+
+      - Your **display name** and **email address**
+      - Your **home organization** (the tenant you belong to)
+      - Check if you have access to **other organizations** (listed below home organization)
 
 5. In the left menu, click **Security info** (or **Security**):
    - Review your **sign-in methods**
@@ -157,17 +158,17 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
      - **Microsoft Authenticator app** (something you have)
      - **Phone number** (for SMS codes)
      - **Email** (for verification)
-   - Note which MFA methods are already configured
+     - Note which MFA methods are already configured
 
 6. Click **My sign-ins** (if available):
-   - Review recent sign-in activity
-   - Check locations and devices used
+      - Review recent sign-in activity
+      - Check locations and devices used
 
 7. In the left menu, click **My Access**:
-   - Click **Overview** to see your access summary
-   - Review any **Access packages** assigned to you (if any)
-   - Check **Request history** to see past access requests
-   - Note: This shows enterprise access management your organization controls what you can access
+      - Click **Overview** to see your access summary
+      - Review any **Access packages** assigned to you (if any)
+      - Check **Request history** to see past access requests
+      - Note: This shows enterprise access management your organization controls what you can access
 
 💡 **What you're seeing:** Your identity profile shows how you're verified and what access you have. The "My Access" section shows enterprise-controlled permissions your organization decides what resources you can use. This is the foundation of Zero Trust you must prove who you are before accessing resources.
 
@@ -176,14 +177,14 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 #### Step 2: Verify MFA is Required for Your Account
 1. Go back to your **Security info** page (from Step 1)
 2. Check if you have **multiple authentication methods** set up:
-   - If you see Microsoft Authenticator, Phone, or Email in addition to Password → **MFA is enabled** ✅
-   - If you only see Password → MFA might not be enforced (less common for student accounts)
+      - If you see Microsoft Authenticator, Phone, or Email in addition to Password → **MFA is enabled** ✅
+      - If you only see Password → MFA might not be enforced (less common for student accounts)
 
 3. Try to add an additional authentication method:
-   - Click **+ Add sign-in method**
-   - See what options are available (Authenticator app, Phone, Email)
-   - You don't need to add one if you already have MFA set up
-   - If you want to enhance security, add Microsoft Authenticator app
+      - Click **+ Add sign-in method**
+      - See what options are available (Authenticator app, Phone, Email)
+      - You don't need to add one if you already have MFA set up
+      - If you want to enhance security, add Microsoft Authenticator app
 
 💡 **What this shows:** Modern Azure accounts require multiple factors. Your organization (university/school) enforces this policy. Even if you don't manage the policy, you experience it as a user.
 
@@ -196,16 +197,18 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 4. Sign in with your student/Azure account
 
 **Observe the MFA process:**
+
 5. After entering your **password** (first factor):
-   - You should be prompted for a **second factor**
-   - This might be:
-     - **Microsoft Authenticator app notification** (approve on your phone)
-     - **Code from Authenticator app** (6-digit number)
-     - **SMS code** sent to your phone
-     - **Phone call** for verification
+      - You should be prompted for a **second factor**
+      - This might be:
+         - **Microsoft Authenticator app notification** (approve on your phone)
+         - **Code from Authenticator app** (6-digit number)
+         - **SMS code** sent to your phone
+         - **Phone call** for verification
 6. Complete the MFA challenge
 
 💡 **What just happened:** Zero Trust in action! The system required:
+
    - **Something you know** (password)
    - **Something you have** (phone with authenticator app or SMS)
 
@@ -216,10 +219,10 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 2. Click **View account**
 3. In the left menu, click **My sign-ins** or **Recent activity**
 4. Review your sign-in history:
-   - Recent authentication times and dates
-   - Locations (IP addresses or cities)
-   - Devices used (Browser type, OS)
-   - Authentication methods used
+      - Recent authentication times and dates
+      - Locations (IP addresses or cities)
+      - Devices used (Browser type, OS)
+      - Authentication methods used
 
 
 💡 **What you're seeing:** A record of identity verification events. Each entry proves that "Verify Explicitly" was enforced your credentials were checked every time.
@@ -233,11 +236,12 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
 1. **Screenshot 1:** Your account **Overview** page.
 2. **Screenshot 2:** Your **My sign-ins** or recent activity page showing authentication history (or screenshot of the MFA prompt during login if logs aren't accessible)
 3. **Written explanation (4-6 sentences):** Address the following:
-        - Describe the MFA process you experienced when signing in (what factors did you provide?)
-        - How does MFA implement "Verify Explicitly"?
-        - Why is verifying identity with multiple factors better than trusting the network?
-        - What happens if an attacker steals your password but doesn't have access to your phone/authenticator app?
-        - How does reviewing your sign-in activity help detect unauthorized access?
+
+         - Describe the MFA process you experienced when signing in (what factors did you provide?)
+         - How does MFA implement "Verify Explicitly"?
+         - Why is verifying identity with multiple factors better than trusting the network?
+         - What happens if an attacker steals your password but doesn't have access to your phone/authenticator app?
+         - How does reviewing your sign-in activity help detect unauthorized access?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
