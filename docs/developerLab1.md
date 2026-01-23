@@ -1,4 +1,4 @@
-# Lab 1: AWS Development Environment and S3 Website Hosting
+# Developer Lab 1: AWS Development Environment and S3 Website Hosting
 
 > Note: In the Learner Lab environment, the **LabIDEURL** and **LabIDEPassword** are not available in the Details panel. You will complete this activity using **Lab 2.1: Exploring AWS CloudShell and an IDE**. Start the lab and proceed with the steps below.
 
