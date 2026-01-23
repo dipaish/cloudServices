@@ -18,6 +18,7 @@
 > To complete this lab, you should be familiar with the following AWS concepts.
 
 **Required Knowledge:**
+
 - AWS CloudShell and AWS CLI commands
 - Amazon DynamoDB (tables, items, primary keys, composite keys, query operations)
 - Amazon API Gateway (REST APIs, resources, methods, mock integrations)
