@@ -575,6 +575,7 @@ You'll see `/products` appear in the left sidebar under `/`.
 ✅ **First endpoint complete!**
 
 **What you've accomplished:**
+
 - Created a `/products` resource in your API
 - Added a GET method that uses Mock integration (no backend needed)
 - Configured it to return a JSON response with coffee and tea products
@@ -625,6 +626,7 @@ Your API now has 1 working endpoint. You should see in the left sidebar:
 ✅ **Second endpoint complete!**
 
 **What you've accomplished:**
+
 - Created a nested `/products/special` resource (child of `/products`)
 - Added a GET method with Mock integration
 - Configured it to return JSON with the featured café item (muffin)
@@ -676,6 +678,7 @@ Your API now has 2 working endpoints. You should see in the left sidebar:
 ✅ **All three endpoints complete!**
 
 **What you've accomplished:**
+
 - Created a `/report` resource at the root level
 - Added a POST method (not GET this time!) with Mock integration
 - Configured it to return a confirmation JSON with status and timestamp
