@@ -1,4 +1,4 @@
-# Developer Lab 3: Orchestrating and Automating DynamoDB-Based Workflows
+# Developer Lab 3: Building Event-Driven Serverless Workflows
 
 ## Purpose
 
