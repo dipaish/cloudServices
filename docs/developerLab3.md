@@ -32,6 +32,7 @@
 **Prerequisite:**
 
 Before starting this lab, you must have successfully completed **Developer Lab 2**, including:
+
 - Creating DynamoDB table(s)
 - Defining partition and sort keys
 - Inserting items into the table(s)
@@ -96,7 +97,7 @@ Before starting this lab, you must have successfully completed **Developer Lab 2
 
 4. Click **Save & Close** at the bottom of the dialog.
 
-5. Verify the update - the price should now show **2.75**
+5. Verify the update, the price should now show **2.75**
 
 **Step 2: Update CafeProducts Table**
 
@@ -148,14 +149,11 @@ Before starting this lab, you must have successfully completed **Developer Lab 2
 ```bash
 aws sns create-topic --name DynamoDBUpdateEvents
 ```
-
 2. Note the `TopicArn` from the output. It will look like:
    ```
    arn:aws:sns:us-east-1:123456789012:DynamoDBUpdateEvents
    ```
-
 3. Store the ARN in an environment variable for easy reference:
-
 ```bash
 export TOPIC_ARN=$(aws sns list-topics --query 'Topics[?contains(TopicArn, `DynamoDBUpdateEvents`)].TopicArn' --output text)
 echo $TOPIC_ARN
@@ -164,9 +162,7 @@ echo $TOPIC_ARN
 ### Task 2.2: Publish an Update Event
 
 1. Create a JSON message that describes the update you performed in Task 1.
-
 2. Publish a message to the SNS topic:
-
 ```bash
 aws sns publish \
     --topic-arn $TOPIC_ARN \
@@ -183,22 +179,18 @@ aws sns publish \
 
 **Note:** Adjust the message content to match your actual table name and the item you updated.
 
-3. Review the output to confirm the message was published. You should see a `MessageId` in the response.
+> Review the output to confirm the message was published. You should see a `MessageId` in the response.
 
 ### Task 2.3: Verify the Topic Exists
 
 1. List all SNS topics to verify your topic was created:
-
 ```bash
 aws sns list-topics
 ```
-
 2. Get topic attributes:
-
 ```bash
 aws sns get-topic-attributes --topic-arn $TOPIC_ARN
 ```
-
 ### Expected Results
 - `create-topic` command returns a TopicArn
 - `publish` command returns a MessageId
@@ -227,7 +219,6 @@ aws sns get-topic-attributes --topic-arn $TOPIC_ARN
 ```bash
 aws sqs create-queue --queue-name DynamoDBUpdatesDLQ
 ```
-
 2. Get the DLQ ARN:
 
 ```bash
@@ -235,7 +226,6 @@ export DLQ_URL=$(aws sqs get-queue-url --queue-name DynamoDBUpdatesDLQ --query '
 export DLQ_ARN=$(aws sqs get-queue-attributes --queue-url $DLQ_URL --attribute-names QueueArn --query 'Attributes.QueueArn' --output text)
 echo $DLQ_ARN
 ```
-
 3. Create the main queue with DLQ configuration:
 
 ```bash
@@ -245,7 +235,6 @@ aws sqs create-queue \
         "RedrivePolicy": "{\"deadLetterTargetArn\":\"'"$DLQ_ARN"'\",\"maxReceiveCount\":\"3\"}"
     }'
 ```
-
 4. Get the main queue URL and ARN:
 
 ```bash
@@ -266,7 +255,6 @@ aws sqs set-queue-attributes \
         "Policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sns.amazonaws.com\"},\"Action\":\"sqs:SendMessage\",\"Resource\":\"'"$QUEUE_ARN"'\",\"Condition\":{\"ArnEquals\":{\"aws:SourceArn\":\"'"$TOPIC_ARN"'\"}}}]}"
     }'
 ```
-
 2. Subscribe the queue to the SNS topic:
 
 ```bash
@@ -275,7 +263,6 @@ aws sns subscribe \
     --protocol sqs \
     --notification-endpoint $QUEUE_ARN
 ```
-
 3. Verify the subscription:
 
 ```bash
@@ -292,7 +279,6 @@ aws sns publish \
     --subject "Test Event" \
     --message '{"test": "SNS to SQS integration", "timestamp": "2026-01-23T11:00:00Z"}'
 ```
-
 2. Check if the message arrived in the SQS queue:
 
 ```bash
@@ -302,8 +288,6 @@ aws sqs receive-message --queue-url $QUEUE_URL
 You should see the test message in the output, confirming that the SNS-to-SQS integration is working correctly.
 
 ### Task 3.4: Create a Lambda Function 
-
-**Recommended Approach: Use AWS Console**
 
 Due to IAM restrictions in AWS Academy Learner Lab, the easiest way to create a Lambda function is through the AWS Management Console. The console will automatically create the required execution role for you.
 
@@ -341,31 +325,31 @@ Think of it as giving your Lambda function an "identity" and "permissions" to in
 3. Choose **Author from scratch**
 
 4. Configure the function:
-   - **Function name:** `ProcessDynamoDBUpdates`
-   - **Runtime:** Select **Python 3.11**
+    - **Function name:** `ProcessDynamoDBUpdates`
+    - **Runtime:** Select **Python 3.11**
 
 5. **Important - Understanding Permissions:**
 
-   - Under **Permissions**, expand the section
-   - Change the default selection to **"Use an existing role"**
-   - From the **Existing role** dropdown, select **LabRole**
-   - This role has the necessary permissions for Lambda to:
-     - Write logs to CloudWatch Logs
-     - Execute the function
-     - Access other AWS services
+    - Under **Permissions**, expand the section
+    - Change the default selection to **"Use an existing role"**
+    - From the **Existing role** dropdown, select **LabRole**
+    - This role has the necessary permissions for Lambda to:
+        - Write logs to CloudWatch Logs
+        - Execute the function
+        - Access other AWS services
 
 6. Click **Create function**
 
-   - AWS will create the function using the existing role
-   - You'll see a success message when the function is created
+    - AWS will create the function using the existing role
+    - You'll see a success message when the function is created
 
 7. **Update the Function Code:**
 
-   - In the code editor, you'll see a default `lambda_function.py` file with placeholder code (a simple "Hello from Lambda!" function)
-   - **Select all the code** (Ctrl+A or Cmd+A) and **delete it**
-   - **Copy and paste** the code below into the editor
-   - Click the **Deploy** button to save your changes
-   - Wait for the "Successfully updated the function ProcessDynamoDBUpdates" confirmation message
+    - In the code editor, you'll see a default `lambda_function.py` file with placeholder code (a simple "Hello from Lambda!" function)
+    - **Select all the code** (Ctrl+A or Cmd+A) and **delete it**
+    - **Copy and paste** the code below into the editor
+    - Click the **Deploy** button to save your changes
+    - Wait for the "Successfully updated the function ProcessDynamoDBUpdates" confirmation message
 
 **Lambda Function Code:**
 
@@ -402,14 +386,15 @@ def lambda_handler(event, context):
         'body': json.dumps('Successfully processed messages')
     }
 ```
-
 8. **Verify Deployment:**
-   - You should see a message: "Successfully updated the function ProcessDynamoDBUpdates"
-   - The function is now ready to process messages
+   
+    - You should see a message: "Successfully updated the function ProcessDynamoDBUpdates"
+    - The function is now ready to process messages
 
 **What Just Happened?**
 
 You've created a Lambda function that can:
+
 - Receive events from SQS containing SNS messages
 - Parse the JSON data from those messages
 - Log information about DynamoDB updates
@@ -424,10 +409,10 @@ In Task 3.5, you'll connect this Lambda function to your SQS queue so it automat
 2. Click **Add trigger**.
 
 3. In the trigger configuration:
-   - **Select a source:** Choose **SQS**
-   - **SQS queue:** Select `DynamoDBUpdatesQueue` from the dropdown
-   - **Batch size:** Enter `10`
-   - Leave other settings as default
+    - **Select a source:** Choose **SQS**
+    - **SQS queue:** Select `DynamoDBUpdatesQueue` from the dropdown
+    - **Batch size:** Enter `10`
+    - Leave other settings as default
 
 4. Click **Add**.
 
@@ -435,12 +420,12 @@ In Task 3.5, you'll connect this Lambda function to your SQS queue so it automat
 
 6. **Test the Lambda function:**
 
-   - Navigate to **SNS** in the console (search for "SNS")
-   - Click **Topics** in the left navigation
-   - Click on `DynamoDBUpdateEvents`
-   - Click **Publish message**
-   - **Subject:** `Lambda Test`
-   - **Message body:**
+    - Navigate to **SNS** in the console (search for "SNS")
+    - Click **Topics** in the left navigation
+    - Click on `DynamoDBUpdateEvents`
+    - Click **Publish message**
+    - **Subject:** `Lambda Test`
+    - **Message body:**
    ```json
    {
        "table": "CafeMenu",
@@ -452,11 +437,11 @@ In Task 3.5, you'll connect this Lambda function to your SQS queue so it automat
 
 7. **View CloudWatch Logs:**
 
-   - In the AWS Console search bar, type **CloudWatch** and select it
-   - Click **Logs** in the left navigation, then click the **Log Management**. You will see Log Groups.
-   - Click on `/aws/lambda/ProcessDynamoDBUpdates`
-   - Click on the most recent log stream
-   - You should see log entries showing your Lambda function processed the message
+    - In the AWS Console search bar, type **CloudWatch** and select it
+    - Click **Logs** in the left navigation, then click the **Log Management**. You will see Log Groups.
+    - Click on `/aws/lambda/ProcessDynamoDBUpdates`
+    - Click on the most recent log stream
+    - You should see log entries showing your Lambda function processed the message
 
 ### Expected Results
 - Both SQS queues (main and DLQ) are created successfully
@@ -517,16 +502,13 @@ In Task 3.5, you'll connect this Lambda function to your SQS queue so it automat
   }
 }
 ```
-
 6. Click the **Config** tab at the top.
-
 7. Configure settings:
-   - **State machine name:** Enter `DynamoDBUpdateWorkflow`
-   - **Type:** Select **Standard** 
-   - **Permissions:** Select **Choose an existing role**
-   - **Existing role:** Select **LabRole**
-   - Leave other settings as default
-
+    - **State machine name:** Enter `DynamoDBUpdateWorkflow`
+    - **Type:** Select **Standard** 
+    - **Permissions:** Select **Choose an existing role**
+    - **Existing role:** Select **LabRole**
+    - Leave other settings as default
 8. Click the **Create** button at the top right.
 
 ### Task 4.2: Execute the Workflow
@@ -540,20 +522,18 @@ In Task 3.5, you'll connect this Lambda function to your SQS queue so it automat
   "message": "{\"Message\": \"{\\\"table\\\": \\\"CafeMenu\\\", \\\"action\\\": \\\"update\\\", \\\"partition_key\\\": \\\"beverage\\\", \\\"sort_key\\\": \\\"BEV-001\\\"}\"}"
 }
 ```
-
 3. Click **Start execution**.
-
 4. You'll be taken to the execution details page. Monitor the execution:
-   - The **Graph view** will show the workflow progress
-   - Wait for the status to show **Succeeded** (usually takes a few seconds)
+    - The **Graph view** will show the workflow progress
+    - Wait for the status to show **Succeeded** (usually takes a few seconds)
 
 5. Scroll below to see the **Events** to view the execution history.
 
 6. Verify the Lambda function was invoked:
-   - Navigate to **CloudWatch** (search for it in the console)
-   - Click **Logs** → **Log Management** → **Log groups**
-   - Click on `/aws/lambda/ProcessDynamoDBUpdates`
-   - Check the latest log stream to confirm the function was called by Step Functions
+    - Navigate to **CloudWatch** (search for it in the console)
+    - Click **Logs** → **Log Management** → **Log groups**
+    - Click on `/aws/lambda/ProcessDynamoDBUpdates`
+    - Check the latest log stream to confirm the function was called by Step Functions
 
 ### Expected Results
 - Step Functions state machine is created successfully
@@ -585,4 +565,5 @@ Check the deadline in Canvas
 - **Self assessment:** In the submission comment box, provide a self-assessment based on the rubric guide. Clearly state how many points you believe you have earned for this task.  
 
 ### Clean Up 
-- ℹ️ **Delete All Resources:** After completing the lab, be sure to delete all resources from the lab environment to avoid incurring unnecessary charges. Remember that you’ll need these credits for other lab tasks, so use them wisely. 
+
+ℹ️ **Delete All Resources:** After completing the lab, be sure to delete all resources from the lab environment to avoid incurring unnecessary charges. Remember that you’ll need these credits for other lab tasks, so use them wisely. 
