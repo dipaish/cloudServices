@@ -798,7 +798,7 @@ Submit **2 screenshots**:
 </details>
 
 ### Guidance and feedback
-Guidance is available during the online consultation session or via Teams call.
+Guidance is available upon requests or via Teams call.
 
 ### Evaluation
 The evaluation is done based on the number of successfully completed tasks. Check the rubric.  
