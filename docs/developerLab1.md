@@ -104,7 +104,7 @@ python3 list-buckets.py
 
 ```
 example-sample-bucket-123456
- ```
+```
 
 3. Upload the script to your S3 bucket:
 
@@ -150,8 +150,8 @@ aws s3 ls s3://example-sample-bucket-123456
 aws s3 ls
 aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
 ```
-   
-    Confirm that **list-buckets.py** appears in the Explorer.
+
+> Confirm that **list-buckets.py** appears in the Explorer.
 
 2. Run the file:
 
@@ -159,7 +159,7 @@ aws s3 cp s3://example-sample-bucket-123456/list-buckets.py .
 python3 list-buckets.py
 ```
    
-**Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions in step 3.):**
+> **Expected error (Please note that if you do not receive any error message, skip "3. Install Boto3" and proceed to 4. Otherwise, follow the instructions below to install Boto3.):**
    
 ```
 ModuleNotFoundError: No module named 'boto3'
