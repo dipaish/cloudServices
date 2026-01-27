@@ -244,7 +244,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 #### 2. Enable static website hosting (Console)
 
-1. Open the AWS Management Console → **S3 → Buckets → <your-bucket-name> → Properties**
+1. Open the AWS Management Console → **S3 → Buckets → Click on your-bucket-name → Properties**
 2. Scroll to **Static website hosting** and choose **Edit**
 3. Select **Enable**
     * **Index document:** `index.html`
@@ -256,7 +256,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 > By default, S3 buckets block all public access. You must disable that restriction at the bucket level.
 
-1. Go to **S3 → Buckets → <your-bucket-name> → Permissions**
+1. Go to **S3 → Buckets → Click on your-bucket-name → Permissions**
 2. Under **Block public access (bucket settings)** choose **Edit**
 3. **Uncheck** “Block all public access” (you can leave ACL blocks on)
 4. Type `confirm` and choose **Save changes**
@@ -266,7 +266,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 > Apply a public-read bucket policy using the **AWS Management Console**.
 
-1. Go to **S3 → Buckets → <your-bucket-name> → Permissions**.
+1. Go to **S3 → Buckets → Click on your-bucket-name → Permissions**.
 2. Scroll down to **Bucket policy** and choose **Edit**.
 3. In the policy editor, paste the following JSON (replace `<your-bucket-name>` with your actual bucket name):
 
@@ -292,7 +292,7 @@ upload: ./error.html to s3://<your-bucket-name>/error.html
 
 #### 5. Test the website endpoint
 
-1. Console → **S3 → Buckets → <your-bucket-name> → Properties**
+1. Console → **S3 → Buckets → Click on your-bucket-name → Properties**
 2. Scroll to **Static website hosting**
 3. Copy the **Bucket website endpoint**, for example:
 
