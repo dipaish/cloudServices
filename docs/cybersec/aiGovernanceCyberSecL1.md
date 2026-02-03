@@ -621,7 +621,7 @@ Write **150-200 words** answering:
 
 Analyse **authentication and access behavior** using the **`iam_log` dataset (142,833 events)** in Splunk to identify suspicious login patterns, potential insider threats, and compromised accounts. Apply Zero Trust principles and risk-based authentication concepts.
 
-> **📌 Important:** The IAM logs are **already loaded in Splunk** under `index=securityx_lab sourcetype=iam_log`. This dataset is from **Carnegie Mellon University's CERT Division Insider Threat Program** — a real-world collection of employee authentication activity used for cybersecurity research and training.
+> **📌 Important:** The IAM logs are **already loaded in Splunk** under `index=securityx_lab sourcetype=iam_log`. This dataset is from **Carnegie Mellon University's CERT Division Insider Threat Program**, a real world collection of employee authentication activity used for cybersecurity research and training.
 
 ---
 
@@ -685,7 +685,7 @@ Use these queries to investigate authentication patterns:
    | sort - count
 ```
 
-   *Identify potential unauthorized access during non-business hours*
+**Identify potential unauthorized access during non-business hours**
 
 ---
 
@@ -727,17 +727,21 @@ Use **at least 3** of these terms:
 #### **Component 1: Data Source & Authentication Pattern Analysis (1 pt)**
 
 **Required:**
+
 - State data source: `index=securityx_lab sourcetype=iam_log`
 - Specify time range analyzed
 - **Briefly summarize your findings** (2-3 sentences identifying 1-2 suspicious users)
 - **Include 1 Splunk screenshot** showing your SPL query and results
 
 **Instructions:**
+
 You are NOT expected to analyze all 142,833 events. Run a few SPL queries to identify suspicious patterns (e.g., users with unusually high login counts, off-hours activity, multiple PC access). Summarize your key observations briefly.
 
 **Example:**
+
 > "Analyzed IAM logs from `index=securityx_lab sourcetype=iam_log` covering 1/14-1/26/2026. Identified user DTAA/CLB0995 with 1,200 login attempts (vs baseline 50/day) and another user accessing 15 different PCs in 24 hours."
->
+
+
 > *[Screenshot: Splunk SPL query showing user login counts, e.g., `index=securityx_lab sourcetype=iam_log | stats count by user | sort - count`]*
 
 ---
