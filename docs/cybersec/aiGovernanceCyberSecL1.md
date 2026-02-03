@@ -471,6 +471,7 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
    **See how many phishing vs legitimate emails exist**
    
    **Understanding Labels:**
+   
    - **label=0** → LEGITIMATE emails (normal business communications)
    - **label=1** → PHISHING/SPAM emails (malicious/suspicious)
 
