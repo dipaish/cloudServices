@@ -138,7 +138,8 @@ index=securityx_lab sourcetype=iam_log
 ```spl
 index=securityx_lab "failed login" OR "authentication failure"
 ```
-*Finds events containing specific phrases. Useful for investigating security incidents.*
+
+**Finds events containing specific phrases. Useful for investigating security incidents.**
 
 ---
 
@@ -454,9 +455,9 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
 1. **View all email data:**
 
 ```spl
-   index=securityx_lab sourcetype=email_log
-   | table _time, text_combined, label
-   | head 20
+index=securityx_lab sourcetype=email_log
+| table _time, text_combined, label
+| head 20
 ```
 
 **Shows email text content and classification labels**
@@ -464,23 +465,23 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
 2. **Count emails by classification:**
 
 ```spl
-   index=securityx_lab sourcetype=email_log
-   | stats count by label
+index=securityx_lab sourcetype=email_log
+| stats count by label
 ```
 
    **See how many phishing vs legitimate emails exist**
    
    **Understanding Labels:**
-   
+
    - **label=0** → LEGITIMATE emails (normal business communications)
    - **label=1** → PHISHING/SPAM emails (malicious/suspicious)
 
 3. **Search for urgency language (phishing indicator):**
 
 ```spl
-   index=securityx_lab sourcetype=email_log label=1
-   (text_combined="*urgent*" OR text_combined="*immediately*" OR text_combined="*verify*" OR text_combined="*suspended*")
-   | table _time, text_combined, label
+index=securityx_lab sourcetype=email_log label=1
+(text_combined="*urgent*" OR text_combined="*immediately*" OR text_combined="*verify*" OR text_combined="*suspended*")
+| table _time, text_combined, label
 ```
 
    **Find phishing emails (label=1) using urgency tactics**
@@ -488,9 +489,9 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
 4. **Search for financial/credential requests:**
 
 ```spl
-   index=securityx_lab sourcetype=email_log label=1
-   (text_combined="*password*" OR text_combined="*account*" OR text_combined="*prize*" OR text_combined="*winner*" OR text_combined="*bank*")
-   | table _time, text_combined, label
+index=securityx_lab sourcetype=email_log label=1
+(text_combined="*password*" OR text_combined="*account*" OR text_combined="*prize*" OR text_combined="*winner*" OR text_combined="*bank*")
+| table _time, text_combined, label
 ```
    
    **Identify phishing emails (label=1) requesting sensitive information or offering fake rewards**
@@ -498,9 +499,9 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
 5. **Find emails with specific phishing keywords:**
 
 ```spl
-   index=securityx_lab sourcetype=email_log label=1
-   (text_combined="*click here*" OR text_combined="*confirm*" OR text_combined="*update*" OR text_combined="*expire*")
-   | table _time, text_combined, label
+index=securityx_lab sourcetype=email_log label=1
+(text_combined="*click here*" OR text_combined="*confirm*" OR text_combined="*update*" OR text_combined="*expire*")
+| table _time, text_combined, label
 ```
    
    **Common phishing call-to-action phrases in spam emails (label=1)**
@@ -508,9 +509,9 @@ Use these queries to investigate the `email_log` data in your `securityx_lab` in
 6. **Compare: View legitimate emails for context:**
 
 ```spl
-   index=securityx_lab sourcetype=email_log label=0
-   | table _time, text_combined, label
-   | head 10
+index=securityx_lab sourcetype=email_log label=0
+| table _time, text_combined, label
+| head 10
 ```
 
    **Review normal business emails (label=0) to understand baseline communication patterns**
@@ -633,8 +634,8 @@ Use these queries to investigate authentication patterns:
 1. **View IAM log structure:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log
-   | head 20
+index=securityx_lab sourcetype=iam_log
+| head 20
 ```
 
    **Understand the data structure and available fields**
@@ -642,9 +643,9 @@ Use these queries to investigate authentication patterns:
 2. **Count login activity by user:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log
-   | stats count by user
-   | sort - count
+index=securityx_lab sourcetype=iam_log
+| stats count by user
+| sort - count
 ```
 
    **Identify users with highest login volumes - look for anomalies**
@@ -652,9 +653,9 @@ Use these queries to investigate authentication patterns:
 3. **Analyze login patterns by time:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log
-   | stats count by date_hour
-   | sort date_hour
+index=securityx_lab sourcetype=iam_log
+| stats count by date_hour
+| sort date_hour
 ```
    
    **Find unusual login times (e.g., 2 AM-5 AM may indicate compromised accounts)**
@@ -662,18 +663,18 @@ Use these queries to investigate authentication patterns:
 4. **Identify accounts with unusual activity:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log
-   | stats count by user, pc
-   | sort - count
+index=securityx_lab sourcetype=iam_log
+| stats count by user, pc
+| sort - count
 ```
    *Look for users accessing multiple PCs or unusual device patterns*
 
 5. **Investigate specific user behavior:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log user="*CLB*"
-   | stats count by date_mday, date_hour
-   | sort date_mday, date_hour
+index=securityx_lab sourcetype=iam_log user="*CLB*"
+| stats count by date_mday, date_hour
+| sort date_mday, date_hour
 ```
 
    *Deep dive into specific user's login timeline*
@@ -681,9 +682,9 @@ Use these queries to investigate authentication patterns:
 6. **Find off-hours authentication:**
 
 ```spl
-   index=securityx_lab sourcetype=iam_log (date_hour<6 OR date_hour>22)
-   | stats count by user, date_hour, pc
-   | sort - count
+index=securityx_lab sourcetype=iam_log (date_hour<6 OR date_hour>22)
+| stats count by user, date_hour, pc
+| sort - count
 ```
 
 **Identify potential unauthorized access during non-business hours**
