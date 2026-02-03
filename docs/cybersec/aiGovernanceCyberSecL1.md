@@ -160,6 +160,7 @@ index=securityx_lab sourcetype=winLogs EventID=1
 *Lists all processes that executed on Windows hosts. Helps identify suspicious programs.*
 
 **Example Output:**
+
 - `C:\Windows\System32\cmd.exe` (234 executions)
 - `C:\Windows\System32\powershell.exe` (89 executions)
 - `C:\Temp\malware.exe` (1 execution) ⚠️
@@ -223,13 +224,13 @@ Analyse **Windows logs** in Splunk to identify and assess potential security thr
 
 > **📌 Important:** The Sysmon logs (Winlogs) are **already loaded in Splunk** under `index=securityx_lab sourcetype=winLogs`. You do **NOT** need to upload any data.
 
-> **About This Dataset:** These logs come from **Sysmon (System Monitor)**, a Windows tool that tracks what's happening on a computer — which programs run, what files change, and how the system is being used. This helps us spot attackers trying to steal passwords, or hide malware.
+> **About This Dataset:** These logs come from **Sysmon (System Monitor)**, a Windows tool that tracks what's happening on a computer, which programs run, what files change, and how the system is being used. This helps us spot attackers trying to steal passwords, or hide malware.
 
 ---
 
 ### What You Will Analyse
 
-Windows logs in this dataset capture security-relevant activity including:
+Windows logs in this dataset capture security relevant activity including:
 
 - **Process access** (EventID=10): What processes accessed other processes (245 events)
 - **Registry modifications** (EventID=13): Registry key value changes (208 events)
@@ -434,15 +435,15 @@ Use **at least 3** of these terms appropriately in your submission:
 **🎯 SecurityX Domain:** Social Engineering & Email Security
 
 ### Objective
-Using the **`email_log` dataset (42,148 events)** in Splunk, analyze phishing campaigns, email-based social engineering techniques, and assess the accuracy of AI-assisted threat classifications. Apply critical thinking to differentiate legitimate emails from sophisticated phishing attempts and recommend defense-in-depth controls.
+Using the **`email_log` dataset (42,148 events)** in Splunk, analyze phishing campaigns, email based social engineering techniques, and assess the accuracy of AI-assisted threat classifications. Apply critical thinking to differentiate legitimate emails from sophisticated phishing attempts and recommend defense-in-depth controls.
 
 > **📌 Important:** The email logs are **already loaded in Splunk** under `index=securityx_lab sourcetype=email_log`. You do **NOT** need to upload any data.
 >
-> **About This Dataset:** This is a publicly available email dataset containing both **legitimate business emails (label=0)** and **phishing/spam emails (label=1)**. The emails include the complete message body text in the `text_combined` field. This real-world data helps you practice identifying social engineering tactics, urgency language, credential requests, and other phishing indicators that attackers use to manipulate victims.
+> **About This Dataset:** This is a publicly available email dataset containing both **legitimate business emails (label=0)** and **phishing/spam emails (label=1)**. The emails include the complete message body text in the `text_combined` field. This real world data helps you practice identifying social engineering tactics, urgency language, credential requests, and other phishing indicators that attackers use to manipulate victims.
 
 ---
 
-> **⚠️ Content Warning:** This dataset contains real phishing/spam emails which may include vulgar language, scams, inappropriate content, grammatical errors, and nonsensical text. This is authentic cybersecurity training data. If you encounter offensive content, remember this reflects real-world threats that security professionals must analyze professionally and objectively.
+> **⚠️ Content Warning:** This dataset contains real phishing/spam emails which may include vulgar language, scams, inappropriate content, grammatical errors, and nonsensical text. This is authentic cybersecurity training data. If you encounter offensive content, remember this reflects real world threats that security professionals must analyze professionally and objectively.
 
 ---
 
@@ -577,8 +578,9 @@ Include **1 Splunk screenshot** showing your query and the `text_combined` field
 #### **Component 2: AI-Assisted Classification (1 pt)**
 
 Use an AI tool (ChatGPT, Copilot, Claude) to:
+
 1. Paste **3-5 email samples** you analyzed earlier
-2. Ask: *"Classify these emails as legitimate or phishing. Identify indicators and provide risk ratings."*
+2. Ask: **"Classify these emails as legitimate or phishing. Identify indicators and provide risk ratings."**
 3. **Take the scrernshot of the complete AI output inclding your prompt** into your submission
 
 ---
@@ -590,14 +592,17 @@ Write **150-200 words** answering:
 **"Based on your email analysis, what are the TOP 3 email security risks for a ompany, and what layered defenses (technical + human + policy) would you recommend?"**
 
 **Use SecurityX terminology and structure your answer as:**
+
 - **Risk 1:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
 - **Risk 2:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
 - **Risk 3:** [What's the threat?] → **Control:** [How to defend against it - technical + human + policy]
 
 **Example:**
+
 > **Risk 1:** Business Email Compromise (BEC) - Attackers pretending to be company executives to trick finance staff into transferring money 
 > 
 > **Control:** 
+
 > - **Technical:** Email authentication (DMARC/SPF/DKIM) to verify sender identity
 > - **Human:** Train employees to recognize executive impersonation tactics
 > - **Policy:** Require phone call or in-person confirmation for all wire transfer requests over $10,000
