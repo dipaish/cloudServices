@@ -723,12 +723,13 @@ Your complete API structure in the left sidebar should now show:
 1. Navigate to **API Gateway** → **APIs** → **CafeBackendAPI** → **Resources**
 2. In the left sidebar, click the **GET** method under `/products`
 3. In the main panel, click the **Test** tab
-4. Scroll down and click the blue **Test** button
+4. Scroll down and click the **Test** button
 5. Check the response (scroll down):
    - **Status**: Should show `200`
    - **Response body**: Should display your coffee/tea JSON
 
 **Repeat for other endpoints:**
+
 - Click **GET** method under `/products/special` → **Test** tab → **Test** button
 - Click **POST** method under `/report` → **Test** tab → **Test** button
 
@@ -743,6 +744,7 @@ Now test your API from outside the AWS Console using the Invoke URL!
 **How to Find Your Invoke URL:**
 
 If you need to retrieve your Invoke URL again:
+
 1. Navigate to **API Gateway** >> **APIs** in AWS Console
 2. Click on your API (**CafeBackendAPI**)
 3. In the left sidebar, click **Stages**
@@ -766,6 +768,7 @@ If you need to retrieve your Invoke URL again:
 4. You should see the JSON responses directly in your browser
 
 **What's happening:**
+
 - When you access these URLs, API Gateway receives your request
 - It routes the request to the matching resource (`/products` or `/products/special`)
 - The Mock integration executes and returns the JSON you configured
@@ -781,6 +784,7 @@ If you need to retrieve your Invoke URL again:
 ✅ If you see your mock JSON responses, your API is working perfectly!
 
 **Troubleshooting:**
+
 - If you get an error, check that you deployed the API (Part 5)
 - Make sure you're using the correct Invoke URL from the deployment stage
 - Verify your API resources and methods are correctly configured
