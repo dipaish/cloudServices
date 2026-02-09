@@ -75,11 +75,11 @@ You are building a backend for a small café application. Menu items will be sto
 
 3. In CloudShell, create a file named `mytable.py` using one of these methods:
 
-  **Using nano editor (easier for beginners):**
+**Using nano editor (easier for beginners):**
 
-   ```bash
-   nano mytable.py
-   ```
+```bash
+nano mytable.py
+```
    Then paste the code below, press `Ctrl+O` to save, `Enter` to confirm, and `Ctrl+X` to exit.
 
 4. Code to add to the file:
