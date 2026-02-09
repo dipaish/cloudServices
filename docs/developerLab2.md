@@ -479,11 +479,12 @@ python3 batch_load.py
 ```
 
 5. Verify the items were added:
-   - Option 1: Use AWS CLI in CloudShell:
-   ```bash
-   aws dynamodb scan --table-name CafeProducts
-   ```
-   - Option 2: Check the DynamoDB console → **Tables** → **CafeProducts** → **Explore table items**
+**Option 1: Use AWS CLI in CloudShell:**
+   
+```bash
+aws dynamodb scan --table-name CafeProducts
+```
+**Option 2: Check the DynamoDB console → Tables → CafeProducts → Explore table items**
 
 ### Expected Results
 - CloudShell displays: "Batch load completed"
