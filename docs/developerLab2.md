@@ -365,8 +365,8 @@ aws dynamodb scan --table-name CafeMenu
 3. **Partition Key Distribution**: What could happen if all products had the same category?
 
 ### Submission: Required Screenshots for Task 2
-- **Screenshot 1:** DynamoDB console showing CafeMenu table details with composite key schema (partition key + sort key)
-- **Screenshot 2:** CloudShell output showing both query_category.py and scan_table.py results side-by-side
+- **Screenshot 1:** DynamoDB console showing CafeMenu table details. 
+- **Screenshot 2:** CloudShell output showing query_category.py results (3 beverages) AND scan_table.py results (all 6 items) - capture both command executions in one screenshot or submit two separate screenshots
 
 </details>
 
