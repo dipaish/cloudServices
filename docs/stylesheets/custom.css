@@ -1059,6 +1059,15 @@ details summary:hover {
 .custom-navbar .navbar-nav {
     gap: 0.1rem;
     align-items: center;
+    margin-left: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+/* Ensure navbar collapse aligns items to the right */
+.custom-navbar .navbar-collapse {
+    display: flex !important;
+    justify-content: flex-end !important;
 }
 
 /* Navbar links */
@@ -1189,6 +1198,16 @@ details summary:hover {
         border: none !important;
         border-left: 3px solid #8be9fd !important;
         position: static !important;
+    }
+    
+    /* On mobile, navbar items should stack vertically but still align right */
+    .custom-navbar .navbar-nav {
+        align-items: flex-end !important;
+        text-align: right !important;
+    }
+    
+    .custom-navbar .navbar-collapse {
+        align-items: flex-end !important;
     }
 }
 
