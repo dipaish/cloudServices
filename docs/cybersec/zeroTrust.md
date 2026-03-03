@@ -67,7 +67,7 @@ After completing the learning materials, you should be able to:
 
 ## What Skills Will You Learn?
 
-This lab teaches **real-world enterprise security skills** that security professionals use every day.
+This lab teaches **real world enterprise security skills** that security professionals use every day.
 
 ### Skills You'll Practice
 
@@ -242,7 +242,7 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
       - How does reviewing your sign-in activity help detect unauthorized access?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
-> Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
+> Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating your understanding, not AI-generated content. Violations will be treated as academic misconduct.
 
 ---
 </details>
@@ -263,6 +263,9 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
 ### Steps to Complete
 
 #### Step 1: Create a Test Environment
+
+**⚠️ Note:** If your subscription, does not allow you to create a resource group in Azure, please write me an email and I will add you to a resource group where you can do the following tasks but you will have to keep in mind that you will have access to a resource group therefore you will move on to Step 2 as the resource group is already created for you. 
+
 1. In Azure Portal, search for **"Resource groups"**
 2. Click **+ Create**
 3. Fill in the details:
