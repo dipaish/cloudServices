@@ -162,10 +162,6 @@ In Zero Trust, **identity is your new security perimeter** not the network. Inst
      - **Email** (for verification)
      - Note which MFA methods are already configured
 
-6. Click **My sign-ins** (if available):
-      - Review recent sign-in activity
-      - Check locations and devices used
-
 7. In the left menu, click **My Access**:
       - Click **Overview** to see your access summary
       - Review any **Access packages** assigned to you (if any)
@@ -397,7 +393,7 @@ Give users the **minimum permissions needed**  nothing more. You'll see how rest
     - Explain the difference between Reader, Contributor, and Owner roles
     - Why is "deny by default" a security win?
     - How did the resource lock demonstrate protection even against high-privilege accounts?
-    - In an enterprise, why would you use Reader role for auditors or reporting tools?ess?
+    - In an enterprise, why would you use Reader role for auditors or reporting tools?
 
 > ⚠️ **ACADEMIC INTEGRITY WARNING**  
 > Write all explanations in **your own words** based on your understanding. Do NOT use AI tools (ChatGPT, Copilot, Gemini, etc.) to write, paraphrase, or generate your responses. Your instructor is evaluating YOUR understanding, not AI-generated content. Violations will be treated as academic misconduct.
