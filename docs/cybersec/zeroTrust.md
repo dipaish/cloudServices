@@ -26,8 +26,10 @@ This task teaches you **Zero Trust security**, a modern approach to enterprise s
 🔗 https://learn.microsoft.com/en-us/training/paths/zero-trust-principles/
 
 **What you'll learn:**
+
 - What Zero Trust means and why it matters
 - **The 3 core principles:**
+
   - **Verify explicitly** Always authenticate and authorize
   - **Use least privilege** Give minimum necessary access
   - **Assume breach**  Design as if attackers are already inside
