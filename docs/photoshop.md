@@ -84,7 +84,7 @@ Choose ONE of the following submission methods:
 ---  
 ## Task 1: Getting Started with Photoshop: Exploring the Workspace (3 Points)
 
-<details>
+<details markdown="1">
 
 <summary>👉Click to expand the step by step guide</summary>
 
@@ -200,7 +200,7 @@ Save in your **Task01_Workspace** folder:
 
 ## Task 2: Crop & Resize for Different Outputs (3 Points)
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -340,7 +340,7 @@ Save in your **Task02_CropResize** folder:
 
 
 ## Task 3: Object Removal & Retouching (4 Points)
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -475,7 +475,7 @@ Save in your **Task03_Retouching** folder:
 
 ##  Task 4: Portrait Fixes (5 Points)
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -636,7 +636,7 @@ Save in your **Task04_RedEye** folder:
 </details>
 
 ## Task 5: Color Correction (5 Points)
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -977,7 +977,7 @@ Document your work by capturing the Layers panel.
 </details>
 
 ## Task 6: Layers & Masks (5 Points)
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -1198,7 +1198,7 @@ Save in your **Task06_LayersPractice** folder:
 </details>
 
 ## Task 7: Selection & Masking (5 Points)
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -1378,7 +1378,7 @@ Save in your **Task07_Selections** folder:
 
 ## Task 8: Recolor Object (5 Points)
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -1561,7 +1561,7 @@ Save in your **Task08_Recolor** folder:
 
 ## Task 9: Compositing with Shadows (5 Points)
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
@@ -1756,7 +1756,7 @@ Save in your **Task09_Compositing** folder:
 
 ## Task 10:  Generative AI in Photoshop (10 Points)
 
-<details>
+<details markdown="1">
 <summary>👉Click to expand the step by step guide</summary>
 
 ### Objective
